@@ -1,29 +1,30 @@
 # UVLLM: An Automated Universal Verification Framework using Large Language Model
-This repository contains artefacts and workflows to reproduce experiments from the DAC 2025 submission 2081
-"UVLLM: An Automated Universal RTL Verification Framework using LLMs"
-# Platform pre-requisities
+
+Modified from [https://github.com/amyuch/UVLLM].
+Add simplified enviroment and pixi commands.
+
+## Platform pre-requisities
+
 1. An x86-64 system (more cores will improve simulation time).
 2. Linux operating system (we used Ubuntu 20.04).
-# Dependencies Installation
-Building simulation platform, Python libs, and other dependencies:
 
-### Step1: Building simulation platform
+## Dependencies Installation
 
-`git clone https://github.com/verilator/verilator.git`
+Require pixi from [https://pixi.sh/dev/].
 
-`sudo apt get install iverilog`
+``` sh
+git submodule update --init --recursive
+pixi install
+```
 
-### Step2: Building Python libs
+## Enviroment Variables
 
-`pip install requirements.txt`
++ ARK_API_KEY: api key
++ DPSK_V3_ARK_MODEL: name of the model
 
-### Commercial Verilog Simulator: VCS
+## Reproduction
 
-To perform a full evaluation, you need access to the commercial VCS simulator from Synopsys. The setup for VCS may depend on the kind of licensing you use. Please contact your local computer support person for guidance.
-For an alternative try, we use a testbench with stimulus from UVM framework.
-
-# Reproduction
-Our prototype needs three input options for execution:
+Needs three input options for execution:
 
 * `--benchmark/-b`: the benchmark name. (ErrorSet for the example)
 
@@ -32,11 +33,11 @@ Our prototype needs three input options for execution:
 * `--version/-v`: the error index for the DUT. (1 for the example)
 
 ```
-Example: python UVLLM/Main.py -b ErrorSet -p accu -v 1
+Example: pixi run fix -b ErrorSet -p accu -v 1
 ```
 
 For the total benchmark test, use:
 
 ```
-Example: python UVLLM/Main.py -b ErrorSet
+Example: pixi run fix -b ErrorSet
 ```
