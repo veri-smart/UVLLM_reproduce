@@ -15,7 +15,12 @@ Require pixi from [https://pixi.sh/dev/].
 ``` sh
 git submodule update --init --recursive
 pixi install
+pixi run cp-errorset 
 ```
+
+## Copy ErrorSet
+
+UVLLM modifies the source file in-place, so copy is required before execution. Use `pixi run cp-errorset` to copy the errorset.
 
 ## Enviroment Variables
 

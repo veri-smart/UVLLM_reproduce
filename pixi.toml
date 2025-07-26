@@ -12,22 +12,9 @@ fix = { cmd = [
     "UVLLM/Main.py",
 ], env = { "PYTHONPATH" = "Strider/libs/Pyverilog" } }
 
-rm-cirfix = { cmd = ["rm", "-rf", "benchmarks/cirfix_benchmarks"] }
-cp-cirfix = { cmd = [
-    "cp",
-    "-r",
-    "cirfix_benchmarks",
-    "benchmarks/",
-], depends-on = [
-    "rm-cirfix",
-] }
-fix-cirfix = { cmd = [
-    "python",
-    "UVLLM/Main.py",
-    "-b",
-    "cirfix_benchmarks",
-], env = { "PYTHONPATH" = "Strider/libs/Pyverilog" }, depends-on = [
-    "cp-cirfix",
+rm-errorset = { cmd = ["rm", "-rf", "benchmarks/ErrorSet"] }
+cp-errorset = { cmd = "mkdir -p benchmarks && cp -r ErrorSet benchmarks && cp ErrorSet/ErrorSet.conf benchmarks/ErrorSet.conf && mkdir -p workdir", depends-on = [
+    "rm-errorset",
 ] }
 
 [dependencies]

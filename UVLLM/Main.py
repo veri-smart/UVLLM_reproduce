@@ -97,10 +97,34 @@ def test_mismatch(logger, benchmark, bugInfo, working_dir, max_i):
                     with open(Path("".join(bugInfo["src_file"])), 'w') as codepath:
                         backup = back.read()
                         codepath.write(backup)
-    end_time= time.time()
-    total_time = end_time - start_time
-    mismatch_time = total_time - preprocess_time
-    return 0,preprocess_time,mismatch_time
+    try:
+        iteration_starttime = time.time()
+        filename = test_preprocess(logger,bugInfo,working_dir)
+        iteration_preprocesstime = time.time()
+        preprocess_time += iteration_preprocesstime - iteration_starttime
+
+        orig = bugInfo["src_file"][0]
+        path, src = os.path.split(orig)
+        patch_dir = working_dir / "1_mismatch"
+        if not patch_dir.exists():
+                os.mkdir(patch_dir)
+        mismatchsignals = Repair.DebugWithMismatch(benchmark, bugInfo, logger)
+        FileUtils.removeDirContent(Config.WORK_DIR)
+        end_time= time.time()
+        total_time = end_time - start_time
+        mismatch_time = total_time - preprocess_time
+        if mismatchsignals:
+            return 1,preprocess_time,mismatch_time
+        else:
+            return 0,preprocess_time,mismatch_time
+    except Exception:
+        FileUtils.removeDirContent(Config.WORK_DIR)
+        end_time= time.time()
+        total_time = end_time - start_time
+        mismatch_time = total_time - preprocess_time
+        return 0,preprocess_time,mismatch_time
+
+
 
 
 def test_suspiciousline(logger, benchmark, bugInfo, working_dir, history, max_i):
@@ -185,14 +209,37 @@ def test_suspiciousline(logger, benchmark, bugInfo, working_dir, history, max_i)
                     with open(Path("".join(bugInfo["src_file"])), 'w') as codepath:
                         backup = back.read()
                         codepath.write(backup)
-    end_time= time.time()
-    total_time = end_time - start_time
-    suspicious_time = total_time - preprocess_time
-    return 0,preprocess_time,suspicious_time
+    try:
+        iteration_starttime = time.time()
+        filename = test_preprocess(logger,bugInfo,working_dir)
+        iteration_preprocesstime = time.time()
+        preprocess_time += iteration_preprocesstime - iteration_starttime
+
+        orig = bugInfo["src_file"][0]
+        path, src = os.path.split(orig)           
+        patch_dir = working_dir / "2_SuspiciousLine"
+        if not patch_dir.exists():
+            os.mkdir(patch_dir)
+        suspiciousLinenos, suspiciousCodeLines, score = Repair.locate(benchmark, bugInfo, logger)
+        FileUtils.removeDirContent(Config.WORK_DIR)
+        end_time= time.time()
+        total_time = end_time - start_time
+        suspicious_time = total_time - preprocess_time
+        if suspiciousCodeLines:
+            return 0,preprocess_time,suspicious_time
+        else:
+            return 1,preprocess_time, suspicious_time
+    except Exception as e:
+        FileUtils.removeDirContent(Config.WORK_DIR)
+        end_time= time.time()
+        total_time = end_time - start_time
+        suspicious_time = total_time - preprocess_time
+        return 0,preprocess_time,suspicious_time
 
 def testAll(logger, benchmarkArg, max_i):
     benchmark = BenchmarkFactory.createBenchmark(benchmarkArg)
     allBugs = benchmark.getAllBugs()
+    results = []
     for project, version in allBugs:
         try:
             bugInfo = benchmark.getBugInfo(project, version)
@@ -214,6 +261,11 @@ def testAll(logger, benchmarkArg, max_i):
                 preprocess_time += preprocess_time2
                 if nerr==0:
                     logger.info("FIX ERROR.")
+                    results.append((project, version, "failed"))
+                else:
+                    results.append((project, version, "pass"))
+            else:
+                results.append((project, version, "pass"))
 
             endTime = time.time()
             logger.info("Preprocess Time: {}s.".format(preprocess_time))
@@ -226,6 +278,10 @@ def testAll(logger, benchmarkArg, max_i):
         except Exception as e:
             logger.error("{}_{} Repair error.".format(project, version))
             logger.error(str(e))
+    
+    with open("result.csv", "w") as fout:
+        for (project, version, state) in results:
+            fout.write(f"{project},{version},{state}\n")
 
 if __name__ == "__main__":
     # Max iterations
