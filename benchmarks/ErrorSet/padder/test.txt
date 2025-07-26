@@ -1,0 +1,528 @@
+Running testbench_new.v test sequence...
+Test 1: Empty string padding
+FAIL: Test case           0, Cycle          11
+  Input: in=00000000, in_ready=1, is_last=1, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          12
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          13
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          14
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          15
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          16
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          17
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          18
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          19
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          20
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          21
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          22
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          23
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          24
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          25
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          26
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          27
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          28
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: zzzzzzXz0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080
+  Actual padded output:   010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080
+FAIL: Test case           0, Cycle          29
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=1
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: zzzzzzXz0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080
+  Actual padded output:   010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080
+FAIL: Test case           0, Cycle          30
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          31
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          32
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          33
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          34
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          35
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          42
+  Input: in=00000000, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          43
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          44
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          45
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          46
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          47
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          48
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          49
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          50
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          51
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          52
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          53
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          54
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          55
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          56
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          57
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          58
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          59
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          61
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678
+Test 3: 512-bit string padding
+FAIL: Test case           0, Cycle          64
+  Input: in=00000000, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          65
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          66
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          67
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          68
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          69
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          70
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          71
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          72
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          73
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          74
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          75
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          76
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          77
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          78
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          79
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          80
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=1, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          81
+  Input: in=00000000, in_ready=1, is_last=1, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          82
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdefzzzzzzZz
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef01000080
+FAIL: Test case           0, Cycle          83
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdefzzzzzzZz
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef01000080
+Test 4: 1136-bit string padding (multi-block)
+FAIL: Test case           0, Cycle          86
+  Input: in=00000000, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          87
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          88
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          89
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          90
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          91
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          92
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          93
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          94
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          95
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          96
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          97
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          98
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle          99
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         100
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         101
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         102
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         103
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+PASS: First block ready
+FAIL: Test case           0, Cycle         105
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678
+FAIL: Test case           0, Cycle         106
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678
+FAIL: Test case           0, Cycle         107
+  Input: in=00000999, in_ready=1, is_last=0, byte_num=3, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000901
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678
+FAIL: Test case           0, Cycle         108
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678
+FAIL: Test case           0, Cycle         109
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678
+FAIL: Test case           0, Cycle         110
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=1
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000
+  Actual padded output:   000000001234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678
+FAIL: Test case           0, Cycle         111
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         112
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         113
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         114
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         115
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         116
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         117
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         118
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         119
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         120
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         121
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         122
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         123
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         124
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         125
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         126
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         127
+  Input: in=90abcdef, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         128
+  Input: in=12345678, in_ready=1, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         129
+  Input: in=90abcdef, in_ready=1, is_last=1, byte_num=2, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Second block should be ready
+FAIL: Test case           0, Cycle         130
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678zzzzzzZz
+  Actual padded output:   1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab0180
+FAIL: Test case           0, Cycle         131
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=1
+  Expected: buffer_full=1, out_ready=1
+  Actual:   buffer_full=1, out_ready=1
+  Expected padded output: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678zzzzzzZz
+  Actual padded output:   1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab0180
+FAIL: Test case           0, Cycle         132
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         133
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         134
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         135
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         136
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         137
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         138
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         139
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         140
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         141
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         142
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         143
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+FAIL: Test case           0, Cycle         144
+  Input: in=00000000, in_ready=0, is_last=0, byte_num=0, f_ack=0
+  Expected: buffer_full=0, out_ready=0
+  Actual:   buffer_full=0, out_ready=0
+
+=== Test Results ===
+Total tests:         137
+Passed:          14
+Failed:         123
+Total cycles:         144
+Padding operations:           0
+Some tests FAILED!

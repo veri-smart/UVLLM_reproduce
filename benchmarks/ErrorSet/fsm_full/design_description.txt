@@ -1,0 +1,28 @@
+Please act as a professional verilog designer.
+
+Implement a module of a 4-way priority arbiter using finite state machine design. This arbiter grants access to one of four requesting agents based on priority order (agent 0 has highest priority, agent 3 has lowest priority). The arbiter remains in the granted state until the requesting agent deasserts its request.
+
+Module name:  
+    fsm_full               
+Input ports:
+    clock: Clock signal for synchronous operation
+    reset: Active high reset signal
+    req_0: Active high request signal from agent 0 (highest priority)
+    req_1: Active high request signal from agent 1
+    req_2: Active high request signal from agent 2
+    req_3: Active high request signal from agent 3 (lowest priority)
+Output ports:
+    gnt_0: Active high grant signal to agent 0
+    gnt_1: Active high grant signal to agent 1
+    gnt_2: Active high grant signal to agent 2
+    gnt_3: Active high grant signal to agent 3
+
+Implementation:
+The FSM has 5 states: IDLE, GNT0, GNT1, GNT2, and GNT3. The state transitions follow these rules:
+1. From IDLE state: Grant access to the highest priority requesting agent (req_0 > req_1 > req_2 > req_3)
+2. From GNTx states: Remain in the current grant state while the agent keeps requesting, return to IDLE when the agent deasserts its request
+3. Reset: All grant signals are deasserted and state returns to IDLE
+
+The arbiter uses priority-based arbitration where agent 0 has the highest priority and agent 3 has the lowest priority. Only one grant signal can be active at any time.
+
+Give me the complete code.

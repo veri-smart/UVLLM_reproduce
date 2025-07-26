@@ -1,0 +1,23 @@
+# Design Description for lshift_reg
+
+Please act as a professional Verilog designer.
+
+Implement a left shift register module that shifts its output left by one bit on every positive clock edge when the load enable signal is low. When the load enable signal is high, the register loads a new value.
+
+Module name:  
+    lshift_reg               
+Input ports:
+    clk: Clock signal used for synchronous operation.
+    rstn: Active-low reset signal to initialize the register.
+    load_val[7:0]: 8-bit input value to be loaded into the register.
+    load_en: Active-high load enable signal to control loading of the input value.
+Output ports:
+    op[7:0]: 8-bit output representing the current state of the register.
+
+Implementation:
+On every rising edge of the clock signal (`clk`), the register performs the following operations:
+1. If the reset signal (`rstn`) is low, the output (`op`) is set to 8'b00000000.
+2. If the load enable signal (`load_en`) is high, the input value (`load_val`) is loaded into the register.
+3. If the load enable signal is low, the register shifts its output left by one bit, with the most significant bit (MSB) wrapping around to the least significant bit (LSB).
+
+This module is designed for synchronous operation and supports both loading and shifting

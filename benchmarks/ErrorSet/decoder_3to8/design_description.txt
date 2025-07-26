@@ -1,0 +1,24 @@
+# Design Description for decoder_3to-8
+
+Please act as a professional verilog designer.
+
+Implement a module of a 3-to-8 decoder design. The decoder takes a 3-bit binary input and generates an 8-bit one-hot output. The output bit corresponding to the binary value of the input is set to 0 (active low), while all other bits are set to 1. The design is combinational and operates based on the enable signal.
+
+Module name:  
+    decoder_3to8               
+Input ports:
+    en: Active high enable signal. When `en` is 1, the decoder is active; otherwise, the output remains inactive.
+    A: 3-bit binary input, MSB maps to `A`
+    B: 3-bit binary input
+    C: 3-bit binary input, LSB maps to `C`
+Output ports:
+    Y7~Y0: 8-bit one-hot output (active low), where MSB maps to `Y7`, and LSB maps to `Y0` in the Verilog code.
+
+Implementation:
+The decoder operates combinationally. When the enable signal (`en`) is high, the 3-bit binary input (`in`) is decoded to generate an 8-bit one-hot output (`out`). The output bit corresponding to the binary value of the input is set to 0 (active low), while all other bits are set to 1. For example:
+    - If `in = 3'b000`, then `out = 8'b1111_1110`.
+    - If `in = 3'b001`, then `out = 8'b1111_1101`.
+    - If `in = 3'b010`, then `out = 8'b1111_1011`.
+    - ...
+    - If `in = 3'b111`, then `out = 8'b0111_1111`.
+If the enable signal (`en`) is low, all output bits are set to 1 (inactive state).

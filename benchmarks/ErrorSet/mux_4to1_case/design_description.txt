@@ -1,0 +1,25 @@
+Please act as a professional verilog designer.
+
+Implement a module of a 4-to-1 multiplexer using case statement. This multiplexer selects one of four 4-bit input data sources based on a 2-bit selection signal.
+
+Module name:  
+    mux_4to1_case               
+Input ports:
+    a[3:0]: 4-bit input data source 0
+    b[3:0]: 4-bit input data source 1  
+    c[3:0]: 4-bit input data source 2
+    d[3:0]: 4-bit input data source 3
+    sel[1:0]: 2-bit selection signal to choose which input to output
+Output ports:
+    out[3:0]: 4-bit output data selected from one of the four inputs
+
+Implementation:
+The multiplexer should use a combinational always block with case statement to implement the selection logic. The selection mapping should be:
+- sel = 2'b00: output = a
+- sel = 2'b01: output = b  
+- sel = 2'b10: output = c
+- sel = 2'b11: output = d
+
+The always block should be sensitive to all input signals (a, b, c, d, sel) and use non-blocking assignments (<=) for the output. The case statement should cover all possible values of the sel signal.
+
+Give me the complete code.

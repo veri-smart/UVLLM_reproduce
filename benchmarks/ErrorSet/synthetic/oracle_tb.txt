@@ -1,0 +1,59 @@
+Starting zero_a test...
+  Zero_a cycle           0: b=7, c=2f, d=059 -> e=1, f=0000, g=0, h=0
+  Zero_a cycle          20: b=b, c=9b, d=11d -> e=0, f=a848, g=a, h=1
+  Zero_a cycle          40: b=f, c=07, d=1e1 -> e=0, f=3818, g=e, h=1
+  Zero_a cycle          60: b=3, c=73, d=2a5 -> e=1, f=3030, g=2, h=1
+  Zero_a cycle          80: b=7, c=df, d=369 -> e=1, f=4000, g=6, h=1
+  Zero_a test completed
+Starting one_a test...
+  One_a cycle           0: b=d, c=35, d=061 -> e=0, f=0000, g=0, h=1
+  One_a cycle          20: b=1, c=19, d=19d -> e=0, f=44f4, g=4, h=0
+  One_a cycle          40: b=5, c=fd, d=2d9 -> e=1, f=88d8, g=8, h=0
+  One_a cycle          60: b=9, c=e1, d=015 -> e=1, f=ccbc, g=c, h=0
+  One_a cycle          80: b=d, c=c5, d=151 -> e=0, f=00a0, g=0, h=1
+  One_a test completed
+Starting random test...
+  Random cycle           0: a=1, b=b, c=0d, d=011 -> e=0, f=0000, g=0, h=0
+  Random cycle          20: a=1, b=f, c=99, d=3f5 -> e=0, f=c036, g=6, h=1
+  Random cycle          40: a=1, b=3, c=25, d=3d9 -> e=1, f=944e, g=a, h=1
+  Random cycle          60: a=1, b=7, c=b1, d=3bd -> e=0, f=c61e, g=e, h=1
+  Random cycle          80: a=1, b=b, c=3d, d=3a1 -> e=1, f=5236, g=2, h=1
+  Random test completed
+Starting reset behavior test...
+  Before reset: f=8006, g=6, h=1
+  During reset: f=aa5a, g=a, h=0
+  ✗ Reset behavior incorrect
+  After reset: f=0000, g=0, h=0
+  Cycle           1 after reset: f=aa5a, g=a, h=0
+  Cycle           2 after reset: f=aa5a, g=a, h=0
+  Cycle           3 after reset: f=aa5a, g=a, h=0
+  Cycle           4 after reset: f=aa5a, g=a, h=0
+  Cycle           5 after reset: f=aa5a, g=a, h=0
+  Reset behavior test completed
+Starting combinational logic test...
+Resetting module...
+  Comb test: a=0, b[0]=0, c[2]=0, d[7]=1 -> e=1 (exp=1)
+  Comb test: a=0, b[0]=0, c[2]=1, d[7]=1 -> e=1 (exp=1)
+  Comb test: a=0, b[0]=1, c[2]=0, d[7]=1 -> e=1 (exp=1)
+  Comb test: a=0, b[0]=1, c[2]=1, d[7]=1 -> e=0 (exp=0)
+  Comb test: a=1, b[0]=0, c[2]=0, d[7]=1 -> e=0 (exp=0)
+  Comb test: a=1, b[0]=0, c[2]=1, d[7]=1 -> e=0 (exp=0)
+  Comb test: a=1, b[0]=1, c[2]=0, d[7]=1 -> e=0 (exp=0)
+  Comb test: a=1, b[0]=1, c[2]=1, d[7]=1 -> e=1 (exp=1)
+  Combinational logic test completed
+Starting edge cases test...
+Resetting module...
+  Max values: e=1, f=0000, g=0, h=0
+  Min values: e=0, f=ffff, g=f, h=0
+  Alt pattern 1: e=0, f=0000, g=0, h=0
+  Alt pattern 2: e=1, f=5555, g=5, h=0
+  Rapid changes completed
+  Edge cases test completed
+
+=== Test Results ===
+Total tests:         333
+Passed:         333
+Failed:           0
+Total cycles:         333
+Operations tested:         300
+All tests PASSED!

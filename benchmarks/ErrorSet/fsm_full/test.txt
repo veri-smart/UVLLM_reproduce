@@ -1,0 +1,590 @@
+FAIL: Test case 1, Cycle 1
+  Input: reset=1, req=[0,0,0,0]
+  Expected: gnt=[x,x,x,x]
+  Actual:   gnt=[0,0,0,0]
+
+FAIL: Test case 1, Cycle 12
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 23
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 24
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 25
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 26
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 27
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 38
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 39
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 40
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 41
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 42
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 53
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 54
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 55
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 56
+  Input: reset=0, req=[0,1,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 1, Cycle 57
+  Input: reset=0, req=[0,1,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 1, Cycle 68
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 1, Cycle 69
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 1, Cycle 70
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 1, Cycle 71
+  Input: reset=0, req=[0,0,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 1, Cycle 72
+  Input: reset=0, req=[0,0,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 1, Cycle 83
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 1, Cycle 84
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 1, Cycle 85
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 1, Cycle 86
+  Input: reset=0, req=[0,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 1, Cycle 87
+  Input: reset=0, req=[0,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 1, Cycle 98
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 1, Cycle 99
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 1, Cycle 100
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 2, Cycle 104
+  Input: reset=0, req=[1,1,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 3, Cycle 143
+  Input: reset=1, req=[0,0,0,0]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,0,0,0]
+
+FAIL: Test case 3, Cycle 146
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 196
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 4, Cycle 197
+  Input: reset=0, req=[1,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 203
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 204
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 206
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 207
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 209
+  Input: reset=0, req=[1,0,0,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 4, Cycle 210
+  Input: reset=0, req=[0,1,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 211
+  Input: reset=0, req=[1,0,1,0]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 212
+  Input: reset=0, req=[0,1,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 213
+  Input: reset=0, req=[1,0,1,0]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 214
+  Input: reset=0, req=[1,1,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 216
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 217
+  Input: reset=0, req=[0,1,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 218
+  Input: reset=0, req=[0,1,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 219
+  Input: reset=0, req=[0,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 220
+  Input: reset=0, req=[1,0,1,0]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 4, Cycle 221
+  Input: reset=0, req=[0,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 222
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 4, Cycle 223
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 227
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 228
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 229
+  Input: reset=0, req=[0,1,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 230
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 231
+  Input: reset=0, req=[0,1,1,0]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 232
+  Input: reset=0, req=[1,1,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 233
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 234
+  Input: reset=0, req=[1,1,0,0]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 235
+  Input: reset=0, req=[1,1,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 238
+  Input: reset=0, req=[0,1,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 239
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 240
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 241
+  Input: reset=0, req=[1,1,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 243
+  Input: reset=0, req=[0,1,0,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 244
+  Input: reset=0, req=[0,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 245
+  Input: reset=0, req=[0,1,0,0]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 4, Cycle 246
+  Input: reset=0, req=[0,1,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 248
+  Input: reset=0, req=[0,0,0,1]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 249
+  Input: reset=0, req=[0,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 4, Cycle 251
+  Input: reset=0, req=[1,1,0,1]
+  Expected: gnt=[0,0,0,1]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 252
+  Input: reset=0, req=[0,1,1,0]
+  Expected: gnt=[0,0,0,1]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 253
+  Input: reset=0, req=[0,1,1,0]
+  Expected: gnt=[0,0,0,1]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 254
+  Input: reset=0, req=[0,1,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 256
+  Input: reset=0, req=[0,1,0,1]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 4, Cycle 257
+  Input: reset=0, req=[1,1,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 258
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 259
+  Input: reset=0, req=[1,0,1,0]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 260
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 263
+  Input: reset=0, req=[0,1,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 264
+  Input: reset=0, req=[1,0,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 265
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 266
+  Input: reset=0, req=[1,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 268
+  Input: reset=0, req=[0,0,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 269
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 4, Cycle 270
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,0,1,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 271
+  Input: reset=0, req=[0,0,0,1]
+  Expected: gnt=[0,0,1,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 272
+  Input: reset=0, req=[1,1,1,0]
+  Expected: gnt=[0,0,1,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 4, Cycle 273
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 275
+  Input: reset=0, req=[1,1,0,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 4, Cycle 276
+  Input: reset=0, req=[1,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 280
+  Input: reset=0, req=[1,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 282
+  Input: reset=0, req=[0,0,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 283
+  Input: reset=0, req=[0,1,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,1,0]
+
+FAIL: Test case 4, Cycle 284
+  Input: reset=0, req=[0,0,0,1]
+  Expected: gnt=[0,0,1,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 285
+  Input: reset=0, req=[1,1,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 4, Cycle 286
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[0,0,0,1]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 287
+  Input: reset=0, req=[0,1,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 288
+  Input: reset=0, req=[0,1,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 289
+  Input: reset=0, req=[1,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 290
+  Input: reset=0, req=[1,0,0,1]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 291
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 295
+  Input: reset=1, req=[1,1,0,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,0,0,0]
+
+FAIL: Test case 4, Cycle 296
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 297
+  Input: reset=0, req=[0,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 298
+  Input: reset=0, req=[0,1,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,0,0,1]
+
+FAIL: Test case 4, Cycle 299
+  Input: reset=0, req=[0,1,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+
+FAIL: Test case 4, Cycle 300
+  Input: reset=1, req=[1,1,0,0]
+  Expected: gnt=[0,1,0,0]
+  Actual:   gnt=[0,0,0,0]
+
+FAIL: Test case 4, Cycle 302
+  Input: reset=0, req=[1,1,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 304
+  Input: reset=0, req=[0,1,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 308
+  Input: reset=0, req=[1,0,0,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 309
+  Input: reset=0, req=[0,0,0,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 311
+  Input: reset=0, req=[0,0,1,1]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 312
+  Input: reset=1, req=[1,0,1,1]
+  Expected: gnt=[1,0,0,0]
+  Actual:   gnt=[0,0,0,0]
+
+FAIL: Test case 4, Cycle 313
+  Input: reset=0, req=[0,1,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[1,0,0,0]
+
+FAIL: Test case 4, Cycle 314
+  Input: reset=0, req=[1,1,1,0]
+  Expected: gnt=[0,0,0,0]
+  Actual:   gnt=[0,1,0,0]
+

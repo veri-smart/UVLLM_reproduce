@@ -1,0 +1,18 @@
+Please act as a professional Verilog designer.
+
+Implement a module of a 4-bit up-counter with synchronous active high reset and active high enable signal.
+
+Module name:
+    first_counter
+
+Input ports:
+    clk: Clock signal for synchronous operations.
+    reset: Active high reset signal to initialize the counter.
+    enable: Active high enable signal to increment the counter.
+
+Output ports:
+    counter_out[3:0]: 4-bit output representing the current counter value.
+    overflow_out: Single-bit output indicating counter overflow.
+
+Implementation:
+The counter should increment its value on every positive clock edge when the enable signal is high. If the reset signal is asserted, the counter should reset to 0. The overflow_out signal should be set to 1 when the counter reaches its maximum value (4'b1111).

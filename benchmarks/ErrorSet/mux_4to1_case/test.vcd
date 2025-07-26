@@ -1,0 +1,51 @@
+$date
+	Sat Jul 26 11:40:53 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_mux_4to1_case $end
+$scope module uut $end
+$var wire 4 ! a [3:0] $end
+$var wire 4 " b [3:0] $end
+$var wire 4 # c [3:0] $end
+$var wire 4 $ d [3:0] $end
+$var wire 2 % sel [1:0] $end
+$var reg 4 & out [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b10 &
+b1 %
+b1000 $
+b100 #
+b10 "
+b1 !
+$end
+#1000
+b100 &
+b10 %
+#2000
+b1000 &
+b11 %
+#3000
+b0 %
+b1 $
+b10 #
+b100 "
+b1000 !
+#4000
+b100 &
+b1 %
+#5000
+b10 &
+b10 %
+#6000
+b1 &
+b11 %
+#7000

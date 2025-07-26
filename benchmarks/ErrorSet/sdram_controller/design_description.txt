@@ -1,0 +1,40 @@
+Please act as a professional Verilog designer.
+
+Implement a simple SDRAM controller for ISSI IS42S16160G-7 SDRAM, designed for basic read and write operations without burst support. The controller handles initialization, refresh cycles, and read/write commands.
+
+Module name:  
+    sdram_controller  
+                 
+Input ports:
+    wr_addr: Write address for SDRAM.
+    wr_data: 16-bit data to be written to SDRAM.
+    wr_enable: Write enable signal to latch address and data for writing.
+    rd_addr: Read address for SDRAM.
+    rd_enable: Read enable signal to latch address for reading.
+    rst_n: Active low reset signal to initialize the SDRAM.
+    clk: Clock signal for synchronous operations.
+
+Output ports:
+    rd_data: 16-bit data read from SDRAM.
+    rd_ready: Signal indicating that read data is available.
+    busy: Signal indicating that the controller is busy and cannot accept new commands.
+    addr: Address sent to the SDRAM.
+    bank_addr: Bank address sent to the SDRAM.
+    data_out: 16-bit data output to SDRAM during write operations.
+    data_oe: Output enable signal for SDRAM data bus.
+    clock_enable: Clock enable signal for SDRAM.
+    cs_n: Chip select signal for SDRAM.
+    ras_n: Row address strobe signal for SDRAM.
+    cas_n: Column address strobe signal for SDRAM.
+    we_n: Write enable signal for SDRAM.
+    data_mask_low: Data mask for lower byte during write operations.
+    data_mask_high: Data mask for upper byte during write operations.
+
+Implementation:
+1. The controller initializes the SDRAM by executing a sequence of commands, including precharge, refresh, and mode register setup.
+2. During normal operation, the controller handles read and write commands:
+    - For write operations, the address and data are latched, and the data is sent to the SDRAM with appropriate control signals.
+    - For read operations, the address is latched, and the data is retrieved from the SDRAM after a few clock cycles.
+3. The controller includes a refresh mechanism to ensure data integrity in the SDRAM. Refresh commands are issued periodically based on a refresh counter.
+4. The state machine manages the controller's operation, transitioning between states such as IDLE, INIT, REFRESH, READ, and WRITE based on input signals and internal counters.
+5. The `busy` signal indicates when the controller is processing a command and cannot accept new requests.

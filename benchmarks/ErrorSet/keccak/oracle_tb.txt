@@ -1,0 +1,26 @@
+Test 1: SHA3-512 'The quick brown fox jumps over the lazy dog'
+  Hash completed after          31 cycles
+  Result: d135bb84d0439dbac432247ee573a23ea7d3c9deb2a968eb31d47c4fb45f1ef4422d6c531b5b9bd6f449ebcc449ea94d0a8f05f62130fda612da53c79659f609
+Test 2: SHA3-512 'The quick brown fox jumps over the lazy dog.'
+  Hash completed after          30 cycles
+  Result: ab7192d2b11f51c7dd744e7b3441febf397ca07bf812cceae122ca4ded6387889064f8db9230f173f6d1ab6e24b6e50f065b039f799f5592360a6558eb52d760
+Test 3: Hash byte sequence A1A2A3A4A5
+  Hash completed after          40 cycles
+  Result: 52146a541f1c49ab96d4ec94cc61c03eaed8b833cc49e64c19d6e0be267eab30f2e5dd6c1e468a3916c26d8928b44b1b34603860d86a7d8504a87948e756f361
+Test 4: Hash empty string
+  Hash completed after          41 cycles
+  Result: 0eab42de4c3ceb9235fc91acffe746b29c29a8c366b7c60e4e67c466f36a4304c00fa9caf9d87976ba469bcbe06713b435f091ef2769fb160cdab33d3670680e
+Test 5: Hash (576-8) bit string
+  Hash completed after          24 cycles
+  Result: 5f05cd55b435182f7fc3e09eae228a6bba62536dac061a34a5a864bf03b7f8eb56c8bced5949745c3675d2bcdcac20343299be3399507de2937493321fbab33d
+Test 6: Pad (576-64) bit string
+  Hash completed after          25 cycles
+  Result: ccd91653872c106f6eea1b8b68a4c2901c8d9bed9c180201f8a6144e7e6e6c251afcb6f6da44780b2d9aabff254036664719425469671f7e21fb67e5280a27ed
+
+=== Test Results ===
+Total tests:          97
+Passed:          97
+Failed:           0
+Total cycles:         288
+Hashes computed:           x
+All tests PASSED!

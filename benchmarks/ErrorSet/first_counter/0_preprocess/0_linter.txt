@@ -1,0 +1,13 @@
+%Error: /home/gmy/Projects/UVLLM/benchmarks/ErrorSet/first_counter/first_counter_buggy1.v:14:13: Duplicate declaration of signal: 'counter_out'
+14 |   reg [3:0] counter_out;
+|             ^~~~~~~~~~~
+/home/gmy/Projects/UVLLM/benchmarks/ErrorSet/first_counter/first_counter_buggy1.v:11:20: ... Location of original declaration
+11 |   output reg [3:0] counter_out;
+|                    ^~~~~~~~~~~
+%Error: /home/gmy/Projects/UVLLM/benchmarks/ErrorSet/first_counter/first_counter_buggy1.v:15:7: Duplicate declaration of signal: 'overflow_out'
+15 |   reg overflow_out;
+|       ^~~~~~~~~~~~
+/home/gmy/Projects/UVLLM/benchmarks/ErrorSet/first_counter/first_counter_buggy1.v:12:14: ... Location of original declaration
+12 |   output reg overflow_out;
+|              ^~~~~~~~~~~~
+%Error: Exiting due to 2 error(s)

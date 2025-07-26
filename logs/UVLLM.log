@@ -1,1 +1,166 @@
-
+[2025-07-26 14:22:46] {Main.py:242} INFO - Namespace(benchmark='ErrorSet', project='sdram_controller', version='1')
+[2025-07-26 14:22:46] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:22:46] {preprocess.py:97} INFO - [LintWarning(tpe='CASEINCOMPLETE', filename=PosixPath('/home/gmy/Projects/UVLLM/benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v'), line=260, col=7, msg='Case values incompletely covered (example pattern 0x0)\n260 |       case (state)\n|       ^~~~\n... For warning description see https://verilator.org/warn/CASEINCOMPLETE?v=5.034\n... Use "/* verilator lint_off CASEINCOMPLETE */" and lint_on around source to disable this message.')]
+[2025-07-26 14:22:46] {preprocess.py:98} INFO - []
+[2025-07-26 14:22:47] {preprocess.py:97} INFO - [LintWarning(tpe='LATCH', filename=PosixPath('/home/gmy/Projects/UVLLM/benchmarks/ErrorSet/sdram_controller/0_preprocess/sdram_controller_buggy1.0.v'), line=140, col=3, msg='Latch inferred for signal \'sdram_controller.next\' (not all control paths of combinational always assign a value)\n: ... Suggest use of always_latch for intentional latches\n140 |   always @(*) begin\n|   ^~~~~~\n... For warning description see https://verilator.org/warn/LATCH?v=5.034\n... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.')]
+[2025-07-26 14:22:47] {preprocess.py:98} INFO - []
+[2025-07-26 14:22:48] {preprocess.py:97} INFO - [LintWarning(tpe='LATCH', filename=PosixPath('/home/gmy/Projects/UVLLM/benchmarks/ErrorSet/sdram_controller/0_preprocess/sdram_controller_buggy1.0.v'), line=140, col=3, msg='Latch inferred for signal \'sdram_controller.next\' (not all control paths of combinational always assign a value)\n: ... Suggest use of always_latch for intentional latches\n140 |   always @(*) begin\n|   ^~~~~~\n... For warning description see https://verilator.org/warn/LATCH?v=5.034\n... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.')]
+[2025-07-26 14:22:48] {preprocess.py:98} INFO - []
+[2025-07-26 14:22:48] {preprocess.py:97} INFO - [LintWarning(tpe='LATCH', filename=PosixPath('/home/gmy/Projects/UVLLM/benchmarks/ErrorSet/sdram_controller/0_preprocess/sdram_controller_buggy1.0.v'), line=140, col=3, msg='Latch inferred for signal \'sdram_controller.next\' (not all control paths of combinational always assign a value)\n: ... Suggest use of always_latch for intentional latches\n140 |   always @(*) begin\n|   ^~~~~~\n... For warning description see https://verilator.org/warn/LATCH?v=5.034\n... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.')]
+[2025-07-26 14:22:48] {preprocess.py:98} INFO - []
+[2025-07-26 14:22:48] {preprocess.py:97} INFO - [LintWarning(tpe='LATCH', filename=PosixPath('/home/gmy/Projects/UVLLM/benchmarks/ErrorSet/sdram_controller/0_preprocess/sdram_controller_buggy1.0.v'), line=140, col=3, msg='Latch inferred for signal \'sdram_controller.next\' (not all control paths of combinational always assign a value)\n: ... Suggest use of always_latch for intentional latches\n140 |   always @(*) begin\n|   ^~~~~~\n... For warning description see https://verilator.org/warn/LATCH?v=5.034\n... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.')]
+[2025-07-26 14:22:48] {preprocess.py:98} INFO - []
+[2025-07-26 14:22:48] {Main.py:22} INFO - changes are 1
+[2025-07-26 14:22:48] {Repair.py:29} INFO - AST parsing.
+[2025-07-26 14:22:48] {Repair.py:31} INFO - {'filelist': ['/home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v'], 'include': [], 'define': []}
+[2025-07-26 14:22:49] {Repair.py:33} INFO - AST parsing done.
+[2025-07-26 14:22:49] {Repair.py:35} INFO - AST done.
+[2025-07-26 14:22:49] {Repair.py:42} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:22:50] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:22:50] {Main.py:71} INFO - Finish in preprocess.
+[2025-07-26 14:23:05] {Main.py:242} INFO - Namespace(benchmark='ErrorSet', project='sdram_controller', version='1')
+[2025-07-26 14:23:05] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:05] {preprocess.py:97} INFO - []
+[2025-07-26 14:23:05] {preprocess.py:98} INFO - []
+[2025-07-26 14:23:05] {Main.py:22} INFO - changes are 0
+[2025-07-26 14:23:05] {Repair.py:29} INFO - AST parsing.
+[2025-07-26 14:23:05] {Repair.py:31} INFO - {'filelist': ['/home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v'], 'include': [], 'define': []}
+[2025-07-26 14:23:06] {Repair.py:33} INFO - AST parsing done.
+[2025-07-26 14:23:06] {Repair.py:35} INFO - AST done.
+[2025-07-26 14:23:07] {Repair.py:42} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:23:09] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:23:09] {Main.py:57} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:11] {api.py:75} INFO - {"module name": "sdram_controller", "analysis": "The wr_data_r register is not being properly synchronized with data_out output. The data_out assignment should directly use wr_data_r when in write state.", "correct code": [("assign data_out = wr_data_r;", "assign data_out = (state == WRIT_CAS) ? wr_data_r : 16'bz;")]}
+[2025-07-26 14:23:11] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:11] {preprocess.py:97} INFO - []
+[2025-07-26 14:23:11] {preprocess.py:98} INFO - []
+[2025-07-26 14:23:11] {Main.py:22} INFO - changes are 0
+[2025-07-26 14:23:12] {Repair.py:29} INFO - AST parsing.
+[2025-07-26 14:23:12] {Repair.py:31} INFO - {'filelist': ['/home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v'], 'include': [], 'define': []}
+[2025-07-26 14:23:12] {Repair.py:33} INFO - AST parsing done.
+[2025-07-26 14:23:12] {Repair.py:35} INFO - AST done.
+[2025-07-26 14:23:13] {Repair.py:42} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:23:14] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:23:14] {Main.py:57} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:18] {api.py:75} INFO - {"module name": "sdram_controller", "analysis": "The data_out assignment is incorrect as it uses a ternary operator with 'z' which is not synthesizable for output ports. Also, wr_data_r should be registered on write enable.", "correct code": [("assign data_out = (state == WRIT_CAS) ? wr_data_r : 16'bz;", "assign data_out = wr_data_r;"), ("if (wr_enable) wr_data_r <= wr_data;", "if (wr_enable & ~busy) wr_data_r <= wr_data;")]}
+[2025-07-26 14:23:18] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:18] {preprocess.py:97} INFO - []
+[2025-07-26 14:23:18] {preprocess.py:98} INFO - []
+[2025-07-26 14:23:18] {Main.py:22} INFO - changes are 0
+[2025-07-26 14:23:18] {Repair.py:29} INFO - AST parsing.
+[2025-07-26 14:23:18] {Repair.py:31} INFO - {'filelist': ['/home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v'], 'include': [], 'define': []}
+[2025-07-26 14:23:19] {Repair.py:33} INFO - AST parsing done.
+[2025-07-26 14:23:19] {Repair.py:35} INFO - AST done.
+[2025-07-26 14:23:20] {Repair.py:42} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:23:21] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:23:21] {Main.py:57} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:25] {api.py:75} INFO - {"module name": "sdram_controller", "analysis": "The wr_data_r register is not being properly synchronized with data_out output. The issue is in the data latching logic.", "correct code": [("if (wr_enable & ~busy) wr_data_r <= wr_data;", "if (wr_enable & ~busy) wr_data_r <= wr_data; else if (state == WRIT_CAS) wr_data_r <= wr_data_r;"), ("assign data_out = wr_data_r;", "assign data_out = (state == WRIT_CAS) ? wr_data_r : 16'bz;")]}
+[2025-07-26 14:23:25] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:25] {preprocess.py:97} INFO - []
+[2025-07-26 14:23:25] {preprocess.py:98} INFO - []
+[2025-07-26 14:23:25] {Main.py:22} INFO - changes are 0
+[2025-07-26 14:23:25] {Repair.py:29} INFO - AST parsing.
+[2025-07-26 14:23:25] {Repair.py:31} INFO - {'filelist': ['/home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v'], 'include': [], 'define': []}
+[2025-07-26 14:23:26] {Repair.py:33} INFO - AST parsing done.
+[2025-07-26 14:23:26] {Repair.py:35} INFO - AST done.
+[2025-07-26 14:23:27] {Repair.py:42} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:23:28] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:23:28] {Main.py:57} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:31] {api.py:75} INFO - {"module name": "sdram_controller", "analysis": "The data_out assignment is incorrect when not in WRIT_CAS state, should be driven to 0 instead of high-Z", "correct code": [("assign data_out = (state == WRIT_CAS) ? wr_data_r : 16'bz;", "assign data_out = (state == WRIT_CAS) ? wr_data_r : 16'b0;")]}
+[2025-07-26 14:23:31] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:31] {preprocess.py:97} INFO - []
+[2025-07-26 14:23:31] {preprocess.py:98} INFO - []
+[2025-07-26 14:23:31] {Main.py:22} INFO - changes are 0
+[2025-07-26 14:23:33] {Repair.py:79} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:23:34] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:23:34] {Repair.py:94} INFO - mismatchSignals: ['testbench.uut.wr_data_r']
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 162: always @(posedge clk)
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 163: if (~rst_n) begin
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 52: localparam IDLE = 5'b00000;
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 72: localparam WRIT_ACT = 5'b11000, WRIT_NOP1 = 5'b11001, WRIT_CAS = 5'b11010, WRIT_NOP2 = 5'b11011;
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 245: if (state == IDLE)
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 178: if (!state_cnt) state_cnt <= state_cnt_nxt;
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 181: if (wr_enable & ~busy) wr_data_r <= wr_data; else if (state == WRIT_CAS) wr_data_r <= wr_data_r;
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 190: if (rd_enable) haddr_r <= rd_addr;
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 260: else if (!state_cnt)
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 175: state   <= next;
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 191: else if (wr_enable) haddr_r <= wr_addr;
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 179: else state_cnt <= state_cnt - 1'b1;
+[2025-07-26 14:23:34] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 349: next = state;
+[2025-07-26 14:23:34] {Repair.py:108} INFO - Suspicious Lines: [72, 162, 175, 181, 191, 349, 245, 178, 52, 190, 260, 179, 163]
+[2025-07-26 14:23:37] {api.py:99} INFO - {"module name": "sdram_controller", "analysis": "The state_cnt decrement logic is problematic as it doesn't properly handle the counter wrap-around and state transitions", "correct code": [("if (!state_cnt) state_cnt <= state_cnt_nxt; else state_cnt <= state_cnt - 1'b1;", "state_cnt <= (state_cnt != 0) ? state_cnt - 1'b1 : state_cnt_nxt;"), ("else if (!state_cnt)", "else if (state_cnt == 0)")]}
+[2025-07-26 14:23:37] {Main.py:147} INFO - score: 0.8071216617210683
+[2025-07-26 14:23:37] {Main.py:148} INFO - None
+[2025-07-26 14:23:37] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:37] {preprocess.py:97} INFO - []
+[2025-07-26 14:23:37] {preprocess.py:98} INFO - []
+[2025-07-26 14:23:37] {Main.py:22} INFO - changes are 0
+[2025-07-26 14:23:39] {Repair.py:79} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:23:40] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:23:40] {Repair.py:94} INFO - mismatchSignals: ['testbench.uut.wr_data_r']
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 162: always @(posedge clk)
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 163: if (~rst_n) begin
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 52: localparam IDLE = 5'b00000;
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 72: localparam WRIT_ACT = 5'b11000, WRIT_NOP1 = 5'b11001, WRIT_CAS = 5'b11010, WRIT_NOP2 = 5'b11011;
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 245: if (state == IDLE)
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 178: if (!state_cnt) state_cnt <= state_cnt_nxt;
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 181: if (wr_enable & ~busy) wr_data_r <= wr_data; else if (state == WRIT_CAS) wr_data_r <= wr_data_r;
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 190: if (rd_enable) haddr_r <= rd_addr;
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 260: else if (state_cnt == 0)
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 175: state   <= next;
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 191: else if (wr_enable) haddr_r <= wr_addr;
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 179: else state_cnt <= state_cnt - 1'b1;
+[2025-07-26 14:23:40] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 349: next = state;
+[2025-07-26 14:23:40] {Repair.py:108} INFO - Suspicious Lines: [72, 162, 175, 181, 191, 349, 245, 178, 52, 190, 260, 179, 163]
+[2025-07-26 14:23:45] {api.py:99} INFO - {"module name": "sdram_controller", "analysis": "The state_cnt decrement logic is problematic as it could lead to a latch inference. Also, the haddr_r assignment priority between read and write operations needs clarification.", "correct code": [("if (!state_cnt) state_cnt <= state_cnt_nxt; else state_cnt <= state_cnt - 1'b1;", "state_cnt <= (state_cnt == 0) ? state_cnt_nxt : state_cnt - 1'b1;"), ("if (rd_enable) haddr_r <= rd_addr; else if (wr_enable) haddr_r <= wr_addr;", "if (wr_enable & ~busy) haddr_r <= wr_addr; else if (rd_enable & ~busy) haddr_r <= rd_addr;")]}
+[2025-07-26 14:23:45] {Main.py:147} INFO - score: 0.8011869436201781
+[2025-07-26 14:23:45] {Main.py:148} INFO - [("if (!state_cnt) state_cnt <= state_cnt_nxt; else state_cnt <= state_cnt - 1'b1;", "state_cnt <= (state_cnt != 0) ? state_cnt - 1'b1 : state_cnt_nxt;"), ('else if (!state_cnt)', 'else if (state_cnt == 0)')]
+[2025-07-26 14:23:45] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:45] {preprocess.py:97} INFO - []
+[2025-07-26 14:23:45] {preprocess.py:98} INFO - []
+[2025-07-26 14:23:45] {Main.py:22} INFO - changes are 0
+[2025-07-26 14:23:47] {Repair.py:79} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:23:48] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:23:48] {Repair.py:94} INFO - mismatchSignals: ['testbench.uut.wr_data_r']
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 162: always @(posedge clk)
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 163: if (~rst_n) begin
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 52: localparam IDLE = 5'b00000;
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 72: localparam WRIT_ACT = 5'b11000, WRIT_NOP1 = 5'b11001, WRIT_CAS = 5'b11010, WRIT_NOP2 = 5'b11011;
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 245: if (state == IDLE)
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 178: if (!state_cnt) state_cnt <= state_cnt_nxt;
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 181: if (wr_enable & ~busy) wr_data_r <= wr_data; else if (state == WRIT_CAS) wr_data_r <= wr_data_r;
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 190: if (rd_enable) haddr_r <= rd_addr;
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 260: else if (!state_cnt)
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 175: state   <= next;
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 191: else if (wr_enable) haddr_r <= wr_addr;
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 179: else state_cnt <= state_cnt - 1'b1;
+[2025-07-26 14:23:48] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 349: next = state;
+[2025-07-26 14:23:48] {Repair.py:108} INFO - Suspicious Lines: [72, 162, 175, 181, 191, 349, 245, 178, 52, 190, 260, 179, 163]
+[2025-07-26 14:23:52] {api.py:99} INFO - {"module name": "sdram_controller", "analysis": "The state_cnt decrement logic is problematic as it doesn't properly handle the state_cnt_nxt value when state_cnt is zero. Also, the data_in input port is missing from the port list.", "correct code": [("input [15:0] data_in;", "input [15:0] data_in;"), ("if (!state_cnt) state_cnt <= state_cnt_nxt;", "state_cnt <= (state_cnt == 0) ? state_cnt_nxt : state_cnt - 1'b1;"), ("else state_cnt <= state_cnt - 1'b1;", "")]
+}
+[2025-07-26 14:23:52] {Main.py:147} INFO - score: 0.8071216617210683
+[2025-07-26 14:23:52] {Main.py:148} INFO - None
+[2025-07-26 14:23:52] {preprocess.py:94} INFO - /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v
+[2025-07-26 14:23:52] {preprocess.py:97} INFO - []
+[2025-07-26 14:23:52] {preprocess.py:98} INFO - []
+[2025-07-26 14:23:52] {Main.py:22} INFO - changes are 0
+[2025-07-26 14:23:54] {Repair.py:79} INFO - Dataflow analyzing sdram_controller.
+[2025-07-26 14:23:55] {AstAnalyzer.py:96} INFO - ['wr_addr', 'wr_data', 'wr_enable', 'rd_addr', 'rd_data', 'rd_ready', 'rd_enable', 'busy', 'rst_n', 'clk', 'addr', 'bank_addr', 'data_out', 'data_in', 'data_oe', 'clock_enable', 'cs_n', 'ras_n', 'cas_n', 'we_n', 'data_mask_low', 'data_mask_high']
+[2025-07-26 14:23:55] {Repair.py:94} INFO - mismatchSignals: ['testbench.uut.wr_data_r']
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 162: always @(posedge clk)
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 163: if (~rst_n) begin
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 52: localparam IDLE = 5'b00000;
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 72: localparam WRIT_ACT = 5'b11000, WRIT_NOP1 = 5'b11001, WRIT_CAS = 5'b11010, WRIT_NOP2 = 5'b11011;
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 245: if (state == IDLE)
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 181: if (wr_enable & ~busy) wr_data_r <= wr_data; else if (state == WRIT_CAS) wr_data_r <= wr_data_r;
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 190: if (rd_enable) haddr_r <= rd_addr;
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 260: else if (!state_cnt)
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 175: state   <= next;
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 191: else if (wr_enable) haddr_r <= wr_addr;
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 178: state_cnt <= (state_cnt == 0) ? state_cnt_nxt : state_cnt - 1'b1;
+[2025-07-26 14:23:55] {AstAnalyzer.py:138} INFO - Suspicious line in /home/gmy/Projects/UVLLM/UVLLM/../benchmarks/ErrorSet/sdram_controller/sdram_controller_buggy1.v: Line 349: next = state;
+[2025-07-26 14:23:55] {Repair.py:108} INFO - Suspicious Lines: [72, 162, 175, 181, 191, 349, 245, 178, 52, 190, 260, 163]
+[2025-07-26 14:24:00] {api.py:99} INFO - {"module name": "sdram_controller", "analysis": "The address latching logic for read and write operations is problematic as it can cause address conflicts. The 'haddr_r' register should be updated only when the controller is not busy and a new operation is requested.", "correct code": [("if (rd_enable) haddr_r <= rd_addr; else if (wr_enable) haddr_r <= wr_addr;", "if (~busy & rd_enable) haddr_r <= rd_addr; else if (~busy & wr_enable) haddr_r <= wr_addr;")]}
+[2025-07-26 14:24:00] {Main.py:147} INFO - score: 0.8071216617210683
+[2025-07-26 14:24:00] {Main.py:148} INFO - None
+[2025-07-26 14:24:00] {Main.py:267} INFO - FIX ERROR.

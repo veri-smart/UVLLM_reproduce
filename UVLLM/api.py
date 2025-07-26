@@ -1,5 +1,6 @@
 import json, os, re
 from utils import Logger
+from itertools import takewhile
 
 jsonform = {
     "module name" : "",
@@ -11,13 +12,14 @@ import openai
 from openai import OpenAI
 import logging
 
-os.environ["OPENAI_API_BASE"] = "https://api.openai.com/v1"
-os.environ["OPENAI_API_KEY"] = "your_api_key_here"
+os.environ["OPENAI_API_BASE"] = "https://ark.cn-beijing.volces.com/api/v3/"
+os.environ["OPENAI_API_KEY"] = os.environ["ARK_API_KEY"]
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),
-                base_url=os.environ.get("OPENAI_API_BASE"))
+                base_url=os.environ.get("OPENAI_API_BASE"),
+                )
 
-def get_completion(prompt, model="gpt-4-turbo", temperature=0.2):
+def get_completion(prompt, model="ep-20250308150752-75p9d", temperature=0.2):
     res = ''
     try:
         response = client.chat.completions.create(
@@ -32,6 +34,16 @@ def get_completion(prompt, model="gpt-4-turbo", temperature=0.2):
         )
         logging.info(response)
         res = response.choices[0].message.content
+
+        striped = []
+        for line in res.splitlines():
+            if l:=line.strip():
+                striped.append(l)
+        if striped[0].startswith('```'):
+            res = "\n".join(takewhile(lambda x: x!='```', striped[1:]))
+        else:
+            res = "\n".join(striped)
+
         prompt_tokens_num = response.usage.prompt_tokens
         output_tokens_num = response.usage.completion_tokens
         return res, prompt_tokens_num, output_tokens_num
@@ -59,7 +71,7 @@ def api_gpt_mismatch(spec, file_path, snip, badfix:None, logger):
                       \nPlease offer merely the fix strictly in the json form of {}, ALL pairs in one line, NO OTHER WORDS IS EXPECTED.\
                        Remember: the port definition may be wrong!".format(specfile, content, snip, jsonform)
 
-    response = get_completion(prompt, "gpt-4-turbo", 0.9)
+    response = get_completion(prompt, "ep-20250308150752-75p9d", 0.9)
     logger.info(response[0])
     data = eval(response[0])
 
@@ -83,7 +95,7 @@ def api_gpt_suspicious(spec, file_path, snip, badfix:None, logger):
                       \nPlease offer merely the fix strictly in the json form of {}, ALL pairs in one line, NO OTHER WORDS IS EXPECTED.\
                        Remember: the port definition may be wrong!".format(specfile, content, snip, jsonform)
 
-    response = get_completion(prompt, "gpt-4-turbo", 0.9)
+    response = get_completion(prompt, "ep-20250308150752-75p9d", 0.9)
     logger.info(response[0])
     data = eval(response[0])
 
@@ -107,7 +119,7 @@ def api_syntax(file_path, snip, badfix:None, logger):
                             \nPlease offer merely the fix strictly in the json form of {}, ALL pairs in one line, NO OTHER WORDS IS EXPECTED.\
                             Remember: the port definition may be wrong!".format(content, snip, jsonform)
 
-            response = get_completion(prompt, "gpt-4-turbo", 0.7)
+            response = get_completion(prompt, "ep-20250308150752-75p9d", 0.7)
 
             logger.info(response[0])
             data = eval(response[0])

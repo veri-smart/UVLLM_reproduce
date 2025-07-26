@@ -1,0 +1,167 @@
+$date
+	Sat Jul 26 14:23:52 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testbench $end
+$scope module uut $end
+$var wire 1 ! clk $end
+$var wire 16 " data_in [15:0] $end
+$var wire 1 # data_mask_high $end
+$var wire 1 $ data_mask_low $end
+$var wire 16 % data_out [15:0] $end
+$var wire 24 & rd_addr [23:0] $end
+$var wire 16 ' rd_data [15:0] $end
+$var wire 1 ( rd_enable $end
+$var wire 1 ) rd_ready $end
+$var wire 1 * rst_n $end
+$var wire 24 + wr_addr [23:0] $end
+$var wire 16 , wr_data [15:0] $end
+$var wire 1 - wr_enable $end
+$var wire 1 . we_n $end
+$var wire 1 / ras_n $end
+$var wire 1 0 data_oe $end
+$var wire 1 1 cs_n $end
+$var wire 1 2 clock_enable $end
+$var wire 1 3 cas_n $end
+$var wire 2 4 bank_addr [1:0] $end
+$var wire 13 5 addr [12:0] $end
+$var reg 13 6 addr_r [12:0] $end
+$var reg 2 7 bank_addr_r [1:0] $end
+$var reg 1 8 busy $end
+$var reg 8 9 command [7:0] $end
+$var reg 8 : command_nxt [7:0] $end
+$var reg 1 ; data_mask_high_r $end
+$var reg 1 < data_mask_low_r $end
+$var reg 24 = haddr_r [23:0] $end
+$var reg 5 > next [4:0] $end
+$var reg 16 ? rd_data_r [15:0] $end
+$var reg 1 @ rd_ready_r $end
+$var reg 10 A refresh_cnt [9:0] $end
+$var reg 5 B state [4:0] $end
+$var reg 4 C state_cnt [3:0] $end
+$var reg 4 D state_cnt_nxt [3:0] $end
+$var reg 16 E wr_data_r [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx E
+b0 D
+bx C
+bx B
+bx A
+x@
+bx ?
+bx >
+bx =
+x<
+x;
+bx :
+bx 9
+x8
+bx 7
+bx 6
+bx 5
+bx 4
+x3
+x2
+x1
+x0
+x/
+x.
+0-
+b0 ,
+b0 +
+0*
+x)
+0(
+bx '
+b0 &
+bx %
+x$
+x#
+b0 "
+0!
+$end
+#3750
+1.
+13
+1/
+01
+12
+b0 5
+b0 4
+b0 6
+b0 7
+1$
+1<
+1#
+1;
+b1000 >
+b10111000 :
+08
+b0 '
+b0 ?
+b0 %
+b0 E
+b0 =
+b1111 C
+b10111000 9
+00
+b1000 B
+b0 A
+1*
+1!
+#7500
+0!
+#11250
+b1 A
+0)
+0@
+b1110 C
+1-
+b11001100110011 ,
+b111111101101101111101101 +
+0*
+1!
+#15000
+0!
+#18750
+b1111 C
+b0 A
+0-
+b0 ,
+b0 +
+1!
+#22500
+0!
+#26250
+1(
+b101111101101111111101101 &
+1!
+#30000
+0!
+#33750
+0(
+b0 &
+1!
+#37500
+0!
+#41250
+b1011101110111011 "
+1!
+#45000
+0!
+#48750
+bz "
+1!
+#52500
+0!
+#56250
+1!

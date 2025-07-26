@@ -1,0 +1,17 @@
+Please act as an expert in Verilog debugging and code modification.
+
+Implement a T flip-flop module that toggles its output on every positive clock edge when the toggle input is high.
+
+Module name:  
+    tff               
+Input ports:
+    clk: Clock input for synchronization.
+    rstn: Active-low reset signal.
+    t: Toggle input signal.
+Output ports:
+    q: Output signal of the T flip-flop.
+
+Implementation:
+When t is 1, the output q toggles its state on the positive edge of the clock signal. When t is 0, the output q maintains its current state. The rstn signal is an active-low reset that sets the output q to 0 when asserted.
+
+Modify the error design code below.
