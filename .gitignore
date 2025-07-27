@@ -11,3 +11,5 @@ parser.out
 logs/**
 workdir
 result.csv
+*.txt
+*.vcd

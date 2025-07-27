@@ -7,7 +7,7 @@ module tff (
 
   always @(posedge clk) begin
 
-    if (!rstn) q <= 0;
+    if (rstn) q <= 0;
     else if (t) q <= ~q;
     else q <= q;
 

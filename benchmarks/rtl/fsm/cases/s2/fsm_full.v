@@ -20,7 +20,7 @@ module fsm_full (
 
   always @(state or req_0 or req_1 or req_2 or req_3) begin
     next_state = 0;
-    case (next_state)
+    case (state)
       IDLE:
       if (req_0 == 1'b1) begin
         next_state = GNT0;
@@ -63,23 +63,35 @@ module fsm_full (
 
   always @(posedge clock) begin : OUTPUT_LOGIC
     if (reset) begin
-      gnt_0 <= 1'b0;
-      gnt_1 <= 1'b0;
-      gnt_2 <= 1'b0;
-      gnt_3 <= 1'b0;
-      state <= IDLE;
+      gnt_0 = #1 1'b0;
+      gnt_1 = #1 1'b0;
+      gnt_2 = #1 1'b0;
+      gnt_3 = #1 1'b0;
+      state = #1 IDLE;
     end else begin
-      state <= next_state;
-      gnt_0 <= 1'b0;
-      gnt_1 <= 1'b0;
-      gnt_2 <= 1'b0;
-      gnt_3 <= 1'b0;
-      case (next_state)
-        GNT0: gnt_0 <= 1'b1;
-        GNT1: gnt_1 <= 1'b1;
-        GNT2: gnt_2 <= 1'b1;
-        GNT3: gnt_3 <= 1'b1;
-        default: begin gnt_0 <= 1'b0; gnt_1 <= 1'b0; gnt_2 <= 1'b0; gnt_3 <= 1'b0; end
+      state = #1 next_state;
+      case (state)
+        IDLE: begin
+          gnt_0 = #1 1'b0;
+          gnt_1 = #1 1'b0;
+          gnt_2 = #1 1'b0;
+          gnt_3 = #1 1'b0;
+        end
+        GNT0: begin
+          gnt_0 = #1 1'b1;
+        end
+        GNT1: begin
+          gnt_1 = #1 1'b1;
+        end
+        GNT2: begin
+          gnt_2 = #1 1'b1;
+        end
+        GNT3: begin
+          gnt_3 = #1 1'b1;
+        end
+        default: begin
+          state = #1 IDLE;
+        end
       endcase
     end
   end

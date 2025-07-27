@@ -18,11 +18,13 @@ module first_counter (
 
   always @(posedge clk) begin : COUNTER
     if (reset == 1'b1) begin
-      counter_out <= 4'b0000;
-      overflow_out <= 1'b0;
-    end if (enable == 1'b1) begin
-      counter_out <= (counter_out == 4'b1111) ? 4'b0000 : counter_out + 1;
-      overflow_out <= (counter_out == 4'b1111) ? 1'b1 : 1'b0;
+      overflow_out <= #1 1'b0;
+    end else if (enable == 1'b1) begin
+      counter_out <= #1 counter_out + 1;
+
+    end
+    if (counter_out == 4'b1111) begin
+      overflow_out <= #1 1'b1;
     end
   end
 

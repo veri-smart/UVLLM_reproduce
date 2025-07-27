@@ -6,8 +6,8 @@ module tff (
 );
 
   always @(posedge clk) begin
-    if (!rstn) q <= 0;
-    else if (t) q <= ~q;
-    else q <= q;
+    if (rstn) q <= 0;
+    else if (t) q <= q;
+    else q <= ~q;
   end
 endmodule
