@@ -1,0 +1,545 @@
+Error Time: 35 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b10101010
+Ref Output: op = 8'b1010101
+-----------------------------
+Error Time: 45 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b1010101
+Ref Output: op = 8'b10101010
+-----------------------------
+Error Time: 55 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b10101010
+Ref Output: op = 8'b1010101
+-----------------------------
+Error Time: 65 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b1010101
+Ref Output: op = 8'b10101010
+-----------------------------
+Error Time: 75 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b10101010
+Ref Output: op = 8'b1010101
+-----------------------------
+Error Time: 85 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b1010101
+Ref Output: op = 8'b10101010
+-----------------------------
+Error Time: 95 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b10101010
+Ref Output: op = 8'b1010101
+-----------------------------
+Error Time: 105 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b1010101
+Ref Output: op = 8'b10101010
+-----------------------------
+Error Time: 115 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b10101010
+Ref Output: op = 8'b1010101
+-----------------------------
+Error Time: 125 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101010
+DUT Output: op = 8'b1010101
+Ref Output: op = 8'b10101010
+-----------------------------
+Error Time: 135 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10000001
+DUT Output: op = 8'b10101010
+Ref Output: op = 8'b1010101
+-----------------------------
+Error Time: 145 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1100011
+DUT Output: op = 8'b1010101
+Ref Output: op = 8'b1100011
+-----------------------------
+Error Time: 155 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10001101
+DUT Output: op = 8'b1100011
+Ref Output: op = 8'b10001101
+-----------------------------
+Error Time: 165 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10010
+DUT Output: op = 8'b10001101
+Ref Output: op = 8'b10010
+-----------------------------
+Error Time: 175 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1101
+DUT Output: op = 8'b10010
+Ref Output: op = 8'b1101
+-----------------------------
+Error Time: 185 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b111101
+DUT Output: op = 8'b1101
+Ref Output: op = 8'b11010
+-----------------------------
+Error Time: 195 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10001100
+DUT Output: op = 8'b11010
+Ref Output: op = 8'b10001100
+-----------------------------
+Error Time: 205 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11000110
+DUT Output: op = 8'b10001100
+Ref Output: op = 8'b11000110
+-----------------------------
+Error Time: 215 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10101010
+DUT Output: op = 8'b11000110
+Ref Output: op = 8'b10101010
+-----------------------------
+Error Time: 225 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1110111
+DUT Output: op = 8'b10101010
+Ref Output: op = 8'b1110111
+-----------------------------
+Error Time: 235 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10001111
+DUT Output: op = 8'b1110111
+Ref Output: op = 8'b11101110
+-----------------------------
+Error Time: 245 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b11001110
+DUT Output: op = 8'b11101110
+Ref Output: op = 8'b11011101
+-----------------------------
+Error Time: 255 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b11000101
+DUT Output: op = 8'b11011101
+Ref Output: op = 8'b10111011
+-----------------------------
+Error Time: 265 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10111101
+DUT Output: op = 8'b10111011
+Ref Output: op = 8'b1110111
+-----------------------------
+Error Time: 275 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1100101
+DUT Output: op = 8'b1110111
+Ref Output: op = 8'b1100101
+-----------------------------
+Error Time: 285 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1010
+DUT Output: op = 8'b1100101
+Ref Output: op = 8'b1010
+-----------------------------
+Error Time: 295 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b100000
+DUT Output: op = 8'b1010
+Ref Output: op = 8'b10100
+-----------------------------
+Error Time: 305 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10011101
+DUT Output: op = 8'b10100
+Ref Output: op = 8'b101000
+-----------------------------
+Error Time: 315 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10011
+DUT Output: op = 8'b101000
+Ref Output: op = 8'b1010000
+-----------------------------
+Error Time: 325 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1010011
+DUT Output: op = 8'b1010000
+Ref Output: op = 8'b1010011
+-----------------------------
+Error Time: 335 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11010101
+DUT Output: op = 8'b1010011
+Ref Output: op = 8'b11010101
+-----------------------------
+Error Time: 345 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101110
+DUT Output: op = 8'b11010101
+Ref Output: op = 8'b10101011
+-----------------------------
+Error Time: 355 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11001111
+DUT Output: op = 8'b10101011
+Ref Output: op = 8'b11001111
+-----------------------------
+Error Time: 365 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1010
+DUT Output: op = 8'b11001111
+Ref Output: op = 8'b1010
+-----------------------------
+Error Time: 375 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b111100
+DUT Output: op = 8'b1010
+Ref Output: op = 8'b10100
+-----------------------------
+Error Time: 385 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10001010
+DUT Output: op = 8'b10100
+Ref Output: op = 8'b101000
+-----------------------------
+Error Time: 395 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11011000
+DUT Output: op = 8'b101000
+Ref Output: op = 8'b11011000
+-----------------------------
+Error Time: 405 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10001001
+DUT Output: op = 8'b11011000
+Ref Output: op = 8'b10110001
+-----------------------------
+Error Time: 415 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10110110
+DUT Output: op = 8'b10110001
+Ref Output: op = 8'b10110110
+-----------------------------
+Error Time: 425 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101110
+DUT Output: op = 8'b10110110
+Ref Output: op = 8'b1101101
+-----------------------------
+Error Time: 435 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b101010
+DUT Output: op = 8'b1101101
+Ref Output: op = 8'b11011010
+-----------------------------
+Error Time: 445 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1110001
+DUT Output: op = 8'b11011010
+Ref Output: op = 8'b1110001
+-----------------------------
+Error Time: 455 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1001111
+DUT Output: op = 8'b1110001
+Ref Output: op = 8'b1001111
+-----------------------------
+Error Time: 465 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b111010
+DUT Output: op = 8'b1001111
+Ref Output: op = 8'b111010
+-----------------------------
+Error Time: 475 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10101
+DUT Output: op = 8'b111010
+Ref Output: op = 8'b1110100
+-----------------------------
+Error Time: 485 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11011001
+DUT Output: op = 8'b1110100
+Ref Output: op = 8'b11011001
+-----------------------------
+Error Time: 495 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1001100
+DUT Output: op = 8'b11011001
+Ref Output: op = 8'b10110011
+-----------------------------
+Error Time: 505 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10001111
+DUT Output: op = 8'b10110011
+Ref Output: op = 8'b10001111
+-----------------------------
+Error Time: 515 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10110111
+DUT Output: op = 8'b10001111
+Ref Output: op = 8'b11111
+-----------------------------
+Error Time: 525 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1011100
+DUT Output: op = 8'b11111
+Ref Output: op = 8'b1011100
+-----------------------------
+Error Time: 535 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10001001
+DUT Output: op = 8'b1011100
+Ref Output: op = 8'b10001001
+-----------------------------
+Error Time: 545 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11010000
+DUT Output: op = 8'b10001001
+Ref Output: op = 8'b11010000
+-----------------------------
+Error Time: 555 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1010001
+DUT Output: op = 8'b11010000
+Ref Output: op = 8'b1010001
+-----------------------------
+Error Time: 565 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1100
+DUT Output: op = 8'b1010001
+Ref Output: op = 8'b10100010
+-----------------------------
+Error Time: 575 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b11001000
+DUT Output: op = 8'b10100010
+Ref Output: op = 8'b1000101
+-----------------------------
+Error Time: 585 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b111101
+DUT Output: op = 8'b1000101
+Ref Output: op = 8'b111101
+-----------------------------
+Error Time: 595 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1111110
+DUT Output: op = 8'b111101
+Ref Output: op = 8'b1111010
+-----------------------------
+Error Time: 605 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b111001
+DUT Output: op = 8'b1111010
+Ref Output: op = 8'b111001
+-----------------------------
+Error Time: 615 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11010011
+DUT Output: op = 8'b111001
+Ref Output: op = 8'b11010011
+-----------------------------
+Error Time: 625 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1111000
+DUT Output: op = 8'b11010011
+Ref Output: op = 8'b1111000
+-----------------------------
+Error Time: 635 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1001001
+DUT Output: op = 8'b1111000
+Ref Output: op = 8'b1001001
+-----------------------------
+Error Time: 645 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b101010
+DUT Output: op = 8'b1001001
+Ref Output: op = 8'b101010
+-----------------------------
+Error Time: 655 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10000110
+DUT Output: op = 8'b101010
+Ref Output: op = 8'b1010100
+-----------------------------
+Error Time: 665 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10011100
+DUT Output: op = 8'b1010100
+Ref Output: op = 8'b10101000
+-----------------------------
+Error Time: 675 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b100110
+DUT Output: op = 8'b10101000
+Ref Output: op = 8'b1010001
+-----------------------------
+Error Time: 685 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10100011
+DUT Output: op = 8'b1010001
+Ref Output: op = 8'b10100011
+-----------------------------
+Error Time: 695 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10110011
+DUT Output: op = 8'b10100011
+Ref Output: op = 8'b10110011
+-----------------------------
+Error Time: 705 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1000100
+DUT Output: op = 8'b10110011
+Ref Output: op = 8'b1000100
+-----------------------------
+Error Time: 715 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11001011
+DUT Output: op = 8'b1000100
+Ref Output: op = 8'b11001011
+-----------------------------
+Error Time: 725 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1011010
+DUT Output: op = 8'b11001011
+Ref Output: op = 8'b10010111
+-----------------------------
+Error Time: 735 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11101101
+DUT Output: op = 8'b10010111
+Ref Output: op = 8'b11101101
+-----------------------------
+Error Time: 745 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1100101
+DUT Output: op = 8'b11101101
+Ref Output: op = 8'b11011011
+-----------------------------
+Error Time: 755 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11011111
+DUT Output: op = 8'b11011011
+Ref Output: op = 8'b11011111
+-----------------------------
+Error Time: 765 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1000100
+DUT Output: op = 8'b11011111
+Ref Output: op = 8'b1000100
+-----------------------------
+Error Time: 775 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b101010
+DUT Output: op = 8'b1000100
+Ref Output: op = 8'b10001000
+-----------------------------
+Error Time: 785 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1110
+DUT Output: op = 8'b10001000
+Ref Output: op = 8'b1110
+-----------------------------
+Error Time: 795 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10011010
+DUT Output: op = 8'b1110
+Ref Output: op = 8'b11100
+-----------------------------
+Error Time: 805 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11000011
+DUT Output: op = 8'b11100
+Ref Output: op = 8'b11000011
+-----------------------------
+Error Time: 815 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1001110
+DUT Output: op = 8'b11000011
+Ref Output: op = 8'b10000111
+-----------------------------
+Error Time: 825 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1010
+DUT Output: op = 8'b10000111
+Ref Output: op = 8'b1010
+-----------------------------
+Error Time: 835 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b111000
+DUT Output: op = 8'b1010
+Ref Output: op = 8'b10100
+-----------------------------
+Error Time: 845 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10111000
+DUT Output: op = 8'b10100
+Ref Output: op = 8'b10111000
+-----------------------------
+Error Time: 855 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10010011
+DUT Output: op = 8'b10111000
+Ref Output: op = 8'b1110001
+-----------------------------
+Error Time: 865 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1011001
+DUT Output: op = 8'b1110001
+Ref Output: op = 8'b11100010
+-----------------------------
+Error Time: 875 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1001101
+DUT Output: op = 8'b11100010
+Ref Output: op = 8'b1001101
+-----------------------------
+Error Time: 885 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1101101
+DUT Output: op = 8'b1001101
+Ref Output: op = 8'b1101101
+-----------------------------
+Error Time: 895 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b11001010
+DUT Output: op = 8'b1101101
+Ref Output: op = 8'b11011010
+-----------------------------
+Error Time: 905 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10010101
+DUT Output: op = 8'b11011010
+Ref Output: op = 8'b10110101
+-----------------------------
+Error Time: 915 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b100
+DUT Output: op = 8'b10110101
+Ref Output: op = 8'b1101011
+-----------------------------
+Error Time: 925 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1101001
+DUT Output: op = 8'b1101011
+Ref Output: op = 8'b1101001
+-----------------------------
+Error Time: 935 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10001000
+DUT Output: op = 8'b1101001
+Ref Output: op = 8'b11010010
+-----------------------------
+Error Time: 945 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b101101
+DUT Output: op = 8'b11010010
+Ref Output: op = 8'b10100101
+-----------------------------
+Error Time: 955 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b101110
+DUT Output: op = 8'b10100101
+Ref Output: op = 8'b101110
+-----------------------------
+Error Time: 965 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b11100
+DUT Output: op = 8'b101110
+Ref Output: op = 8'b1011100
+-----------------------------
+Error Time: 975 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b101001
+DUT Output: op = 8'b1011100
+Ref Output: op = 8'b101001
+-----------------------------
+Error Time: 985 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10000110
+DUT Output: op = 8'b101001
+Ref Output: op = 8'b1010010
+-----------------------------
+Error Time: 995 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b111101
+DUT Output: op = 8'b1010010
+Ref Output: op = 8'b10100100
+-----------------------------
+Error Time: 1005 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1110000
+DUT Output: op = 8'b10100100
+Ref Output: op = 8'b1001001
+-----------------------------
+Error Time: 1015 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10111010
+DUT Output: op = 8'b1001001
+Ref Output: op = 8'b10111010
+-----------------------------
+Error Time: 1025 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b11111010
+DUT Output: op = 8'b10111010
+Ref Output: op = 8'b1110101
+-----------------------------
+Error Time: 1035 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b11010
+DUT Output: op = 8'b1110101
+Ref Output: op = 8'b11010
+-----------------------------
+Error Time: 1045 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b110111
+DUT Output: op = 8'b11010
+Ref Output: op = 8'b110111
+-----------------------------
+Error Time: 1055 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b11000000
+DUT Output: op = 8'b110111
+Ref Output: op = 8'b1101110
+-----------------------------
+Error Time: 1065 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b10110110
+DUT Output: op = 8'b1101110
+Ref Output: op = 8'b11011100
+-----------------------------
+Error Time: 1085 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1111000
+DUT Output: op = 8'b11011100
+Ref Output: op = 8'b10111001
+-----------------------------
+Error Time: 1095 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b11011011
+DUT Output: op = 8'b10111001
+Ref Output: op = 8'b1110011
+-----------------------------
+Error Time: 1105 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b1111001
+DUT Output: op = 8'b1110011
+Ref Output: op = 8'b1111001
+-----------------------------
+Error Time: 1115 ns
+Inputs: rstn = 1, load_en = 0, load_val = 8'b1100001
+DUT Output: op = 8'b1111001
+Ref Output: op = 8'b11110010
+-----------------------------
+Error Time: 1125 ns
+Inputs: rstn = 1, load_en = 1, load_val = 8'b10100001
+DUT Output: op = 8'b11110010
+Ref Output: op = 8'b10100001
+-----------------------------

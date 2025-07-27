@@ -1,0 +1,320 @@
+Error at time 60 ns
+Request: req = 4'b0010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 80 ns
+Request: req = 4'b0100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 100 ns
+Request: req = 4'b1000
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b1000
+------------------------------
+Error at time 120 ns
+Request: req = 4'b1111
+DUT grant:     gnt = 4'b1000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 140 ns
+Request: req = 4'b0110
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 160 ns
+Request: req = 4'b1001
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 180 ns
+Request: req = 4'b0100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 200 ns
+Request: req = 4'b0001
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 320 ns
+Request: req = 4'b0010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 340 ns
+Request: req = 4'b0001
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 380 ns
+Request: req = 4'b0110
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 400 ns
+Request: req = 4'b1101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 440 ns
+Request: req = 4'b1100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 460 ns
+Request: req = 4'b1001
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 480 ns
+Request: req = 4'b0110
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 500 ns
+Request: req = 4'b0101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 520 ns
+Request: req = 4'b1010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 540 ns
+Request: req = 4'b0101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 580 ns
+Request: req = 4'b0010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 600 ns
+Request: req = 4'b1111
+DUT grant:     gnt = 4'b0010
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 660 ns
+Request: req = 4'b1000
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b1000
+------------------------------
+Error at time 680 ns
+Request: req = 4'b0101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 700 ns
+Request: req = 4'b1100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 720 ns
+Request: req = 4'b1101
+DUT grant:     gnt = 4'b0100
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 740 ns
+Request: req = 4'b1101
+DUT grant:     gnt = 4'b0100
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 760 ns
+Request: req = 4'b0101
+DUT grant:     gnt = 4'b0100
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 780 ns
+Request: req = 4'b0011
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 800 ns
+Request: req = 4'b1010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 880 ns
+Request: req = 4'b1101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 900 ns
+Request: req = 4'b0110
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 920 ns
+Request: req = 4'b0011
+DUT grant:     gnt = 4'b0010
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 940 ns
+Request: req = 4'b1101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1020 ns
+Request: req = 4'b0010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1060 ns
+Request: req = 4'b1101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1120 ns
+Request: req = 4'b1010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1160 ns
+Request: req = 4'b1100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 1180 ns
+Request: req = 4'b0010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1220 ns
+Request: req = 4'b0001
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1240 ns
+Request: req = 4'b1000
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b1000
+------------------------------
+Error at time 1280 ns
+Request: req = 4'b1001
+DUT grant:     gnt = 4'b1000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1300 ns
+Request: req = 4'b1011
+DUT grant:     gnt = 4'b1000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1320 ns
+Request: req = 4'b0110
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1380 ns
+Request: req = 4'b1100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 1400 ns
+Request: req = 4'b1010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1420 ns
+Request: req = 4'b1011
+DUT grant:     gnt = 4'b0010
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1440 ns
+Request: req = 4'b0001
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1520 ns
+Request: req = 4'b1010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1560 ns
+Request: req = 4'b0101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1620 ns
+Request: req = 4'b0010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1640 ns
+Request: req = 4'b1100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 1660 ns
+Request: req = 4'b1111
+DUT grant:     gnt = 4'b0100
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1680 ns
+Request: req = 4'b1111
+DUT grant:     gnt = 4'b0100
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1700 ns
+Request: req = 4'b1000
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b1000
+------------------------------
+Error at time 1720 ns
+Request: req = 4'b0111
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1760 ns
+Request: req = 4'b1100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 1780 ns
+Request: req = 4'b1011
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 1900 ns
+Request: req = 4'b0110
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1920 ns
+Request: req = 4'b1100
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0100
+------------------------------
+Error at time 1940 ns
+Request: req = 4'b0010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 1960 ns
+Request: req = 4'b1000
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b1000
+------------------------------
+Error at time 1980 ns
+Request: req = 4'b0111
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 2020 ns
+Request: req = 4'b0010
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0010
+------------------------------
+Error at time 2060 ns
+Request: req = 4'b1101
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b0001
+------------------------------
+Error at time 2160 ns
+Request: req = 4'b1000
+DUT grant:     gnt = 4'b0000
+Expected grant:gnt = 4'b1000
+------------------------------

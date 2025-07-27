@@ -1,0 +1,17 @@
+Please act as an expert in Verilog debugging and code modification.
+
+Module name:
+tff
+Input ports:
+clk: 1-bit input, clock signal (triggered on positive edge).
+rstn: 1-bit input, active-low reset signal (rstn=0 triggers reset, rstn=1 for normal operation).
+t: 1-bit input, control signal of the T flip-flop.
+Output ports:
+q: 1-bit output (registered output), output state of the T flip-flop.
+Implementation:
+This module functions as a T flip-flop, which is triggered on the positive edge of the clock signal (clk).
+When the active-low reset signal rstn is 0 (reset state), the output q is synchronously set to 0 at the positive edge of clk.
+When rstn is 1 (normal operation):
+
+If the control signal t is 1, the output q is flipped (q <= ~q) at the positive edge of clk.
+If t is 0, the output q remains unchanged (q <= q) at the positive edge of clk.

@@ -1,0 +1,400 @@
+Error Time: 14 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b0, overflow_out = 0
+Reference Output: counter_out = 4'b1, overflow_out = 0
+-----------------------------
+Error Time: 18 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1, overflow_out = 0
+Reference Output: counter_out = 4'b10, overflow_out = 0
+-----------------------------
+Error Time: 22 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b10, overflow_out = 0
+Reference Output: counter_out = 4'b11, overflow_out = 0
+-----------------------------
+Error Time: 26 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b11, overflow_out = 0
+Reference Output: counter_out = 4'b100, overflow_out = 0
+-----------------------------
+Error Time: 30 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b100, overflow_out = 0
+Reference Output: counter_out = 4'b101, overflow_out = 0
+-----------------------------
+Error Time: 34 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b101, overflow_out = 0
+Reference Output: counter_out = 4'b110, overflow_out = 0
+-----------------------------
+Error Time: 38 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b110, overflow_out = 0
+Reference Output: counter_out = 4'b111, overflow_out = 0
+-----------------------------
+Error Time: 42 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b111, overflow_out = 0
+Reference Output: counter_out = 4'b1000, overflow_out = 0
+-----------------------------
+Error Time: 46 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1000, overflow_out = 0
+Reference Output: counter_out = 4'b1001, overflow_out = 0
+-----------------------------
+Error Time: 50 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1001, overflow_out = 0
+Reference Output: counter_out = 4'b1010, overflow_out = 0
+-----------------------------
+Error Time: 54 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1010, overflow_out = 0
+Reference Output: counter_out = 4'b1011, overflow_out = 0
+-----------------------------
+Error Time: 58 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1011, overflow_out = 0
+Reference Output: counter_out = 4'b1100, overflow_out = 0
+-----------------------------
+Error Time: 62 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1100, overflow_out = 0
+Reference Output: counter_out = 4'b1101, overflow_out = 0
+-----------------------------
+Error Time: 66 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1101, overflow_out = 0
+Reference Output: counter_out = 4'b1110, overflow_out = 1
+-----------------------------
+Error Time: 70 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1110, overflow_out = 0
+Reference Output: counter_out = 4'b1111, overflow_out = 0
+-----------------------------
+Error Time: 74 ns
+DUT Input: reset = 1, enable = 1
+DUT Output: counter_out = 4'b1111, overflow_out = 0
+Reference Output: counter_out = 4'b0, overflow_out = 0
+-----------------------------
+Error Time: 78 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b0, overflow_out = 0
+Reference Output: counter_out = 4'b1, overflow_out = 0
+-----------------------------
+Error Time: 82 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1, overflow_out = 0
+Reference Output: counter_out = 4'b10, overflow_out = 0
+-----------------------------
+Error Time: 86 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b10, overflow_out = 0
+Reference Output: counter_out = 4'b11, overflow_out = 0
+-----------------------------
+Error Time: 90 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b11, overflow_out = 0
+Reference Output: counter_out = 4'b100, overflow_out = 0
+-----------------------------
+Error Time: 94 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b100, overflow_out = 0
+Reference Output: counter_out = 4'b101, overflow_out = 0
+-----------------------------
+Error Time: 98 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b101, overflow_out = 0
+Reference Output: counter_out = 4'b110, overflow_out = 0
+-----------------------------
+Error Time: 102 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b110, overflow_out = 0
+Reference Output: counter_out = 4'b111, overflow_out = 0
+-----------------------------
+Error Time: 106 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b111, overflow_out = 0
+Reference Output: counter_out = 4'b1000, overflow_out = 0
+-----------------------------
+Error Time: 110 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1000, overflow_out = 0
+Reference Output: counter_out = 4'b1001, overflow_out = 0
+-----------------------------
+Error Time: 114 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1001, overflow_out = 0
+Reference Output: counter_out = 4'b1010, overflow_out = 0
+-----------------------------
+Error Time: 118 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1010, overflow_out = 0
+Reference Output: counter_out = 4'b1011, overflow_out = 0
+-----------------------------
+Error Time: 122 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1011, overflow_out = 0
+Reference Output: counter_out = 4'b1100, overflow_out = 0
+-----------------------------
+Error Time: 126 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1100, overflow_out = 0
+Reference Output: counter_out = 4'b1101, overflow_out = 0
+-----------------------------
+Error Time: 130 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1101, overflow_out = 0
+Reference Output: counter_out = 4'b1110, overflow_out = 1
+-----------------------------
+Error Time: 134 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1110, overflow_out = 0
+Reference Output: counter_out = 4'b1111, overflow_out = 0
+-----------------------------
+Error Time: 138 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1111, overflow_out = 0
+Reference Output: counter_out = 4'b0, overflow_out = 1
+-----------------------------
+Error Time: 142 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b0, overflow_out = 1
+Reference Output: counter_out = 4'b1, overflow_out = 0
+-----------------------------
+Error Time: 146 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1, overflow_out = 1
+Reference Output: counter_out = 4'b10, overflow_out = 0
+-----------------------------
+Error Time: 150 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b10, overflow_out = 1
+Reference Output: counter_out = 4'b11, overflow_out = 0
+-----------------------------
+Error Time: 154 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b11, overflow_out = 1
+Reference Output: counter_out = 4'b100, overflow_out = 0
+-----------------------------
+Error Time: 158 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b100, overflow_out = 1
+Reference Output: counter_out = 4'b101, overflow_out = 0
+-----------------------------
+Error Time: 162 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b101, overflow_out = 1
+Reference Output: counter_out = 4'b110, overflow_out = 0
+-----------------------------
+Error Time: 166 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b110, overflow_out = 1
+Reference Output: counter_out = 4'b111, overflow_out = 0
+-----------------------------
+Error Time: 170 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b111, overflow_out = 1
+Reference Output: counter_out = 4'b1000, overflow_out = 0
+-----------------------------
+Error Time: 174 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1000, overflow_out = 1
+Reference Output: counter_out = 4'b1001, overflow_out = 0
+-----------------------------
+Error Time: 178 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1001, overflow_out = 1
+Reference Output: counter_out = 4'b1010, overflow_out = 0
+-----------------------------
+Error Time: 182 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1010, overflow_out = 1
+Reference Output: counter_out = 4'b1011, overflow_out = 0
+-----------------------------
+Error Time: 186 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1011, overflow_out = 1
+Reference Output: counter_out = 4'b1100, overflow_out = 0
+-----------------------------
+Error Time: 190 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1100, overflow_out = 1
+Reference Output: counter_out = 4'b1101, overflow_out = 0
+-----------------------------
+Error Time: 194 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1101, overflow_out = 1
+Reference Output: counter_out = 4'b1110, overflow_out = 1
+-----------------------------
+Error Time: 198 ns
+DUT Input: reset = 1, enable = 1
+DUT Output: counter_out = 4'b1110, overflow_out = 1
+Reference Output: counter_out = 4'b0, overflow_out = 0
+-----------------------------
+Error Time: 202 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b0, overflow_out = 0
+Reference Output: counter_out = 4'b1, overflow_out = 0
+-----------------------------
+Error Time: 206 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1, overflow_out = 0
+Reference Output: counter_out = 4'b10, overflow_out = 0
+-----------------------------
+Error Time: 210 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b10, overflow_out = 0
+Reference Output: counter_out = 4'b11, overflow_out = 0
+-----------------------------
+Error Time: 214 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b11, overflow_out = 0
+Reference Output: counter_out = 4'b100, overflow_out = 0
+-----------------------------
+Error Time: 218 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b100, overflow_out = 0
+Reference Output: counter_out = 4'b101, overflow_out = 0
+-----------------------------
+Error Time: 222 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b101, overflow_out = 0
+Reference Output: counter_out = 4'b110, overflow_out = 0
+-----------------------------
+Error Time: 226 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b110, overflow_out = 0
+Reference Output: counter_out = 4'b111, overflow_out = 0
+-----------------------------
+Error Time: 230 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b111, overflow_out = 0
+Reference Output: counter_out = 4'b1000, overflow_out = 0
+-----------------------------
+Error Time: 234 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1000, overflow_out = 0
+Reference Output: counter_out = 4'b1001, overflow_out = 0
+-----------------------------
+Error Time: 238 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1001, overflow_out = 0
+Reference Output: counter_out = 4'b1010, overflow_out = 0
+-----------------------------
+Error Time: 242 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1010, overflow_out = 0
+Reference Output: counter_out = 4'b1011, overflow_out = 0
+-----------------------------
+Error Time: 246 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1011, overflow_out = 0
+Reference Output: counter_out = 4'b1100, overflow_out = 0
+-----------------------------
+Error Time: 250 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1100, overflow_out = 0
+Reference Output: counter_out = 4'b1101, overflow_out = 0
+-----------------------------
+Error Time: 254 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1101, overflow_out = 0
+Reference Output: counter_out = 4'b1110, overflow_out = 1
+-----------------------------
+Error Time: 258 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1110, overflow_out = 0
+Reference Output: counter_out = 4'b1111, overflow_out = 0
+-----------------------------
+Error Time: 262 ns
+DUT Input: reset = 1, enable = 1
+DUT Output: counter_out = 4'b1111, overflow_out = 0
+Reference Output: counter_out = 4'b0, overflow_out = 0
+-----------------------------
+Error Time: 266 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b0, overflow_out = 0
+Reference Output: counter_out = 4'b1, overflow_out = 0
+-----------------------------
+Error Time: 270 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1, overflow_out = 0
+Reference Output: counter_out = 4'b10, overflow_out = 0
+-----------------------------
+Error Time: 274 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b10, overflow_out = 0
+Reference Output: counter_out = 4'b11, overflow_out = 0
+-----------------------------
+Error Time: 278 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b11, overflow_out = 0
+Reference Output: counter_out = 4'b100, overflow_out = 0
+-----------------------------
+Error Time: 282 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b100, overflow_out = 0
+Reference Output: counter_out = 4'b101, overflow_out = 0
+-----------------------------
+Error Time: 286 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b101, overflow_out = 0
+Reference Output: counter_out = 4'b110, overflow_out = 0
+-----------------------------
+Error Time: 290 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b110, overflow_out = 0
+Reference Output: counter_out = 4'b111, overflow_out = 0
+-----------------------------
+Error Time: 294 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b111, overflow_out = 0
+Reference Output: counter_out = 4'b1000, overflow_out = 0
+-----------------------------
+Error Time: 298 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1000, overflow_out = 0
+Reference Output: counter_out = 4'b1001, overflow_out = 0
+-----------------------------
+Error Time: 302 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1001, overflow_out = 0
+Reference Output: counter_out = 4'b1010, overflow_out = 0
+-----------------------------
+Error Time: 306 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1010, overflow_out = 0
+Reference Output: counter_out = 4'b1011, overflow_out = 0
+-----------------------------
+Error Time: 310 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1011, overflow_out = 0
+Reference Output: counter_out = 4'b1100, overflow_out = 0
+-----------------------------
+Error Time: 314 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1100, overflow_out = 0
+Reference Output: counter_out = 4'b1101, overflow_out = 0
+-----------------------------
+Error Time: 318 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1101, overflow_out = 0
+Reference Output: counter_out = 4'b1110, overflow_out = 1
+-----------------------------
+Error Time: 322 ns
+DUT Input: reset = 0, enable = 1
+DUT Output: counter_out = 4'b1110, overflow_out = 0
+Reference Output: counter_out = 4'b1111, overflow_out = 0
+-----------------------------
+Error Time: 326 ns
+DUT Input: reset = 0, enable = 0
+DUT Output: counter_out = 4'b1111, overflow_out = 0
+Reference Output: counter_out = 4'b1111, overflow_out = 1
+-----------------------------
+Error Time: 330 ns
+DUT Input: reset = 1, enable = 0
+DUT Output: counter_out = 4'b1111, overflow_out = 1
+Reference Output: counter_out = 4'b0, overflow_out = 0
+-----------------------------

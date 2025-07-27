@@ -2,7 +2,9 @@
 # pixi environments
 .pixi
 *.egg-info
-benchmarks
+benchmarks/*/*/cases/*/0_preprocess
+benchmarks/*/*/cases/*/1_mismatch
+benchmarks/*/*/cases/*/2_SuspiciousLine
 parsetab.py
 parser.out
 **/__pycache__

@@ -1,0 +1,26 @@
+Please act as an expert in Verilog debugging and code modification.
+
+Module name:
+    first_counter
+
+Input ports:
+    clk: Clock input signal for synchronization.
+    reset: Active-high synchronous reset signal. When set to 1, it clears the counter and overflow flag.
+    enable: Active-high enable signal. When high, the counter increments on each clock cycle.
+
+Output ports:
+    counter_out[3:0]: 4-bit output representing the current counter value.
+    overflow_out: Signal indicating whether the counter has reached its maximum value (4'b1111). Once set, it remains high until reset.
+
+Implementation:
+This module is a 4-bit synchronous up-counter with reset and enable signals. On every rising edge of the clock:
+If reset is asserted (reset == 1), the counter_out is reset to 4'b0000, and overflow_out is cleared to 0.
+Else if enable is asserted (enable == 1), the counter increments by 1.
+If the counter reaches its maximum value (4'b1111), the overflow_out is set to 1. This flag remains high unless a reset occurs.
+
+Note: The overflow logic should ideally be updated before the increment happens in the same cycle. In the current design, overflow is checked after the increment, leading to incorrect behavior.
+Suggested fix:
+Move overflow detection inside the enable block and check if the counter will become 4'b1111 after increment.
+Or, check counter_out == 4'b1110 before incrementing, and set overflow accordingly.
+
+Modify the error design code below.

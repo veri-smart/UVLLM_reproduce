@@ -1,0 +1,25 @@
+module first_counter (
+    clk,
+    reset,
+    enable,
+    counter_out,
+    overflow_out
+);  // End of port list
+  input wire clk;
+  input wire reset;
+  input wire enable;
+  output reg [3:0] counter_out;
+  output reg overflow_out;
+
+  always @(posedge clk) begin : COUNTER
+    if (reset == 1'b1) begin
+      counter_out  <= 4'b0000;
+      overflow_out <= 1'b0;
+    end else if (enable == 1'b1) begin
+      overflow_out <= (counter_out == 4'b1110) ? 1'b1 : (reset ? 1'b0 : overflow_out);
+      counter_out <= (counter_out == 4'b1111) ? 4'b0000 : counter_out + 1;
+    end
+  end
+
+endmodule
+
