@@ -1,5 +1,6 @@
 `timescale 1ns / 10ps
 
+
 `define I2C_CMD_NOP 4'b0000
 `define I2C_CMD_START 4'b0001
 `define I2C_CMD_STOP 4'b0010
@@ -335,6 +336,7 @@ module i2c_master_bit_ctrl (
 
 endmodule
 
+
 module i2c_master_byte_ctrl (
     clk,
     rst,
@@ -559,6 +561,7 @@ module i2c_master_byte_ctrl (
       // verilator lint_on CASEINCOMPLETE
     end
 endmodule
+
 
 module i2c_master_top (
     wb_clk_i,

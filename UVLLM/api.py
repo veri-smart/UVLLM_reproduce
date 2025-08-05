@@ -12,14 +12,14 @@ import openai
 from openai import OpenAI
 import logging
 
-# os.environ["OPENAI_API_BASE"] = "https://ark.cn-beijing.volces.com/api/v3/"
-# os.environ["OPENAI_API_KEY"] = os.environ["ARK_API_KEY"]
+os.environ["OPENAI_API_BASE"] = "https://ark.cn-beijing.volces.com/api/v3/"
+os.environ["OPENAI_API_KEY"] = os.environ["ARK_API_KEY"]
 
-client = OpenAI(api_key= os.environ["ARK_API_KEY"],
-                base_url="https://ark.cn-beijing.volces.com/api/v3/",
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),
+                base_url=os.environ.get("OPENAI_API_BASE"),
                 )
 
-def get_completion(prompt, model=os.environ["DPSK_V3_ARK_MODEL"], temperature=0.2):
+def get_completion(prompt, model="ep-20250308150752-75p9d", temperature=0.2):
     res = ''
     try:
         response = client.chat.completions.create(
@@ -71,7 +71,7 @@ def api_gpt_mismatch(spec, file_path, snip, badfix:None, logger):
                       \nPlease offer merely the fix strictly in the json form of {}, ALL pairs in one line, NO OTHER WORDS IS EXPECTED.\
                        Remember: the port definition may be wrong!".format(specfile, content, snip, jsonform)
 
-    response = get_completion(prompt, os.environ["DPSK_V3_ARK_MODEL"], 0.9)
+    response = get_completion(prompt, "ep-20250308150752-75p9d", 0.9)
     logger.info(response[0])
     data = eval(response[0])
 
@@ -95,7 +95,7 @@ def api_gpt_suspicious(spec, file_path, snip, badfix:None, logger):
                       \nPlease offer merely the fix strictly in the json form of {}, ALL pairs in one line, NO OTHER WORDS IS EXPECTED.\
                        Remember: the port definition may be wrong!".format(specfile, content, snip, jsonform)
 
-    response = get_completion(prompt, os.environ["DPSK_V3_ARK_MODEL"], 0.9)
+    response = get_completion(prompt, "ep-20250308150752-75p9d", 0.9)
     logger.info(response[0])
     data = eval(response[0])
 
@@ -119,7 +119,7 @@ def api_syntax(file_path, snip, badfix:None, logger):
                             \nPlease offer merely the fix strictly in the json form of {}, ALL pairs in one line, NO OTHER WORDS IS EXPECTED.\
                             Remember: the port definition may be wrong!".format(content, snip, jsonform)
 
-            response = get_completion(prompt, os.environ["DPSK_V3_ARK_MODEL"], 0.7)
+            response = get_completion(prompt, "ep-20250308150752-75p9d", 0.7)
 
             logger.info(response[0])
             data = eval(response[0])

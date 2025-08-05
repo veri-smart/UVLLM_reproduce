@@ -266,7 +266,7 @@ def testAll(logger, benchmarkArg, max_i):
                     results.append((project, version, "pass"))
             else:
                 results.append((project, version, "pass"))
-
+            print("results: ", results)
             endTime = time.time()
             logger.info("Preprocess Time: {}s.".format(preprocess_time))
             logger.info("Mismatch Time: {}s.".format(mismatch_time))
