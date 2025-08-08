@@ -15,3 +15,5 @@ When rstn is 1 (normal operation):
 
 If the control signal t is 1, the output q is flipped (q <= ~q) at the positive edge of clk.
 If t is 0, the output q remains unchanged (q <= q) at the positive edge of clk.
+
+Modify the error design code below.

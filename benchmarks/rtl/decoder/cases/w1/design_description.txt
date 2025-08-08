@@ -3,19 +3,25 @@ Please act as an expert in Verilog debugging and code modification.
 Module name:
 decoder_3to8
 Input ports:
-A: 1-bit input, part of the 3-bit binary input for decoding.
-B: 1-bit input, part of the 3-bit binary input for decoding.
-C: 1-bit input, part of the 3-bit binary input for decoding.
-en: 1-bit input, active-high enable signal (en=1 enables decoding, en=0 disables).
+    A: 1-bit input, part of the 3-bit binary input for decoding.
+    B: 1-bit input, part of the 3-bit binary input for decoding.
+    C: 1-bit input, part of the 3-bit binary input for decoding.
+    en: 1-bit input, active-high enable signal (en=1 enables decoding, en=0 disables).
 Output ports:
-Y7: 1-bit output, part of the 8-bit decoded output (active-low).
-Y6: 1-bit output, part of the 8-bit decoded output (active-low).
-Y5: 1-bit output, part of the 8-bit decoded output (active-low).
-Y4: 1-bit output, part of the 8-bit decoded output (active-low).
-Y3: 1-bit output, part of the 8-bit decoded output (active-low).
-Y2: 1-bit output, part of the 8-bit decoded output (active-low).
-Y1: 1-bit output, part of the 8-bit decoded output (active-low).
-Y0: 1-bit output, part of the 8-bit decoded output (active-low).
+    Y7: 1-bit output, part of the 8-bit decoded output (active-low).
+    Y6: 1-bit output, part of the 8-bit decoded output (active-low).
+    Y5: 1-bit output, part of the 8-bit decoded output (active-low).
+    Y4: 1-bit output, part of the 8-bit decoded output (active-low).
+    Y3: 1-bit output, part of the 8-bit decoded output (active-low).
+    Y2: 1-bit output, part of the 8-bit decoded output (active-low).
+    Y1: 1-bit output, part of the 8-bit decoded output (active-low).
+    Y0: 1-bit output, part of the 8-bit decoded output (active-low).
 Implementation:
-This module functions as a 3-to-8 decoder. When the active-high enable signal en is 1 (enabled), the 3-bit input (composed of A, B, C) is decoded into an 8-bit output (Y7-Y0) with active-low logic: the output bit corresponding to the 3-bit input value is set to 0 (valid), and all other output bits are set to 1 (invalid). When en is 0 (disabled), all output bits (Y7-Y0) are set to 1 (invalid).
-The decoding logic is implemented via combinational continuous assignment: it judges the combination of {en, A, B, C} and outputs the corresponding 8-bit result. For example, when {en, A, B, C} is 4'b1000, the output {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} is 8'b1111_1110 (Y0 is 0, corresponding to 3-bit input 000); when {en, A, B, C} is 4'b1111, the output is 8'b0111_1111 (Y7 is 0, corresponding to 3-bit input 111). When en is 0 (i.e., {en, A, B, C} does not match any of the enabled combinations), the output is 8'b1111_1111.
+The decoder operates combinationally. When the enable signal (`en`) is high, the 3-bit binary input (`in`) is decoded to generate an 8-bit one-hot output (`out`). The output bit corresponding to the binary value of the input is set to 0 (active low), while all other bits are set to 1. For example:
+    - If `in = 3'b000`, then `out = 8'b1111_1110`.
+    - If `in = 3'b001`, then `out = 8'b1111_1101`.
+    - If `in = 3'b010`, then `out = 8'b1111_1011`.
+    - ...
+    - If `in = 3'b111`, then `out = 8'b0111_1111`.
+If the enable signal (`en`) is low, all output bits are set to 1 (inactive state).
+Modify the error design code below.
