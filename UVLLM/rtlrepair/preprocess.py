@@ -32,7 +32,7 @@ _ignore_warnings = {"DECLFILENAME", "ASSIGNDLY", "UNUSED", "EOFNEWLINE", "WIDTH"
                     "TIMESCALEMOD", "MULTIDRIVEN", "UNDRIVEN", "LITENDIAN", 
                     "PINCONNECTEMPTY", "PINMISSING", "UNOPTFLAT", "SYNCASYNCNET", "SELRANGE", "UNSIGNED", "CMPCONST"}
 _ignore_errors = "Unsupported tristate construct"
-_verilator_lint_flags = ["--lint-only", "-Wno-fatal", "-Wall"] + [f"-Wno-{w}" for w in _ignore_warnings]
+_verilator_lint_flags = ["--lint-only", "-Wno-fatal", "-Wall", "--timing"] + [f"-Wno-{w}" for w in _ignore_warnings]
 _verilator_warn = re.compile(r"%Warning-([A-Z]+): ([^:]+):(\d+):(\d+):([^\n]+)")
 
 _verilator_err = re.compile(r"%Error: (\S+):(\d+):\d+: (.+)")
