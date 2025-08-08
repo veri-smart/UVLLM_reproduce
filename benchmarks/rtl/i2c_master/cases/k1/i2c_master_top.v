@@ -267,7 +267,6 @@ module i2c_master_bit_ctrl (
       end
       else
       begin
-          cmd_ack   <= #1 1'b0; // default no command acknowledge + assert cmd_ack only 1clk cycle
 
           if (clk_en)
               case (c_state) // synopsys full_case parallel_case
