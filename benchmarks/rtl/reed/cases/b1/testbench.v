@@ -2,131 +2,132 @@
 
 module RS_dec_tb;
 
-  reg clk;
-  reg reset;
-  reg CE;
-  reg [7:0] input_byte;
+    reg clk;
+    reg reset;
+    reg CE;
+    reg [7:0] input_byte;
 
-  wire [7:0] Out_byte_dut, Out_byte_ref;
-  wire CEO_dut, CEO_ref;
-  wire Valid_out_dut, Valid_out_ref;
+    wire [7:0] Out_byte_dut, Out_byte_ref;
+    wire CEO_dut, CEO_ref;
+    wire Valid_out_dut, Valid_out_ref;
 
-  reg [7:0] ref_data;
-  reg ref_ceo;
-  reg ref_valid;
+    reg [7:0] ref_data;
+    reg ref_ceo;
+    reg ref_valid;
 
-  integer i;
-  integer error = 0;
-  integer log_file;
+    integer i;
+    integer error = 0;
+    integer log_file;
 
-  // Instantiate DUT
-  RS_dec RS_dut (
-    .clk(clk),
-    .reset(reset),
-    .CE(CE),
-    .input_byte(input_byte),
-    .Out_byte(Out_byte_dut),
-    .CEO(CEO_dut),
-    .Valid_out(Valid_out_dut)
-  );
+    // Instantiate DUT
+    RS_dec uut (
+        .clk(clk),
+        .reset(reset),
+        .CE(CE),
+        .input_byte(input_byte),
+        .Out_byte(Out_byte_dut),
+        .CEO(CEO_dut),
+        .Valid_out(Valid_out_dut)
+    );
 
-  // Reference model
-  RS_dec_ref RS_ref (
-    .clk(clk),
-    .reset(reset),
-    .CE(CE),
-    .input_byte(input_byte),
-    .Out_byte(Out_byte_ref),
-    .CEO(CEO_ref),
-    .Valid_out(Valid_out_ref)
-  );
+    // Instantiate Reference Model
+    RS_dec_ref ref_model (
+        .clk(clk),
+        .reset(reset),
+        .CE(CE),
+        .input_byte(input_byte),
+        .Out_byte(Out_byte_ref),
+        .CEO(CEO_ref),
+        .Valid_out(Valid_out_ref)
+    );
 
-  // Clock generation
-  initial begin
-    clk = 0;
-    forever #5 clk = ~clk;
-  end
-
-  // VCD dump
-  initial begin
-    $dumpfile("test.vcd");
-    $dumpvars(0, RS_dut);
-    $dumpvars(0, RS_ref);
-  end
-
-  // Initialize log file
-  initial begin
-    log_file = $fopen("test.txt", "w");
-  end
-
-  // Reference outputs
-  always @(posedge clk) begin
-    ref_data  <= Out_byte_ref;
-    ref_ceo   <= CEO_ref;
-    ref_valid <= Valid_out_ref;
-  end
-
-  // Test sequence
-  initial begin
-    reset = 1;
-    CE = 0;
-    input_byte = 8'd0;
-    #12;
-
-    // Directed input
-    reset = 0;
-    CE = 1;
-    input_byte = 8'h01; #10; check_results();
-    input_byte = 8'h23; #10; check_results();
-    input_byte = 8'h45; #10; check_results();
-    input_byte = 8'h67; #10; check_results();
-    input_byte = 8'h89; #10; check_results();
-    input_byte = 8'hAB; #10; check_results();
-    input_byte = 8'hCD; #10; check_results();
-    input_byte = 8'hEF; #10; check_results();
-    CE = 0; #20;
-
-    // Random inputs
-    CE = 1;
-    repeat (20) begin
-      input_byte = $random;
-      #10; check_results();
+    // Clock generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
     end
-    CE = 0; #20;
 
-    $fclose(log_file);
-    $finish;
-  end
+    // VCD dump
+    initial begin
+        $dumpfile("test.vcd");
+        $dumpvars(0, uut);
+        $dumpvars(0, ref_model);
+    end
 
-  // Result checking
-  task check_results;
-    begin
-      if (Valid_out_dut && ref_valid) begin
-        if ((Out_byte_dut !== ref_data) || (CEO_dut !== ref_ceo)) begin
-          error = error + 1;
-          $fwrite(log_file, "[ERROR] Time: %0t ns\n", $time);
-          $fwrite(log_file, "Input: %02x\n", input_byte);
-          $fwrite(log_file, "DUT: Out = %02x, CEO = %b\n", Out_byte_dut, CEO_dut);
-          $fwrite(log_file, "REF: Out = %02x, CEO = %b\n", ref_data, ref_ceo);
-          $fwrite(log_file, "-----------------------------\n");
-        end else begin
-          $fwrite(log_file, "[OK] Time: %0t ns, Out = %02x\n", $time, Out_byte_dut);
+    // Initialize log file
+    initial begin
+        log_file = $fopen("test.txt", "w");
+    end
+
+    // Reference outputs capture
+    always @(posedge clk) begin
+        ref_data  <= Out_byte_ref;
+        ref_ceo   <= CEO_ref;
+        ref_valid <= Valid_out_ref;
+    end
+
+    // Test sequence
+    initial begin
+        reset = 1;
+        CE = 0;
+        input_byte = 8'd0;
+        #12;
+
+        // Directed stimulus
+        reset = 0;
+        CE = 1;
+        input_byte = 8'h01; #10; check_results();
+        input_byte = 8'h23; #10; check_results();
+        input_byte = 8'h45; #10; check_results();
+        input_byte = 8'h67; #10; check_results();
+        input_byte = 8'h89; #10; check_results();
+        input_byte = 8'hAB; #10; check_results();
+        input_byte = 8'hCD; #10; check_results();
+        input_byte = 8'hEF; #10; check_results();
+        CE = 0; #20;
+
+        // Random stimulus
+        CE = 1;
+        for (i = 0; i < 1000; i = i + 1) begin
+            input_byte = $random;
+            #10;
+            check_results();
         end
-      end
-    end
-  endtask
+        CE = 0;
 
-  // Final report
-  initial begin
-    #2000;
-    if (error == 0) begin
-      $display("=========== RS_dec Test Passed ===========");
-      $fwrite(log_file, "=========== RS_dec Test Passed ===========\n");
-    end else begin
-      $display("=========== RS_dec Test Failed: %0d error(s) ===========", error);
+        $fclose(log_file);
+        $finish;
     end
-    $finish;
-  end
+
+    // Result checking
+    task check_results;
+        begin
+            if (Valid_out_dut && ref_valid) begin
+                if ((Out_byte_dut !== ref_data) || (CEO_dut !== ref_ceo)) begin
+                    error = error + 1;
+                    $fwrite(log_file, "Error Time: %g ns\n", $time);
+                    $fwrite(log_file, "DUT Input: input_byte = 8'h%0h\n", input_byte);
+                    $fwrite(log_file, "DUT Output: Out_byte = 8'h%0h, CEO = %b, Valid_out = %b\n",
+                        Out_byte_dut, CEO_dut, Valid_out_dut);
+                    $fwrite(log_file, "Reference Output: Out_byte = 8'h%0h, CEO = %b, Valid_out = %b\n",
+                        ref_data, ref_ceo, ref_valid);
+                    $fwrite(log_file, "-----------------------------\n");
+                end
+            end
+        end
+    endtask
+
+    // Display test results at the end
+    initial begin
+        #10000; // End of simulation time
+        if (error == 0) begin
+            $display("=========== Your Design Passed ===========");
+            $fwrite(log_file,"=========== Your Design Passed ===========");
+        end else begin
+            $display("=========== Your Design Failed ===========");
+        end
+        $finish;
+    end
 
 endmodule
 
