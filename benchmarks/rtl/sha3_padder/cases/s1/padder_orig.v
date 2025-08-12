@@ -14,23 +14,23 @@ module padder (
   input [31:0] in;
   input in_ready, is_last;
   input [1:0] byte_num;
-  output buffer_full;
-  output reg [575:0] out;
-  output out_ready;
-  input f_ack;
+  output buffer_full;   
+  output reg [575:0] out;   
+  output out_ready;   
+  input f_ack;   
 
-  reg state;
+  reg state;   
+  reg done;   
+  reg [17:0] i;   
+  wire [31:0] v0;   
+  reg [31:0] v1;   
+  wire accept,   
+  update;
 
-  reg done;
-  reg [17:0] i;
-  wire [31:0] v0;
-  reg [31:0] v1;
-  wire accept, update;
-
-  assign buffer_full = (i[17:0] == 18'h3FFFF);
+  assign buffer_full = i[17];
   assign out_ready = buffer_full;
-  assign accept = (~state) & in_ready & (~buffer_full);
-  assign update = (accept | (state & ~buffer_full)) & ~done;
+  assign accept = (~state) & in_ready & (~buffer_full);  
+  assign update = (accept | (state & (~buffer_full))) & (~done);  
 
   always @(posedge clk)
     if (reset) out <= 0;
@@ -39,6 +39,8 @@ module padder (
   always @(posedge clk)
     if (reset) i <= 0;
     else if (f_ack | update) i <= {i[16:0], 1'b1} & {18{~f_ack}};
+   
+   
 
   always @(posedge clk)
     if (reset) state <= 0;
@@ -57,7 +59,7 @@ module padder (
   always @(*) begin
     if (state) begin
       v1 = 0;
-      v1[7] = v1[7] | i[16];
+      v1[7] = v1[7] | i[16];  
     end else if (is_last == 0) v1 = in;
     else begin
       v1 = v0;
@@ -83,3 +85,4 @@ module padder1 (
       3: out = {in[31:8], 8'h01};
     endcase
 endmodule
+

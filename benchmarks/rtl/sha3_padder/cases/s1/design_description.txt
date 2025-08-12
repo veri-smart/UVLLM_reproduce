@@ -1,0 +1,49 @@
+Please act as a professional verilog designer.
+
+Implement a SHA-3 padding module that performs message padding according to the SHA-3 standard. This module buffers input data and applies the required padding when the last block is received.
+
+Module name:  
+    padder               
+Input ports:
+    clk: Clock signal used for synchronous operation.
+    reset: Synchronous active high reset signal to initialize the module.
+    in[31:0]: 32-bit input data word.
+    in_ready: Active high signal indicating that input data is valid and ready.
+    is_last: Active high signal indicating that the current input is the last word of the message.
+    byte_num[1:0]: 2-bit signal indicating the number of valid bytes in the last word (0-3).
+    f_ack: Active high acknowledge signal from the consumer to indicate data has been consumed.
+Output ports:
+    buffer_full: Active high signal indicating that the internal buffer is full and ready for output.
+    out[575:0]: 576-bit padded output block (72 bytes total).
+    out_ready: Active high signal indicating that output data is valid and ready.
+
+Implementation:
+The module operates as a data buffer and padding unit:
+
+1. Input Buffering:
+   - Accepts 32-bit input words when in_ready is asserted
+   - Accumulates input data into a 576-bit internal buffer
+   - Tracks the number of words received using an 18-bit counter
+
+2. Padding Logic:
+   - When is_last is asserted, switches to padding mode
+   - Applies byte-level padding based on byte_num:
+     * byte_num = 0: Pad with 0x01000000
+     * byte_num = 1: Use input[31:24] + 0x010000
+     * byte_num = 2: Use input[31:16] + 0x0100  
+     * byte_num = 3: Use input[31:8] + 0x01
+   - Sets bit 7 of the output word when buffer reaches 576 bits (termination bit)
+
+3. Output Control:
+   - buffer_full is asserted when 18 words (576 bits) have been accumulated
+   - out_ready follows buffer_full status
+   - When f_ack is received, resets the buffer counter and prepares for next block
+
+4. State Machine:
+   - Normal state: Accepts input data and fills buffer
+   - Padding state: Applies padding and generates termination bit
+   - Done state: Waits for acknowledgment before accepting new data
+
+The module ensures proper SHA-3 padding format with message data followed by padding bits and a termination bit at the end of each 576-bit block.
+
+Give me the complete code.

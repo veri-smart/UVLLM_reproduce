@@ -1,0 +1,75 @@
+# Design Description for tate_pairing
+
+## Module Overview
+The `tate_pairing` module implements the Tate pairing algorithm, a fundamental operation in pairing-based cryptography. This module computes the pairing of two elliptic curve points `(x1, y1)` and `(x2, y2)` over a finite field. The result is a cryptographic value used in various applications such as identity-based encryption and digital signatures.
+
+## Input Ports
+- `clk`: Clock signal for synchronous operations.
+- `reset`: Active-high reset signal to initialize the module.
+- `x1`: Coordinate x of the first elliptic curve point (input vector of width `WIDTH+1`).
+- `y1`: Coordinate y of the first elliptic curve point (input vector of width `WIDTH+1`).
+- `x2`: Coordinate x of the second elliptic curve point (input vector of width `WIDTH+1`).
+- `y2`: Coordinate y of the second elliptic curve point (input vector of width `WIDTH+1`).
+
+## Output Ports
+- `done`: Single-bit output signal indicating the completion of the pairing computation.
+- `out`: Output vector of width `W6+1` representing the computed pairing value.
+
+## Implementation Details
+1. **Initialization**:
+   - On reset (`reset` is high), all internal registers and outputs are initialized to zero.
+   - The module waits for valid inputs to start the computation.
+
+2. **Computation**:
+   - The module performs the Tate pairing algorithm in two main stages:
+     - **Duursma-Lee Algorithm**: Computes intermediate values based on the input points.
+     - **Second Part**: Finalizes the pairing computation using the intermediate results.
+   - The computation is pipelined and synchronized with the clock signal (`clk`).
+
+3. **Completion**:
+   - The `done` signal is asserted high when the computation is complete.
+   - The `out` signal holds the final pairing result.
+
+## Key Features
+- Supports synchronous operation with a clock signal.
+- Handles reset to initialize the module state.
+- Implements the Tate pairing algorithm with pipelined stages for efficient computation.
+- Outputs a cryptographic pairing value used in advanced cryptographic protocols.
+
+## Usage
+The `tate_pairing` module is designed for use in cryptographic systems requiring efficient pairing computations. It can be instantiated in a Verilog testbench or integrated into larger cryptographic designs.
+
+## Example Instantiation
+```verilog
+module example;
+    reg clk;
+    reg reset;
+    reg [`WIDTH:0] x1, y1, x2, y2;
+    wire done;
+    wire [`W6:0] out;
+
+    tate_pairing uut (
+        .clk(clk),
+        .reset(reset),
+        .x1(x1),
+        .y1(y1),
+        .x2(x2),
+        .y2(y2),
+        .done(done),
+        .out(out)
+    );
+
+    initial begin
+        clk = 0;
+        reset = 1;
+        x1 = 0;
+        y1 = 0;
+        x2 = 0;
+        y2 = 0;
+        #10 reset = 0;
+        // Add test vectors here
+    end
+
+    always #5 clk = ~clk;
+endmodule
+```

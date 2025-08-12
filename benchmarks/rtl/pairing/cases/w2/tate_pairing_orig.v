@@ -1,16 +1,15 @@
 `default_nettype none
 
-`define M 97          
-`define WIDTH (2*`M-1)    
+`define M 97         
+`define WIDTH (2*`M-1)   
 `define W2 (4*`M-1)    
 `define W3 (6*`M-1)    
 `define W6 (12*`M-1)   
 `define PX 196'h4000000000000000000000000000000000000000001000002 
+//include "inc.v"
 
 `define ZERO {(2*`M){1'b0}}
 `define TWO {(2*`M-2){1'b0}},2'b10
-
-
 
 module duursma_lee_algo (
     clk,
@@ -68,8 +67,8 @@ module duursma_lee_algo (
   );
   f3m_neg
       ins6 (
-          nmu,
-          mu
+          mu,
+          nmu
       ),
       ins7 (
           y,
@@ -166,7 +165,6 @@ module duursma_lee_algo (
     else f3m_reset <= 0;
 endmodule
 
-
 module tate_pairing (
     clk,
     reset,
@@ -251,7 +249,6 @@ module func6 (
     end
   assign out = {reg2, reg1} == 2'b01 ? 1 : 0;
 endmodule
-
 
 module f36m_mult (
     clk,
@@ -609,8 +606,6 @@ module second_part (
       c <= {c5, c4, c3, c2, c1, c0};
     end
 endmodule
-
-
 
 module f33m_mux2 (
     v1,
@@ -1246,8 +1241,6 @@ module f33m_inv (
     end
 endmodule
 
-
-
 module f32m_mux6 (
     v0,
     v1,
@@ -1518,7 +1511,6 @@ module f32m_cubic (
   );  
   always @(posedge clk) c <= {c1, c0};
 endmodule
-
 
 `define MOST 2*`M+1:2*`M
 

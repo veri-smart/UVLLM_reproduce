@@ -8,20 +8,19 @@ module keccak(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
     input      [31:0]  in;
     input              in_ready, is_last;
     input      [1:0]   byte_num;
-    output             buffer_full; 
+    output             buffer_full;  
     output     [511:0] out;
-    output             out_ready;
+    output reg         out_ready;
 
-    reg                state;     
-                                  
+    reg                state;      
     wire       [575:0] padder_out,
-                       padder_out_1; 
+                       padder_out_1;  
     wire               padder_out_ready;
     wire               f_ack;
     wire      [1599:0] f_out;
     wire               f_out_ready;
-    wire       [511:0] out1;     
-    reg        [22:0]  i;        
+    wire       [511:0] out1;       
+    reg        [22:0]  i;          
 
     genvar w, b;
 
@@ -39,6 +38,7 @@ module keccak(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
       else if (is_last)
         state <= 1;
 
+     
     generate
       for(w=0; w<8; w=w+1)
         begin : L0
@@ -49,6 +49,7 @@ module keccak(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
         end
     endgenerate
 
+     
     generate
       for(w=0; w<9; w=w+1)
         begin : L2
@@ -59,7 +60,11 @@ module keccak(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
         end
     endgenerate
 
-    assign out_ready = 0 ? reset : i[22];
+    always @ (posedge clk)
+      if (reset)
+        out_ready <= 0;
+      else if (i[22])
+        out_ready <= 1;
 
     padder
       padder_ (clk, reset, in, in_ready, is_last, byte_num, buffer_full, padder_out_1, padder_out_ready, f_ack);
@@ -72,6 +77,8 @@ endmodule
 `undef low_pos2
 `undef high_pos
 `undef high_pos2
+
+
 
 module padder (
     clk,
@@ -99,8 +106,7 @@ module padder (
   reg [17:0] i;   
   wire [31:0] v0;   
   reg [31:0] v1;   
-  wire accept,   
-  update;
+  wire accept, update;
 
   assign buffer_full = i[17];
   assign out_ready = buffer_full;
@@ -114,8 +120,6 @@ module padder (
   always @(posedge clk)
     if (reset) i <= 0;
     else if (f_ack | update) i <= {i[16:0], 1'b1} & {18{~f_ack}};
-   
-   
 
   always @(posedge clk)
     if (reset) state <= 0;
@@ -126,9 +130,9 @@ module padder (
     else if (state & out_ready) done <= 1;
 
   padder1 p0 (
-      in,
-      byte_num,
-      v0
+      .in(in),
+      .byte_num(byte_num),
+      .out(v0)
   );
 
   always @(*) begin
@@ -329,16 +333,18 @@ module round (
   /* verilator lint_off GENUNNAMED */
   generate
     for (x = 0; x < 64; x = x + 1) begin : L60
-      if (x == 0 || x == 1 || x == 3 || x == 7 || x == 15 || x == 31 || x == 63)
+      if (x == 0 || x == 1 || x == 3 || x == 7 || x == 15 || x == 31 || x == 63) 
         assign g[0][0][x] = f[0][0][x] ^ round_const[x];
-      else assign g[0][0][x] = f[0][0][x];
+      else
+       assign g[0][0][x] = f[0][0][x];
     end
   endgenerate
 
   generate
     for (y = 0; y < 5; y = y + 1) begin : L7
       for (x = 0; x < 5; x = x + 1) begin : L8
-        if (x != 0 || y != 0) assign g[x][y] = f[x][y];
+        if (x != 0 || y != 0) 
+        assign g[x][y] = f[x][y];
       end
     end
   endgenerate
