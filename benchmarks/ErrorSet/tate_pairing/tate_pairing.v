@@ -6,7 +6,6 @@
 `define W3 (6*`M-1)    
 `define W6 (12*`M-1)   
 `define PX 196'h4000000000000000000000000000000000000000001000002 
-//include "inc.v"
 
 `define ZERO {(2*`M){1'b0}}
 `define TWO {(2*`M-2){1'b0}},2'b10
@@ -606,6 +605,7 @@ module second_part (
       c <= {c5, c4, c3, c2, c1, c0};
     end
 endmodule
+
 
 module f33m_mux2 (
     v1,
@@ -1240,6 +1240,7 @@ module f33m_inv (
       c <= {c2, c1, c0};
     end
 endmodule
+
 
 module f32m_mux6 (
     v0,
@@ -2554,7 +2555,6 @@ module f3m_inv (
   always @(posedge clk)
     if (reset) begin
       S <= `PX;
-      /* verilator lint_off WIDTHEXPAND */
       R <= A;
       U <= 1;
       V <= 0;

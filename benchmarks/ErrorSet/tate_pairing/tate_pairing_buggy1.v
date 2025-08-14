@@ -7,7 +7,6 @@
 `define W6 (12*`M-1)   
 `define PX 196'h4000000000000000000000000000000000000000001000002 
 
-
 `define ZERO {(2*`M){1'b0}}
 `define TWO {(2*`M-2){1'b0}},2'b10
 
@@ -180,10 +179,6 @@ module tate_pairing (
   input [`WIDTH:0] x1, y1, x2, y2;
   output reg done;
   output reg [`W6:0] out;
-  initial begin
-    $dumpfile("oracle_tb.vcd"); // Ensure this path is writable
-    $dumpvars(0, tate_pairing);
-  end
 
   reg delay1, rst1;
   wire done1, rst2, done2;
@@ -254,6 +249,8 @@ module func6 (
     end
   assign out = {reg2, reg1} == 2'b01 ? 1 : 0;
 endmodule
+
+
 
 module f36m_mult (
     clk,
@@ -611,6 +608,8 @@ module second_part (
       c <= {c5, c4, c3, c2, c1, c0};
     end
 endmodule
+
+
 
 module f33m_mux2 (
     v1,
@@ -1246,6 +1245,8 @@ module f33m_inv (
     end
 endmodule
 
+
+
 module f32m_mux6 (
     v0,
     v1,
@@ -1516,6 +1517,7 @@ module f32m_cubic (
   );  
   always @(posedge clk) c <= {c1, c0};
 endmodule
+
 
 `define MOST 2*`M+1:2*`M
 
@@ -2559,7 +2561,6 @@ module f3m_inv (
   always @(posedge clk)
     if (reset) begin
       S <= `PX;
-      /* verilator lint_off WIDTHEXPAND */
       R <= A;
       U <= 1;
       V <= 0;
@@ -5776,8 +5777,8 @@ module f3_add (
   assign {a1_local, a0_local} = A;
   assign {b1_local, b0_local} = B;
   assign C = {c1_local, c0_local};
-  assign c0_local = (a0_local ^ b0_local) & ~(a1_local | b1_local) | (a1_local & b1_local);
-  assign c1_local = (a1_local ^ b1_local) & ~(a0_local & b0_local);
+  assign c0_local = (a0_local & ~a1_local & ~b0_local & ~b1_local) | (~a0_local & ~a1_local & b0_local & ~b1_local) | (~a0_local & a1_local & ~b0_local & b1_local);
+  assign c1_local = (~a0_local & a1_local & ~b0_local & ~b1_local) | (a0_local & ~a1_local & b0_local & ~b1_local) | (~a0_local & ~a1_local & ~b0_local & b1_local);
 endmodule
 
 module f3_sub (

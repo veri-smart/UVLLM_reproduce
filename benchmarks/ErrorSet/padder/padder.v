@@ -51,9 +51,9 @@ module padder (
     else if (state & out_ready) done <= 1;
 
   padder1 p0 (
-      .in(in),
-      .byte_num(byte_num),
-      .out(v0)
+      in,
+      byte_num,
+      v0
   );
 
   always @(*) begin

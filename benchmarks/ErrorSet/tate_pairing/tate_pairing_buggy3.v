@@ -252,7 +252,6 @@ module func6 (
   assign out = {reg2, reg1} == 2'b01 ? 1 : 0;
 endmodule
 
-
 module f36m_mult (
     clk,
     reset,
@@ -609,7 +608,6 @@ module second_part (
       c <= {c5, c4, c3, c2, c1, c0};
     end
 endmodule
-
 
 
 module f33m_mux2 (
@@ -1247,7 +1245,6 @@ module f33m_inv (
 endmodule
 
 
-
 module f32m_mux6 (
     v0,
     v1,
@@ -1518,7 +1515,6 @@ module f32m_cubic (
   );  
   always @(posedge clk) c <= {c1, c0};
 endmodule
-
 
 `define MOST 2*`M+1:2*`M
 
@@ -2562,7 +2558,6 @@ module f3m_inv (
   always @(posedge clk)
     if (reset) begin
       S <= `PX;
-      /* verilator lint_off WIDTHEXPAND */
       R <= A;
       U <= 1;
       V <= 0;
@@ -5778,7 +5773,7 @@ module f3_add (
   wire a0_local, a1_local, b0_local, b1_local, c0_local, c1_local;
   assign {a1_local, a0_local} = A;
   assign {b1_local, b0_local} = B;
-  assign C = {c1_local, c0_local};
+  assign {c1_local, c0_local} = C;
   assign c0_local = (a0_local & ~a1_local & ~b0_local & ~b1_local) | (~a0_local & ~a1_local & b0_local & ~b1_local) | (~a0_local & a1_local & ~b0_local & b1_local);
   assign c1_local = (~a0_local & a1_local & ~b0_local & ~b1_local) | (a0_local & ~a1_local & b0_local & ~b1_local) | (~a0_local & ~a1_local & ~b0_local & b1_local);
 endmodule

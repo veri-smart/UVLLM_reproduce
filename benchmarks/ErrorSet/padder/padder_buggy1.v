@@ -27,10 +27,10 @@ module padder (
   reg [31:0] v1;
   wire accept, update;
 
-  assign buffer_full = (i[17:0] == 18'h3FFFF);
+  assign buffer_full = i[17];
   assign out_ready = buffer_full;
   assign accept = (~state) & in_ready & (~buffer_full);
-  assign update = (accept | (state & ~buffer_full)) & ~done;
+  assign update = (accept | (state)) & (~done);
 
   always @(posedge clk)
     if (reset) out <= 0;
@@ -49,9 +49,9 @@ module padder (
     else if (state & out_ready) done <= 1;
 
   padder1 p0 (
-      .in(in),
-      .byte_num(byte_num),
-      .out(v0)
+      in,
+      byte_num,
+      v0
   );
 
   always @(*) begin

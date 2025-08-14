@@ -78,75 +78,6 @@ endmodule
 `undef high_pos
 `undef high_pos2
 
-
-
-module padder (
-    clk,
-    reset,
-    in,
-    in_ready,
-    is_last,
-    byte_num,
-    buffer_full,
-    out,
-    out_ready,
-    f_ack
-);
-  input clk, reset;
-  input [31:0] in;
-  input in_ready, is_last;
-  input [1:0] byte_num;
-  output buffer_full;   
-  output reg [575:0] out;   
-  output out_ready;   
-  input f_ack;   
-
-  reg state;   
-  reg done;   
-  reg [17:0] i;   
-  wire [31:0] v0;   
-  reg [31:0] v1;   
-  wire accept, update;
-
-  assign buffer_full = i[17];
-  assign out_ready = buffer_full;
-  assign accept = (~state) & in_ready & (~buffer_full);  
-  assign update = (accept | (state & (~buffer_full))) & (~done);  
-
-  always @(posedge clk)
-    if (reset) out <= 0;
-    else if (update) out <= {out[575-32:0], v1};
-
-  always @(posedge clk)
-    if (reset) i <= 0;
-    else if (f_ack | update) i <= {i[16:0], 1'b1} & {18{~f_ack}};
-
-  always @(posedge clk)
-    if (reset) state <= 0;
-    else if (is_last) state <= 1;
-
-  always @(posedge clk)
-    if (reset) done <= 0;
-    else if (state & out_ready) done <= 1;
-
-  padder1 p0 (
-      .in(in),
-      .byte_num(byte_num),
-      .out(v0)
-  );
-
-  always @(*) begin
-    if (state) begin
-      v1 = 0;
-      v1[7] = v1[7] | i[16];  
-    end else if (is_last == 0) v1 = in;
-    else begin
-      v1 = v0;
-      v1[7] = v1[7] | i[16];
-    end
-  end
-endmodule
-
 module f_permutation (
     clk,
     reset,
@@ -333,22 +264,21 @@ module round (
   /* verilator lint_off GENUNNAMED */
   generate
     for (x = 0; x < 64; x = x + 1) begin : L60
-      if (x == 0 || x == 1 || x == 3 || x == 7 || x == 15 || x == 31 || x == 63) 
+      if (x == 0 || x == 1 || x == 3 || x == 7 || x == 15 || x == 31 || x == 63)
         assign g[0][0][x] = f[0][0][x] ^ round_const[x];
-      else
-       assign g[0][0][x] = f[0][0][x];
+      else assign g[0][0][x] = f[0][0][x];
     end
   endgenerate
 
   generate
     for (y = 0; y < 5; y = y + 1) begin : L7
       for (x = 0; x < 5; x = x + 1) begin : L8
-        if (x != 0 || y != 0) 
-        assign g[x][y] = f[x][y];
+        if (x != 0 || y != 0) assign g[x][y] = f[x][y];
       end
     end
   endgenerate
   /* verilator lint_on GENUNNAMED */
+
   generate
     for (y = 0; y < 5; y = y + 1) begin : L99
       for (x = 0; x < 5; x = x + 1) begin : L100
@@ -365,6 +295,76 @@ endmodule
 `undef sub_1
 `undef rot_up
 `undef rot_up_1
+
+module padder (
+    clk,
+    reset,
+    in,
+    in_ready,
+    is_last,
+    byte_num,
+    buffer_full,
+    out,
+    out_ready,
+    f_ack
+);
+  input clk, reset;
+  input [31:0] in;
+  input in_ready, is_last;
+  input [1:0] byte_num;
+  output buffer_full;   
+  output reg [575:0] out;   
+  output out_ready;   
+  input f_ack;   
+
+  reg state;   
+  reg done;   
+  reg [17:0] i;   
+  wire [31:0] v0;   
+  reg [31:0] v1;   
+  wire accept,   
+  update;
+
+  assign buffer_full = i[17];
+  assign out_ready = buffer_full;
+  assign accept = (~state) & in_ready & (~buffer_full);  
+  assign update = (accept | (state & (~buffer_full))) & (~done);  
+
+  always @(posedge clk)
+    if (reset) out <= 0;
+    else if (update) out <= {out[575-32:0], v1};
+
+  always @(posedge clk)
+    if (reset) i <= 0;
+    else if (f_ack | update) i <= {i[16:0], 1'b1} & {18{~f_ack}};
+   
+   
+
+  always @(posedge clk)
+    if (reset) state <= 0;
+    else if (is_last) state <= 1;
+
+  always @(posedge clk)
+    if (reset) done <= 0;
+    else if (state & out_ready) done <= 1;
+
+  padder1 p0 (
+      in,
+      byte_num,
+      v0
+  );
+
+  always @(*) begin
+    if (state) begin
+      v1 = 0;
+      v1[7] = v1[7] | i[16];  
+    end else if (is_last == 0) v1 = in;
+    else begin
+      v1 = v0;
+      v1[7] = v1[7] | i[16];
+    end
+  end
+endmodule
 
 module padder1 (
     in,

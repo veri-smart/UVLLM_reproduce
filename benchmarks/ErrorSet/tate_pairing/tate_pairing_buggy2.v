@@ -253,7 +253,6 @@ module func6 (
   assign out = {reg2, reg1} == 2'b01 ? 1 : 0;
 endmodule
 
-
 module f36m_mult (
     clk,
     reset,
@@ -1518,7 +1517,6 @@ module f32m_cubic (
   always @(posedge clk) c <= {c1, c0};
 endmodule
 
-
 `define MOST 2*`M+1:2*`M
 
 
@@ -2561,7 +2559,6 @@ module f3m_inv (
   always @(posedge clk)
     if (reset) begin
       S <= `PX;
-      /* verilator lint_off WIDTHEXPAND */
       R <= A;
       U <= 1;
       V <= 0;
