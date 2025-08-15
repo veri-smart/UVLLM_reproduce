@@ -10,11 +10,17 @@ version = "0.1.0"
 fix = { cmd = [
     "python",
     "UVLLM/Main.py",
-], env = { "PYTHONPATH" = "Strider/libs/Pyverilog" } }
+], env = { "PYTHONPATH" = "Strider/libs/Pyverilog" }, depends-on = [
+    "cp-rtl",
+] }
 
 rm-errorset = { cmd = ["rm", "-rf", "benchmarks/ErrorSet"] }
 cp-errorset = { cmd = "mkdir -p benchmarks && cp -r ErrorSet benchmarks && cp ErrorSet/ErrorSet.conf benchmarks/ErrorSet.conf && mkdir -p workdir", depends-on = [
     "rm-errorset",
+] }
+rm-rtl = { cmd = ["rm", "-rf", "benchmarks/rtl"] }
+cp-rtl = { cmd = "mkdir -p benchmarks && cp -r rtl benchmarks/rtl && cp rtl/rtl.conf benchmarks/rtl.conf && mkdir -p workdir", depends-on = [
+    "rm-rtl",
 ] }
 
 [dependencies]
