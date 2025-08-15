@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 
-module testbench;
+module i2c_master_top_tb;
 
     // ------------------------------
     // 参数
@@ -140,22 +140,42 @@ module testbench;
         repeat(5) @(posedge clk);
         rst = 1'b0;
 
-        // 运行测试
-        run_test();
+        // 写控制寄存器
+        write_reg(3'h0, 8'hAA);
+        write_reg(3'h1, 8'h55);
 
-		        rst_i     = 1'b1;
-        wb_rst_i  = 1'b0;
-        wb_wacc   = 1'b0;
-        wb_adr_i  = 3'b000;
-        wb_dat_i  = 8'h00;
+        // 读状态寄存器
+        read_reg(3'h0);
+        read_reg(3'h1);
+
+        // 模拟 START 条件
+        write_reg(3'h2, 8'h80);
+
+        // 模拟写数据
+        write_reg(3'h3, 8'h12);
+        write_reg(3'h3, 8'h34);
+
+        // 模拟 STOP 条件
+        write_reg(3'h2, 8'h40);
+
+        // 随机化更多测试
+        repeat (10) begin
+            write_reg($random % 8, $random);
+            read_reg($random % 8);
+        end
+        // 初始状态
+        rst     = 1'b1;
+        rst  = 1'b0;
+        adr  = 3'b000;
+        dat_in  = 8'h00;
 
         // 异步复位
-        #2 rst_i = 1'b0; // 立即触发异步复位
-        #5 rst_i = 1'b1; // 释放异步复位
+        #2 rst = 1'b0; // 立即触发异步复位
+        #5 rst = 1'b1; // 释放异步复位
 
         // 同步复位
-        @(posedge wb_clk_i) wb_rst_i = 1'b1;
-        @(posedge wb_clk_i) wb_rst_i = 1'b0;
+        @(posedge clk) rst = 1'b1;
+        @(posedge clk) rst = 1'b0;
 
         // 写寄存器 0、1、2、3
         write_reg(3'b000, 8'hAA);
@@ -164,57 +184,30 @@ module testbench;
         write_reg(3'b011, 8'hDD);
 
         // 异步复位中途拉低
-        #7 rst_i = 1'b0; // 非时钟沿触发，异步版会立刻清零
-        #8 rst_i = 1'b1;
+        #7 rst = 1'b0; // 非时钟沿触发，异步版会立刻清零
+        #8 rst = 1'b1;
 
         // 再写一次
         write_reg(3'b000, 8'h11);
         write_reg(3'b001, 8'h22);
+
+        #50;
     end
 
-	initial begin
-		#3000;
-		if (error_count == 0) begin
-			$display("=========== Your Design Passed ===========");
-			$fwrite(file_out, "=========== Your Design Passed ===========\n");
-		end else begin
-			$display("=========== Your Design Failed ===========");
-		end
-		$fclose(file_out); // 关闭日志文件
-		$finish;
-	end
-
-
-    // ------------------------------
-    // 测试任务
-    // ------------------------------
-    task run_test;
-        begin
-            // 写控制寄存器
-            write_reg(3'h0, 8'hAA);
-            write_reg(3'h1, 8'h55);
-
-            // 读状态寄存器
-            read_reg(3'h0);
-            read_reg(3'h1);
-
-            // 模拟 START 条件
-            write_reg(3'h2, 8'h80);
-
-            // 模拟写数据
-            write_reg(3'h3, 8'h12);
-            write_reg(3'h3, 8'h34);
-
-            // 模拟 STOP 条件
-            write_reg(3'h2, 8'h40);
-
-            // 随机化更多测试
-            repeat (10) begin
-                write_reg($random % 8, $random);
-                read_reg($random % 8);
+    initial begin
+            #3000;
+            if (error_count == 0) begin
+                    $display("=========== Your Design Passed ===========");
+                    $fwrite(file_out, "=========== Your Design Passed ===========\n");
+            end else begin
+                    $display("=========== Your Design Failed ===========");
             end
-        end
-    endtask
+            $fclose(file_out); // 关闭日志文件
+            $finish;
+    end
+
+
+
 
     // ------------------------------
     // 写寄存器任务
@@ -265,7 +258,7 @@ module testbench;
                 error_count = error_count + 1;
             end
             if (dat_out2 !== ref_dat_out2) begin
-				$fwrite(file_out, "Error Time: %g ns\n", $time);
+                                $fwrite(file_out, "Error Time: %g ns\n", $time);
                 $fwrite(file_out, "DUT Output: dat_out = %h\n", dat_out2);
                 $fwrite(file_out, "Reference Output: dat_out = %h\n", ref_dat_out2);
                 $fwrite(file_out, "-----------------------------\n");
@@ -907,7 +900,7 @@ module i2c_master_top_ref (
   wire i2c_al;
   reg al;
 
-  wire rst_i = arst_i ^ ARST_LVL;
+  wire rst = arst_i ^ ARST_LVL;
 
   wire wb_wacc = wb_we_i & wb_ack_o;
 
@@ -926,8 +919,8 @@ module i2c_master_top_ref (
     endcase
   end
 
-  always @(posedge wb_clk_i or negedge rst_i)
-    if (!rst_i) begin
+  always @(posedge wb_clk_i or negedge rst)
+    if (!rst) begin
       prer <= #1 16'hffff;
       ctr  <= #1 8'h0;
       txr  <= #1 8'h0;
@@ -944,8 +937,8 @@ module i2c_master_top_ref (
         default: #1;
       endcase
 
-  always @(posedge wb_clk_i or negedge rst_i)
-    if (!rst_i) cr <= #1 8'h0;
+  always @(posedge wb_clk_i or negedge rst)
+    if (!rst) cr <= #1 8'h0;
     else if (wb_rst_i) cr <= #1 8'h0;
     else if (wb_wacc) begin
       if (core_en & (wb_adr_i == 3'b100)) cr <= #1 wb_dat_i;
@@ -969,7 +962,7 @@ module i2c_master_top_ref (
   i2c_master_byte_ctrl_ref byte_controller_ref (
       .clk     (wb_clk_i),
       .rst     (wb_rst_i),
-      .nReset  (rst_i),
+      .nReset  (rst),
       .ena     (core_en),
       .clk_cnt (prer),
       .start   (sta),
@@ -991,8 +984,8 @@ module i2c_master_top_ref (
       .sda_oen (sda_padoen_o)
   );
 
-  always @(posedge wb_clk_i or negedge rst_i)
-    if (!rst_i) begin
+  always @(posedge wb_clk_i or negedge rst)
+    if (!rst) begin
       al       <= #1 1'b0;
       rxack    <= #1 1'b0;
       tip      <= #1 1'b0;
@@ -1009,8 +1002,8 @@ module i2c_master_top_ref (
       irq_flag <= #1 (done | i2c_al | irq_flag) & ~iack;
     end
 
-  always @(posedge wb_clk_i or negedge rst_i)
-    if (!rst_i) wb_inta_o <= #1 1'b0;
+  always @(posedge wb_clk_i or negedge rst)
+    if (!rst) wb_inta_o <= #1 1'b0;
     else if (wb_rst_i) wb_inta_o <= #1 1'b0;
     else wb_inta_o <= #1 irq_flag && ien;
 
