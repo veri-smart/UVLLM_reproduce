@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module decoder_3to8_tb();
+module testbench();
 
     reg A, B, C;
     reg en;

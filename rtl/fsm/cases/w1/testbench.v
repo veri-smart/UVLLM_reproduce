@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module fsm_full_tb();
+module testbench();
 
     // Inputs
     reg clock;

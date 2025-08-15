@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module sdram_controller_tb();
+module testbench();
 
     // Parameters
     parameter ROW_WIDTH = 13;

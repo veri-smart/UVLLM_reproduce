@@ -1,8 +1,6 @@
 `timescale 1ns/1ps
 
-`timescale 1ns/1ps
-
-module RS_dec_tb;
+module testbench;
 
     reg clk;
     reg reset;

@@ -180,10 +180,6 @@ module tate_pairing (
   input [`WIDTH:0] x1, y1, x2, y2;
   output reg done;
   output reg [`W6:0] out;
-  initial begin
-    $dumpfile("oracle_tb.vcd"); // Ensure this path is writable
-    $dumpvars(0, tate_pairing);
-  end
 
   reg delay1, rst1;
   wire done1, rst2, done2;
@@ -254,6 +250,8 @@ module func6 (
     end
   assign out = {reg2, reg1} == 2'b01 ? 1 : 0;
 endmodule
+
+
 
 module f36m_mult (
     clk,
@@ -2559,7 +2557,6 @@ module f3m_inv (
   always @(posedge clk)
     if (reset) begin
       S <= `PX;
-      /* verilator lint_off WIDTHEXPAND */
       R <= A;
       U <= 1;
       V <= 0;
@@ -5776,8 +5773,8 @@ module f3_add (
   assign {a1_local, a0_local} = A;
   assign {b1_local, b0_local} = B;
   assign C = {c1_local, c0_local};
-  assign c0_local = (a0_local ^ b0_local) & ~(a1_local | b1_local) | (a1_local & b1_local);
-  assign c1_local = (a1_local ^ b1_local) & ~(a0_local & b0_local);
+  assign c0_local = (a0_local & ~a1_local & ~b0_local & ~b1_local) | (~a0_local & ~a1_local & b0_local & ~b1_local) | (~a0_local & a1_local & ~b0_local & b1_local);
+  assign c1_local = (~a0_local & a1_local & ~b0_local & ~b1_local) | (a0_local & ~a1_local & b0_local & ~b1_local) | (~a0_local & ~a1_local & ~b0_local & b1_local);
 endmodule
 
 module f3_sub (

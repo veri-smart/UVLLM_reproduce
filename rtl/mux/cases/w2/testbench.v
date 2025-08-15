@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module mux_4to1_case_tb();
+module testbench();
 
     reg [3:0] a;
     reg [3:0] b;

@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module first_counter_tb();
+module testbench();
 
     reg clk;
     reg reset;

@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module lshift_reg_tb;
+module testbench;
 
     reg clk;
     reg rstn;
