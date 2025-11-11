@@ -46,6 +46,11 @@ def get_completion(prompt, model="ep-20250308150752-75p9d", temperature=0.2):
 
         prompt_tokens_num = response.usage.prompt_tokens
         output_tokens_num = response.usage.completion_tokens
+        with open('api.log', 'a') as f:
+            f.write(f'Prompt: {prompt}\n')
+            f.write(f'Response: {res}\n')
+            f.write(f'Prompt tokens: {prompt_tokens_num}, Output tokens: {output_tokens_num}\n\n')
+
         return res, prompt_tokens_num, output_tokens_num
     except openai.APIConnectionError as e:
         logging.error(f'The server could not be reached, cause:{e.__cause__}')

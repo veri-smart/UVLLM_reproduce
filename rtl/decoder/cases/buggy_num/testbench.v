@@ -35,7 +35,7 @@ module testbench();
 
     initial begin
         $dumpfile("test.vcd");
-        $dumpvars(0, uut);
+        $dumpvars(0, testbench);
         log_file = $fopen("test.txt", "w");
 
         // --- Stimulus Set 1 (tb1.cpp) ---

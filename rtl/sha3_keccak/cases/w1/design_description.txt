@@ -10,44 +10,10 @@ Input ports:
     in[31:0]: 32-bit input data word for the message to be hashed.
     in_ready: Active high signal indicating that input data is valid and ready to be processed.
     is_last: Active high signal indicating that the current input word is the last word of the message.
-    byte_num[1:0]: 2-bit signal specifying the number of valid bytes in the last word (0=1 byte, 1=2 bytes, 2=3 bytes, 3=4 bytes).
+    byte_num[1:0]: 2-bit signal specifying the number of valid bytes in the last word
 Output ports:
     buffer_full: Active high signal indicating that the internal input buffer is full and cannot accept more data.
-    out[511:0]: 512-bit hash output (SHA-3-512 result).
+    out[511:0]: 512-bit hash output
     out_ready: Active high signal indicating that the hash computation is complete and the output is valid.
 
-Implementation:
-The module implements the complete SHA-3 Keccak algorithm with the following key components:
-
-1. **Input Processing and Padding**: 
-   - Accepts 32-bit input words through the `in` port when `in_ready` is asserted
-   - Handles variable-length messages using `is_last` and `byte_num` signals
-   - Implements SHA-3 padding rules (append '1' bit followed by zeros, then '1' bit at the end)
-   - Manages flow control through `buffer_full` signal to prevent buffer overflow
-
-2. **State Management**:
-   - Uses internal state machine to control the hashing process
-   - Transitions from input accumulation to padding to permutation phases
-   - Tracks progress through 24 rounds of Keccak permutation
-
-3. **Keccak Permutation**:
-   - Implements the 1600-bit state array as specified in SHA-3 standard
-   - Performs θ (theta), ρ (rho), π (pi), χ (chi), and ι (iota) transformations
-   - Executes 24 rounds of permutation for SHA-3-512
-
-4. **Output Generation**:
-   - Extracts 512 bits from the final state as the hash result
-   - Sets `out_ready` when computation is complete
-   - Maintains output validity until next reset
-
-Operational Flow:
-1. Reset initializes all internal state and clears outputs
-2. Input data is accumulated word by word when `in_ready` is high and `buffer_full` is low
-3. When `is_last` is asserted, padding is applied according to SHA-3 specification
-4. Keccak permutation is performed over 24 rounds
-5. Final 512-bit hash is extracted and `out_ready` is asserted
-6. Module remains in output state until next reset
-
-The module supports continuous operation and can process multiple messages sequentially by asserting reset between messages.
-
-Give me the complete code.
+Modify the error design code below.

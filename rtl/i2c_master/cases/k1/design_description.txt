@@ -8,12 +8,12 @@ This design implements an I2C master controller consisting of three modules: `i2
 2.1 `i2c_master_bit_ctrl` (Bit-Level Controller)
 - Inputs:
   - `clk`: System clock.
-  - `rst`, `nReset`: Reset signals (synchronous and asynchronous).
+  - `rst`, `nReset`: Reset signals
   - `ena`: Enable signal for the controller.
   - `clk_cnt`: Clock divider value for I2C clock generation.
-  - `cmd`: 4-bit command (`I2C_CMD_NOP`, `START`, `STOP`, `WRITE`, `READ`).
+  - `cmd`: 4-bit command.
   - `din`: Data input for write operations.
-  - `scl_i`, `sda_i`: I2C SCL/SDA line inputs (from external pins).
+  - `scl_i`, `sda_i`: I2C SCL/SDA line inputs.
 
 - Outputs:
   - `cmd_ack`: Acknowledgment of command completion.

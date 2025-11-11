@@ -4,20 +4,12 @@ Implement a module to realize an 8-bit circular left shift register with load fu
     Module name:
 lshift_reg
 Input ports:
-    clk: Clock input for synchronization; operations are triggered on the positive edge.
-    rstn: Active-low reset signal; resets the output when asserted (low level).
+    clk: Clock input for synchronization
+    rstn: Active-low reset signal
     load_val[7:0]: 8-bit data to be loaded into the register.
-    load_en: Load enable signal; when high, the register loads load_val.
+    load_en: Load enable signal
 
 Output ports:
     op[7:0]: 8-bit output of the register; reflects the current value of the register.
 
-Implementation:
-
-    Reset Operation: When rstn is low (reset active), the output op is set to 0.
-    Load Operation: When rstn is high (not reset) and load_en is high, op is updated to load_val on the positive edge of clk.
-    Circular Left Shift Operation: When rstn is high and load_en is low, a circular left shift is performed on the positive edge of clk:
-    Each bit op[i+1] (where i ranges from 0 to 6) is updated to the value of the previous bit op[i].
-    The lowest bit op[0] is updated to the value of the original highest bit op[7].
-    
 Modify the error design code below.

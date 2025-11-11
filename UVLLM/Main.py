@@ -255,18 +255,27 @@ def testAll(logger, benchmarkArg, max_i):
             working_dir = Path(bugInfo["proj_dir"])
 
             nerr,preprocess_time,mismatch_time = test_mismatch(logger, benchmark, bugInfo, working_dir, max_i)
-
+            result = ()
             if nerr==0:
-                nerr,preprocess_time2,suspicious_time =test_suspiciousline(logger, benchmark, bugInfo, working_dir, history, max_i)
+                nerr,preprocess_time2,suspicious_time = test_suspiciousline(logger, benchmark, bugInfo, working_dir, history, max_i)
                 preprocess_time += preprocess_time2
                 if nerr==0:
                     logger.info("FIX ERROR.")
-                    results.append((project, version, "failed"))
+                    result = (project, version, "fail")
                 else:
-                    results.append((project, version, "pass"))
+                    nerr,preprocess_time,mismatch_time = test_mismatch(logger, benchmark, bugInfo, working_dir, max_i)
+                    if nerr==0:
+                        logger.info("FIX ERROR.")
+                        result = (project, version, "fail")
+                    else:
+                        result = (project, version, "real pass")
             else:
-                results.append((project, version, "pass"))
-            print("results: ", results)
+                result = (project, version, "pass")
+            results.append(result)
+            print("result: ", result)
+            with open("result.csv", "a") as fout:
+                fout.write(f"{result[0]},{result[1]},{result[2]}\n")
+            
             endTime = time.time()
             logger.info("Preprocess Time: {}s.".format(preprocess_time))
             logger.info("Mismatch Time: {}s.".format(mismatch_time))
@@ -280,6 +289,7 @@ def testAll(logger, benchmarkArg, max_i):
             logger.error(str(e))
     
     with open("result.csv", "w") as fout:
+        fout.write("project,version,state\n")
         for (project, version, state) in results:
             fout.write(f"{project},{version},{state}\n")
 

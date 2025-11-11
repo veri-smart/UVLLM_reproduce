@@ -1,275 +1,838 @@
-`timescale 1ns/10ps
+`timescale 1ns / 10ps
 
-module i2c_master_top_tb;
+module testbench;
 
-    // ------------------------------
-    // 参数
-    // ------------------------------
-    parameter CLK_HALF_PERIOD = 5;  // 100 MHz
+  integer error_count;
+  integer file_out;
 
-    // ------------------------------
-    // 信号定义
-    // ------------------------------
-    reg        clk;
-    reg        rst;
-    reg [2:0]  adr;
-    reg [7:0]  dat_in;
-    wire [7:0] dat_out1, dat_out2;
-    wire [7:0] ref_dat_out1, ref_dat_out2;
-    reg        we;
-    reg        stb;
-    reg        cyc;
-    wire       irq1, irq2;
-    wire       ref_irq1, ref_irq2;
+  reg clk;
+  reg instrument_clk;
+  reg rstn;
 
-    // I²C 总线
-    wire scl, sda;
-    pullup p1(scl);
-    pullup p2(sda);
+  wire [31:0] adr;
+  wire [31:0] adr_ref;
+  wire [7:0] dat_i, dat_o, dat0_i, dat1_i;
+  wire [7:0] dat_i_ref, dat_o_ref, dat0_i_ref, dat1_i_ref;
+  wire we, we_ref;
+  wire stb, stb_ref;
+  wire cyc, cyc_ref;
+  wire ack, ack_ref;
+  wire inta, inta_ref;
 
-    integer file_out;
-    integer error_count = 0;
+  reg [7:0] q, qq;
+  reg [7:0] q_ref, qq_ref;
 
-    // ------------------------------
-    // 生成时钟
-    // ------------------------------
-    initial clk = 1'b0;
-    always #CLK_HALF_PERIOD clk = ~clk;
+  wire scl, scl0_o, scl0_oen, scl1_o, scl1_oen;
+  wire scl_ref, scl0_o_ref, scl0_oen_ref, scl1_o_ref, scl1_oen_ref;
+  wire sda, sda0_o, sda0_oen, sda1_o, sda1_oen;
+  wire sda_ref, sda0_o_ref, sda0_oen_ref, sda1_o_ref, sda1_oen_ref;
 
-    // ------------------------------
-    // DUT 实例化
-    // ------------------------------
-    i2c_master_top dut1 (
-        .wb_clk_i(clk),
-        .wb_rst_i(rst),
-        .arst_i(1'b0),
-        .wb_adr_i(adr),
-        .wb_dat_i(dat_in),
-        .wb_dat_o(dat_out1),
-        .wb_we_i(we),
-        .wb_stb_i(stb),
-        .wb_cyc_i(cyc),
-        .wb_ack_o(),
-        .wb_inta_o(irq1),
-        .scl_pad_i(scl),
-        .scl_pad_o(),
-        .scl_padoen_o(),
-        .sda_pad_i(sda),
-        .sda_pad_o(),
-        .sda_padoen_o()
-    );
+  parameter PRER_LO = 3'b000;
+  parameter PRER_HI = 3'b001;
+  parameter CTR = 3'b010;
+  parameter RXR = 3'b011;
+  parameter TXR = 3'b011;
+  parameter CR = 3'b100;
+  parameter SR = 3'b100;
 
-    i2c_master_top dut2 (
-        .wb_clk_i(clk),
-        .wb_rst_i(rst),
-        .arst_i(1'b0),
-        .wb_adr_i(adr),
-        .wb_dat_i(dat_in),
-        .wb_dat_o(dat_out2),
-        .wb_we_i(we),
-        .wb_stb_i(stb),
-        .wb_cyc_i(cyc),
-        .wb_ack_o(),
-        .wb_inta_o(irq2),
-        .scl_pad_i(scl),
-        .scl_pad_o(),
-        .scl_padoen_o(),
-        .sda_pad_i(sda),
-        .sda_pad_o(),
-        .sda_padoen_o()
-    );
+  parameter TXR_R = 3'b101;
+  parameter CR_R = 3'b110;
 
-    // ------------------------------
-    // 参考模型实例化
-    // ------------------------------
-   i2c_master_top_ref ref1 (
-        .wb_clk_i(clk),
-        .wb_rst_i(rst),
-        .arst_i(1'b0),
-        .wb_adr_i(adr),
-        .wb_dat_i(dat_in),
-        .wb_dat_o(ref_dat_out1),
-        .wb_we_i(we),
-        .wb_stb_i(stb),
-        .wb_cyc_i(cyc),
-        .wb_ack_o(),
-        .wb_inta_o(ref_irq1),
-        .scl_pad_i(scl),
-        .scl_pad_o(),
-        .scl_padoen_o(),
-        .sda_pad_i(sda),
-        .sda_pad_o(),
-        .sda_padoen_o()
-    );
+  parameter RD = 1'b1;
+  parameter WR = 1'b0;
+  parameter SADR = 7'b0010_000;
 
-    i2c_master_top_ref ref2 (
-        .wb_clk_i(clk),
-        .wb_rst_i(rst),
-        .arst_i(1'b0),
-        .wb_adr_i(adr),
-        .wb_dat_i(dat_in),
-        .wb_dat_o(ref_dat_out2),
-        .wb_we_i(we),
-        .wb_stb_i(stb),
-        .wb_cyc_i(cyc),
-        .wb_ack_o(),
-        .wb_inta_o(ref_irq2),
-        .scl_pad_i(scl),
-        .scl_pad_o(),
-        .scl_padoen_o(),
-        .sda_pad_i(sda),
-        .sda_pad_o(),
-        .sda_padoen_o()
-    );
+  always #5 clk = ~clk;
+  always #20 instrument_clk = ~instrument_clk;
 
-    // ------------------------------
-    // 初始化
-    // ------------------------------
-    initial begin
-        file_out = $fopen("test.txt", "w");
-        $dumpfile("test.vcd");
-        $dumpvars(0, i2c_master_top_tb);
+  integer f;
 
-        // 复位
-        rst = 1'b1;
-        we  = 0;
-        stb = 0;
-        cyc = 0;
-        dat_in = 0;
-        adr = 0;
-        repeat(5) @(posedge clk);
-        rst = 1'b0;
+  wire wb_ack_o;
+  wire wb_inta_o;
+  wire wb_ack_o_ref;
+  wire wb_inta_o_ref;
 
-        // 写控制寄存器
-        write_reg(3'h0, 8'hAA);
-        write_reg(3'h1, 8'h55);
+  wb_master_model #(8, 32) u0 (
+      .clk (clk),
+      .rst (rstn),
+      .adr (adr),
+      .din (dat_i),
+      .dout(dat_o),
+      .cyc (cyc),
+      .stb (stb),
+      .we  (we),
+      .sel (),
+      .ack (ack || wb_ack_o),
+      .err (1'b0),
+      .rty (1'b0)
+  );
+  wb_master_model #(8, 32) u0_ref (
+      .clk (clk),
+      .rst (rstn),
+      .adr (adr_ref),
+      .din (dat_i_ref),
+      .dout(dat_o_ref),
+      .cyc (cyc_ref),
+      .stb (stb_ref),
+      .we  (we_ref),
+      .sel (),
+      .ack (ack_ref || wb_ack_o_ref),
+      .err (1'b0),
+      .rty (1'b0)
+  );
 
-        // 读状态寄存器
-        read_reg(3'h0);
-        read_reg(3'h1);
+  wire stb0 = stb & ~adr[3];
+  wire stb1 = stb & adr[3];
+  wire stb0_ref = stb_ref & ~adr_ref[3];
+  wire stb1_ref = stb_ref & adr_ref[3];
 
-        // 模拟 START 条件
-        write_reg(3'h2, 8'h80);
+  assign dat_i = ({{8'd8} {stb0}} & dat0_i) | ({{8'd8} {stb1}} & dat1_i);
+  assign dat_i_ref = ({{8'd8} {stb0_ref}} & dat0_i_ref) | ({{8'd8} {stb1_ref}} & dat1_i);
 
-        // 模拟写数据
-        write_reg(3'h3, 8'h12);
-        write_reg(3'h3, 8'h34);
+  i2c_master_top
+      i2c_top (
 
-        // 模拟 STOP 条件
-        write_reg(3'h2, 8'h40);
+          .wb_clk_i(clk),
+          .wb_rst_i(1'b0),
+          .arst_i(rstn),
+          .wb_adr_i(adr[2:0]),
+          .wb_dat_i(dat_o),
+          .wb_dat_o(dat0_i),
+          .wb_we_i(we),
+          .wb_stb_i(stb0),
+          .wb_cyc_i(cyc),
+          .wb_ack_o(wb_ack_o),
+          .wb_inta_o(wb_inta_o),
 
-        // 随机化更多测试
-        repeat (10) begin
-            write_reg($random % 8, $random);
-            read_reg($random % 8);
-        end
-        // 初始状态
-        rst     = 1'b1;
-        rst  = 1'b0;
-        adr  = 3'b000;
-        dat_in  = 8'h00;
+          .scl_pad_i(scl),
+          .scl_pad_o(scl0_o),
+          .scl_padoen_o(scl0_oen),
+          .sda_pad_i(sda),
+          .sda_pad_o(sda0_o),
+          .sda_padoen_o(sda0_oen)
+      ),
+      i2c_top2 (
 
-        // 异步复位
-        #2 rst = 1'b0; // 立即触发异步复位
-        #5 rst = 1'b1; // 释放异步复位
+          .wb_clk_i(clk),
+          .wb_rst_i(1'b0),
+          .arst_i(rstn),
+          .wb_adr_i(adr[2:0]),
+          .wb_dat_i(dat_o),
+          .wb_dat_o(dat1_i),
+          .wb_we_i(we),
+          .wb_stb_i(stb1),
+          .wb_cyc_i(cyc),
+          .wb_ack_o(ack),
+          .wb_inta_o(inta),
 
-        // 同步复位
-        @(posedge clk) rst = 1'b1;
-        @(posedge clk) rst = 1'b0;
+          .scl_pad_i(scl),
+          .scl_pad_o(scl1_o),
+          .scl_padoen_o(scl1_oen),
+          .sda_pad_i(sda),
+          .sda_pad_o(sda1_o),
+          .sda_padoen_o(sda1_oen)
+      );
 
-        // 写寄存器 0、1、2、3
-        write_reg(3'b000, 8'hAA);
-        write_reg(3'b001, 8'hBB);
-        write_reg(3'b010, 8'hCC);
-        write_reg(3'b011, 8'hDD);
+  i2c_master_top_ref
+      i2c_top_ref (
 
-        // 异步复位中途拉低
-        #7 rst = 1'b0; // 非时钟沿触发，异步版会立刻清零
-        #8 rst = 1'b1;
+          .wb_clk_i(clk),
+          .wb_rst_i(1'b0),
+          .arst_i(rstn),
+          .wb_adr_i(adr_ref[2:0]),
+          .wb_dat_i(dat_o_ref),
+          .wb_dat_o(dat0_i_ref),
+          .wb_we_i(we_ref),
+          .wb_stb_i(stb0_ref),
+          .wb_cyc_i(cyc_ref),
+          .wb_ack_o(wb_ack_o_ref),
+          .wb_inta_o(wb_inta_o_ref),
 
-        // 再写一次
-        write_reg(3'b000, 8'h11);
-        write_reg(3'b001, 8'h22);
+          .scl_pad_i(scl_ref),
+          .scl_pad_o(scl0_o_ref),
+          .scl_padoen_o(scl0_oen_ref),
+          .sda_pad_i(sda_ref),
+          .sda_pad_o(sda0_o_ref),
+          .sda_padoen_o(sda0_oen_ref)
+      ),
+      i2c_top2_ref (
 
-        #50;
+          .wb_clk_i(clk),
+          .wb_rst_i(1'b0),
+          .arst_i(rstn),
+          .wb_adr_i(adr_ref[2:0]),
+          .wb_dat_i(dat_o_ref),
+          .wb_dat_o(dat1_i_ref),
+          .wb_we_i(we_ref),
+          .wb_stb_i(stb1_ref),
+          .wb_cyc_i(cyc_ref),
+          .wb_ack_o(ack_ref),
+          .wb_inta_o(inta_ref),
+
+          .scl_pad_i(scl_ref),
+          .scl_pad_o(scl1_o_ref),
+          .scl_padoen_o(scl1_oen_ref),
+          .sda_pad_i(sda_ref),
+          .sda_pad_o(sda1_o_ref),
+          .sda_padoen_o(sda1_oen_ref)
+      ); 
+
+  i2c_slave_model #(SADR) i2c_slave (
+      .scl(scl),
+      .sda(sda)
+  );
+  i2c_slave_model #(SADR) i2c_slave_ref (
+      .scl(scl_ref),
+      .sda(sda_ref)
+  );
+
+  delay
+      m0_scl (
+          scl0_oen ? 1'bz : scl0_o,
+          scl
+      ),
+      m1_scl (
+          scl1_oen ? 1'bz : scl1_o,
+          scl
+      ),
+      m0_sda (
+          sda0_oen ? 1'bz : sda0_o,
+          sda
+      ),
+      m1_sda (
+          sda1_oen ? 1'bz : sda1_o,
+          sda
+      );
+
+  delay
+      m0_scl_ref (
+          scl0_oen_ref ? 1'bz : scl0_o_ref,
+          scl_ref
+      ),
+      m1_scl_ref (
+          scl1_oen_ref ? 1'bz : scl1_o_ref,
+          scl_ref
+      ),
+      m0_sda_ref (
+          sda0_oen_ref ? 1'bz : sda0_o_ref,
+          sda_ref
+      ),
+      m1_sda_ref (
+          sda1_oen_ref ? 1'bz : sda1_o_ref,
+          sda_ref
+      );
+
+  pullup p1 (scl);
+  pullup p2 (sda);
+  pullup p1_ref (scl_ref);
+  pullup p2_ref (sda_ref);
+
+  initial begin
+    file_out = $fopen("test.txt", "w");
+    $dumpfile("test.vcd");
+    $dumpvars(0, testbench);
+  end
+
+  reg start, finished;
+
+  initial begin
+    force i2c_slave.debug = 1'b0;
+
+    clk = 0;
+    instrument_clk = 0;
+    start = 0;
+    finished = 0;
+
+    rstn = 1'b1;
+    #2;
+    rstn = 1'b0;
+    repeat (1) @(posedge clk);
+    rstn = 1'b1;
+
+    @(posedge clk);
+    start = 1;
+  end
+
+  initial begin
+    @(start);
+    u0.wb_write(1, PRER_LO, 8'hfa);
+    u0.wb_write(1, PRER_LO, 8'hc8);
+    u0.wb_write(1, PRER_HI, 8'h00);
+
+    u0.wb_cmp(0, PRER_LO, 8'hc8);
+    u0.wb_cmp(0, PRER_HI, 8'h00);
+
+    u0.wb_write(1, CTR, 8'h80);
+
+    u0.wb_write(1, TXR, {SADR, WR});
+    u0.wb_write(0, CR, 8'h90);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(0, SR, q);
+
+    u0.wb_write(1, TXR, 8'h01);
+    u0.wb_write(0, CR, 8'h10);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(0, SR, q);
+
+    u0.wb_write(1, TXR, 8'ha5);
+    u0.wb_write(0, CR, 8'h10);
+
+    while (scl) #1;
+    force scl = 1'b0;
+    #100000;
+    release scl;
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_write(1, TXR, 8'h5a);
+    u0.wb_write(0, CR, 8'h50);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_write(1, TXR, {SADR, WR});
+    u0.wb_write(0, CR, 8'h90);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_write(1, TXR, 8'h01);
+    u0.wb_write(0, CR, 8'h10);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_write(1, TXR, {SADR, RD});
+    u0.wb_write(0, CR, 8'h90);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_write(1, CR, 8'h20);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_read(1, RXR, qq);
+
+    u0.wb_write(1, CR, 8'h20);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_read(1, RXR, qq);
+
+    u0.wb_write(1, CR, 8'h20);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_read(1, RXR, qq);
+
+    u0.wb_write(1, CR, 8'h28);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_read(1, RXR, qq);
+
+    u0.wb_write(1, TXR, {SADR, WR});
+    u0.wb_write(0, CR, 8'h90);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_write(1, TXR, 8'h10);
+    u0.wb_write(0, CR, 8'h10);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    u0.wb_write(1, CR, 8'h40);
+
+    u0.wb_read(1, SR, q);
+    while (q[1]) u0.wb_read(1, SR, q);
+
+    #250000;
+  end
+
+  initial begin
+    @(start);
+    u0_ref.wb_write(1, PRER_LO, 8'hfa);
+    u0_ref.wb_write(1, PRER_LO, 8'hc8);
+    u0_ref.wb_write(1, PRER_HI, 8'h00);
+
+    u0_ref.wb_cmp(0, PRER_LO, 8'hc8);
+    u0_ref.wb_cmp(0, PRER_HI, 8'h00);
+
+    u0_ref.wb_write(1, CTR, 8'h80);
+
+    u0_ref.wb_write(1, TXR, {SADR, WR});
+    u0_ref.wb_write(0, CR, 8'h90);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q[1]) u0_ref.wb_read(0, SR, q_ref);
+
+    u0_ref.wb_write(1, TXR, 8'h01);
+    u0_ref.wb_write(0, CR, 8'h10);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q[1]) u0_ref.wb_read(0, SR, q_ref);
+
+    u0_ref.wb_write(1, TXR, 8'ha5);
+    u0_ref.wb_write(0, CR, 8'h10);
+
+    while (scl_ref) #1;
+    force scl_ref = 1'b0;
+    #100000;
+    release scl_ref;
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_write(1, TXR, 8'h5a);
+    u0_ref.wb_write(0, CR, 8'h50);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_write(1, TXR, {SADR, WR});
+    u0_ref.wb_write(0, CR, 8'h90);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_write(1, TXR, 8'h01);
+    u0_ref.wb_write(0, CR, 8'h10);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_write(1, TXR, {SADR, RD});
+    u0_ref.wb_write(0, CR, 8'h90);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_write(1, CR, 8'h20);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_read(1, RXR, qq_ref);
+
+    u0_ref.wb_write(1, CR, 8'h20);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_read(1, RXR, qq_ref);
+
+    u0_ref.wb_write(1, CR, 8'h20);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_read(1, RXR, qq_ref);
+
+    u0_ref.wb_write(1, CR, 8'h28);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_read(1, RXR, qq_ref);
+
+    u0_ref.wb_write(1, TXR, {SADR, WR});
+    u0_ref.wb_write(0, CR, 8'h90);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_write(1, TXR, 8'h10);
+    u0_ref.wb_write(0, CR, 8'h10);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0.wb_read(1, SR, q_ref);
+
+    u0_ref.wb_write(1, CR, 8'h40);
+
+    u0_ref.wb_read(1, SR, q_ref);
+    while (q_ref[1]) u0_ref.wb_read(1, SR, q_ref);
+
+    #250000;
+    finished = 1;
+    #10;
+    $finish;
+  end
+
+  initial begin
+    @(finished)
+    if (error_count == 0) begin
+      $display("=========== Your Design Passed ===========");
+      $fwrite(file_out, "=========== Your Design Passed ===========\n");
+    end else begin
+      $display("=========== Your Design Failed ===========");
     end
+    $fclose(file_out);
+    $finish;
+  end
 
-    initial begin
-            #3000;
-            if (error_count == 0) begin
-                    $display("=========== Your Design Passed ===========");
-                    $fwrite(file_out, "=========== Your Design Passed ===========\n");
-            end else begin
-                    $display("=========== Your Design Failed ===========");
-            end
-            $fclose(file_out); // 关闭日志文件
-            $finish;
+  task check_results;
+    begin
+      if (dat0_i !== dat0_i_ref || 
+          dat1_i !== dat1_i_ref ||
+          wb_ack_o !== wb_ack_o_ref || 
+          ack !== ack_ref ||
+          wb_inta_o !== wb_ack_o_ref ||
+          inta !== inta_ref ||
+          scl0_o !== scl0_o_ref ||
+          scl1_o !== scl1_o_ref ||
+          scl0_oen !== scl0_oen_ref ||
+          scl1_oen !== scl1_oen_ref ||
+          sda0_o != sda0_o_ref ||
+          sda1_o != sda1_o_ref ||
+          sda0_oen !== sda0_oen_ref ||
+          sda1_oen !== sda1_oen_ref
+      ) begin
+        $fwrite(file_out, "Error Time: %g ns\n", $time);
+        $fwrite(file_out, "DUT Output: dat0_i = %h dat1_i = %h wb_ack_o = %h ack = %h wb_inta_o = %h inta = %h scl0_o = %h scl1_o = %h scl0_oen = %h scl1_oen = %h sda0_o = %h sda1_o = %h sda0_oen = %h sda1_oen = %h\n", 
+                dat0_i,dat1_i,wb_ack_o,ack,wb_inta_o,inta,scl0_o,scl1_o,scl0_oen,scl1_oen,sda0_o,sda1_o,sda0_oen,sda1_oen);
+        $fwrite(file_out, "Reference Output: dat0_i = %h dat1_i = %h wb_ack_o = %h ack = %h wb_inta_o = %h inta = %h scl0_o = %h scl1_o = %h scl0_oen = %h scl1_oen = %h sda0_o = %h sda1_o = %h sda0_oen = %h sda1_oen = %h\n", 
+                dat0_i_ref,dat1_i_ref,wb_ack_o_ref,ack_ref,wb_inta_o_ref,inta_ref,scl0_o_ref,scl1_o_ref,scl0_oen_ref,scl1_oen_ref,sda0_o_ref,sda1_o_ref,sda0_oen_ref,sda1_oen_ref);
+        $fwrite(file_out, "-----------------------------\n");
+        error_count = error_count + 1;
+      end
     end
+  endtask
 
-
-
-
-    // ------------------------------
-    // 写寄存器任务
-    // ------------------------------
-    task write_reg(input [2:0] addr, input [7:0] data);
-        begin
-            @(posedge clk);
-            adr <= addr;
-            dat_in <= data;
-            we <= 1;
-            stb <= 1;
-            cyc <= 1;
-            @(posedge clk);
-            stb <= 0;
-            cyc <= 0;
-            we <= 0;
-
-            check_results();
-        end
-    endtask
-
-    // ------------------------------
-    // 读寄存器任务
-    // ------------------------------
-    task read_reg(input [2:0] addr);
-        begin
-            @(posedge clk);
-            adr <= addr;
-            we <= 0;
-            stb <= 1;
-            cyc <= 1;
-            @(posedge clk);
-            stb <= 0;
-            cyc <= 0;
-
-            check_results();
-        end
-    endtask
-
-
-    task check_results;
-        begin
-            if (dat_out1 !== ref_dat_out1) begin
-                $fwrite(file_out, "Error Time: %g ns\n", $time);
-                $fwrite(file_out, "DUT Output: dat_out = %h\n", dat_out1);
-                $fwrite(file_out, "Reference Output: dat_out = %h\n", ref_dat_out1);
-                $fwrite(file_out, "-----------------------------\n");
-                error_count = error_count + 1;
-            end
-            if (dat_out2 !== ref_dat_out2) begin
-                                $fwrite(file_out, "Error Time: %g ns\n", $time);
-                $fwrite(file_out, "DUT Output: dat_out = %h\n", dat_out2);
-                $fwrite(file_out, "Reference Output: dat_out = %h\n", ref_dat_out2);
-                $fwrite(file_out, "-----------------------------\n");
-                error_count = error_count + 1;
-            end
-        end
-    endtask
+  always @(clk) begin
+    check_results();
+  end
 
 endmodule
 
+module delay (
+    in,
+    out
+);
+  input in;
+  output out;
 
+  assign out = in;
+
+  specify
+    (in => out) = (600, 600);
+  endspecify
+endmodule
+
+
+module i2c_slave_model (
+    scl,
+    sda
+);
+
+  parameter I2C_ADR = 7'b001_0000;
+
+  input scl;
+  inout sda;
+
+  wire debug = 1'b1;
+
+  reg [7:0] mem[3:0];
+  reg [7:0] mem_adr;
+  reg [7:0] mem_do;
+
+  reg sta, d_sta;
+  reg sto, d_sto;
+
+  reg  [7:0] sr;
+  reg        rw;
+
+  wire       my_adr;
+  wire       i2c_reset;
+  reg  [2:0] bit_cnt;
+  wire       acc_done;
+  reg        ld;
+
+  reg        sda_o;
+  wire       sda_dly;
+
+  parameter idle = 3'b000;
+  parameter slave_ack = 3'b001;
+  parameter get_mem_adr = 3'b010;
+  parameter gma_ack = 3'b011;
+  parameter data = 3'b100;
+  parameter data_ack = 3'b101;
+
+  reg [2:0] state;
+
+  initial begin
+    sda_o = 1'b1;
+    state = idle;
+  end
+
+  always @(posedge scl) sr <= #1{sr[6:0], sda};
+
+  assign my_adr = (sr[7:1] == I2C_ADR);
+
+  always @(posedge scl)
+    if (ld) bit_cnt <= #1 3'b111;
+    else bit_cnt <= #1 bit_cnt - 3'h1;
+
+  assign acc_done = !(|bit_cnt);
+
+  assign #1 sda_dly = sda;
+
+  always @(negedge sda)
+    if (scl) begin
+      sta   <= #1 1'b1;
+      d_sta <= #1 1'b0;
+      sto   <= #1 1'b0;
+
+    end else sta <= #1 1'b0;
+
+  always @(posedge scl) d_sta <= #1 sta;
+
+  always @(posedge sda)
+    if (scl) begin
+      sta <= #1 1'b0;
+      sto <= #1 1'b1;
+
+    end else sto <= #1 1'b0;
+
+  assign i2c_reset = sta || sto;
+
+  always @(negedge scl or posedge sto)
+    if (sto || (sta && !d_sta)) begin
+      state <= #1 idle;
+
+      sda_o <= #1 1'b1;
+      ld    <= #1 1'b1;
+    end else begin
+
+      sda_o <= #1 1'b1;
+      ld    <= #1 1'b0;
+
+      case (state)
+        idle:
+        if (acc_done && my_adr) begin
+          state <= #1 slave_ack;
+          rw <= #1 sr[0];
+          sda_o <= #1 1'b0;
+
+          #2;
+
+          if (rw) begin
+            mem_do <= #1 mem[mem_adr];
+
+          end
+        end
+
+        slave_ack: begin
+          if (rw) begin
+            state <= #1 data;
+            sda_o <= #1 mem_do[7];
+          end else state <= #1 get_mem_adr;
+
+          ld <= #1 1'b1;
+        end
+
+        get_mem_adr:
+        if (acc_done) begin
+          state   <= #1 gma_ack;
+          mem_adr <= #1 sr;
+          sda_o   <= #1 !(sr <= 15);
+
+        end
+
+        gma_ack: begin
+          state <= #1 data;
+          ld    <= #1 1'b1;
+        end
+
+        data: begin
+          if (rw) sda_o <= #1 mem_do[7];
+
+          if (acc_done) begin
+            state   <= #1 data_ack;
+            mem_adr <= #2 mem_adr + 8'h1;
+            sda_o   <= #1 (rw && (mem_adr <= 15));
+
+            if (rw) begin
+              #3 mem_do <= mem[mem_adr];
+
+            end
+
+            if (!rw) begin
+              mem[mem_adr[3:0]] <= #1 sr;
+
+            end
+          end
+        end
+
+        data_ack: begin
+          ld <= #1 1'b1;
+
+          if (rw)
+            if (sr[0]) begin
+              state <= #1 idle;
+              sda_o <= #1 1'b1;
+            end else begin
+              state <= #1 data;
+              sda_o <= #1 mem_do[7];
+            end
+          else begin
+            state <= #1 data;
+            sda_o <= #1 1'b1;
+          end
+        end
+
+      endcase
+    end
+
+  always @(posedge scl) if (!acc_done && rw) mem_do <= #1{mem_do[6:0], 1'b1};
+
+  assign sda = sda_o ? 1'bz : 1'b0;
+
+  wire tst_sto = sto;
+  wire tst_sta = sta;
+
+endmodule
+
+module wb_master_model (
+    clk,
+    rst,
+    adr,
+    din,
+    dout,
+    cyc,
+    stb,
+    we,
+    sel,
+    ack,
+    err,
+    rty
+);
+
+  parameter dwidth = 32;
+  parameter awidth = 32;
+
+  input clk, rst;
+  output [awidth   -1:0] adr;
+  input [dwidth   -1:0] din;
+  output [dwidth   -1:0] dout;
+  output cyc, stb;
+  output we;
+  output [dwidth/8 -1:0] sel;
+  input ack, err, rty;
+
+  reg [awidth   -1:0] adr;
+  reg [dwidth   -1:0] dout;
+  reg cyc, stb;
+  reg                 we;
+  reg [dwidth/8 -1:0] sel;
+
+  reg [dwidth   -1:0] q;
+
+  initial begin
+
+    adr  = {awidth{1'b0}};
+    dout = {dwidth{1'bx}};
+    cyc  = 1'b0;
+    stb  = 1'bx;
+    we   = 1'hx;
+    sel  = {dwidth / 8{1'bx}};
+    #1;
+  end
+
+  task wb_write;
+    input delay;
+    integer delay;
+
+    input [awidth -1:0] a;
+    input [dwidth -1:0] d;
+
+    begin
+
+      repeat (delay) @(posedge clk);
+
+      #1;
+      adr  = a;
+      dout = d;
+      cyc  = 1'b1;
+      stb  = 1'b1;
+      we   = 1'b1;
+      sel  = {dwidth / 8{1'b1}};
+      @(posedge clk);
+
+      while (~ack) @(posedge clk);
+
+      #1;
+      cyc  = 1'b0;
+      stb  = 1'bx;
+
+      adr  = {awidth{1'b0}};
+      dout = {dwidth{1'bx}};
+      we   = 1'hx;
+      sel  = {dwidth / 8{1'bx}};
+
+    end
+  endtask
+
+  task wb_read;
+    input delay;
+    integer delay;
+
+    input [awidth -1:0] a;
+    output [dwidth -1:0] d;
+
+    begin
+
+      repeat (delay) @(posedge clk);
+
+      #1;
+      adr  = a;
+      dout = {dwidth{1'bx}};
+      cyc  = 1'b1;
+      stb  = 1'b1;
+      we   = 1'b0;
+      sel  = {dwidth / 8{1'b1}};
+      @(posedge clk);
+
+      while (~ack) @(posedge clk);
+
+      #1;
+      cyc  = 1'b0;
+      stb  = 1'bx;
+
+      adr  = {awidth{1'b0}};
+      dout = {dwidth{1'bx}};
+      we   = 1'hx;
+      sel  = {dwidth/8{1'bx}};
+      d    = din;
+
+    end
+  endtask
+
+  task wb_cmp;
+    input delay;
+    integer delay;
+
+    input [awidth -1:0] a;
+    input [dwidth -1:0] d_exp;
+
+    begin
+      wb_read(delay, a, q);
+
+      if (d_exp !== q)
+        $display("Data compare error. Received %h, expected %h at time %t", q, d_exp, $time);
+    end
+  endtask
+
+endmodule
 
 
 `define I2C_CMD_NOP 4'b0000
@@ -317,13 +880,13 @@ module i2c_master_bit_ctrl_ref (
 
   always @(posedge clk) dscl_oen <= #1 scl_oen;
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) slave_wait <= 1'b0;
     else slave_wait <= (scl_oen & ~dscl_oen & ~sSCL) | (slave_wait & ~sSCL);
 
   wire scl_sync = dSCL & ~sSCL & scl_oen;
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (~nReset) begin
       cnt    <= #1 16'h0;
       clk_en <= #1 1'b1;
@@ -338,7 +901,7 @@ module i2c_master_bit_ctrl_ref (
       clk_en <= #1 1'b0;
     end
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) begin
       cSCL <= #1 2'b00;
       cSDA <= #1 2'b00;
@@ -350,15 +913,13 @@ module i2c_master_bit_ctrl_ref (
       cSDA <= {cSDA[0], sda_i};
     end
 
-  // verilator lint_off WIDTHTRUNC
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) filter_cnt <= 14'h0;
     else if (rst || !ena) filter_cnt <= 14'h0;
     else if (~|filter_cnt) filter_cnt <= clk_cnt >> 2;
     else filter_cnt <= filter_cnt - 1;
-  // verilator lint_on WIDTHTRUNC
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) begin
       fSCL <= 3'b111;
       fSDA <= 3'b111;
@@ -370,7 +931,7 @@ module i2c_master_bit_ctrl_ref (
       fSDA <= {fSDA[1:0], cSDA[1]};
     end
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (~nReset) begin
       sSCL <= #1 1'b1;
       sSDA <= #1 1'b1;
@@ -393,7 +954,7 @@ module i2c_master_bit_ctrl_ref (
 
   reg sta_condition;
   reg sto_condition;
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (~nReset) begin
       sta_condition <= #1 1'b0;
       sto_condition <= #1 1'b0;
@@ -405,18 +966,18 @@ module i2c_master_bit_ctrl_ref (
       sto_condition <= #1 sSDA & ~dSDA & sSCL;
     end
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) busy <= #1 1'b0;
     else if (rst) busy <= #1 1'b0;
     else busy <= #1 (sta_condition | busy) & ~sto_condition;
 
   reg cmd_stop;
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (~nReset) cmd_stop <= #1 1'b0;
     else if (rst) cmd_stop <= #1 1'b0;
     else if (clk_en) cmd_stop <= #1 cmd == `I2C_CMD_STOP;
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (~nReset) al <= #1 1'b0;
     else if (rst) al <= #1 1'b0;
     else al <= #1 (sda_chk & ~sSDA & sda_oen) | (|c_state & sto_condition & ~cmd_stop);
@@ -442,7 +1003,7 @@ module i2c_master_bit_ctrl_ref (
   parameter [17:0] wr_c = 18'b0_1000_0000_0000_0000;
   parameter [17:0] wr_d = 18'b1_0000_0000_0000_0000;
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) begin
       c_state <= #1 idle;
       cmd_ack <= #1 1'b0;
@@ -607,7 +1168,6 @@ module i2c_master_bit_ctrl_ref (
 
 endmodule
 
-
 module i2c_master_byte_ctrl_ref (
     clk,
     rst,
@@ -680,7 +1240,7 @@ module i2c_master_byte_ctrl_ref (
   reg  [2:0] dcnt;
   wire       cnt_done;
 
-  i2c_master_bit_ctrl_ref bit_controller_ref (
+  i2c_master_bit_ctrl_ref bit_controller (
       .clk    (clk),
       .rst    (rst),
       .nReset (nReset),
@@ -704,13 +1264,13 @@ module i2c_master_byte_ctrl_ref (
 
   assign dout = sr;
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) sr <= #1 8'h0;
     else if (rst) sr <= #1 8'h0;
     else if (ld) sr <= #1 din;
     else if (shift) sr <= #1{sr[6:0], core_rxd};
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) dcnt <= #1 3'h0;
     else if (rst) dcnt <= #1 3'h0;
     else if (ld) dcnt <= #1 3'h7;
@@ -720,7 +1280,7 @@ module i2c_master_byte_ctrl_ref (
 
   reg [4:0] c_state;
 
-  always @(posedge clk or negedge nReset)
+  always @(posedge clk)
     if (!nReset) begin
       core_cmd <= #1 `I2C_CMD_NOP;
       core_txd <= #1 1'b0;
@@ -744,7 +1304,6 @@ module i2c_master_byte_ctrl_ref (
       ld       <= #1 1'b0;
       cmd_ack  <= #1 1'b0;
 
-      // verilator lint_off CASEINCOMPLETE
       case (c_state)
         ST_IDLE:
         if (go) begin
@@ -829,10 +1388,8 @@ module i2c_master_byte_ctrl_ref (
         end
 
       endcase
-      // verilator lint_on CASEINCOMPLETE
     end
 endmodule
-
 
 module i2c_master_top_ref (
     wb_clk_i,
@@ -900,7 +1457,7 @@ module i2c_master_top_ref (
   wire i2c_al;
   reg al;
 
-  wire rst = arst_i ^ ARST_LVL;
+  wire rst_i = arst_i ^ ARST_LVL;
 
   wire wb_wacc = wb_we_i & wb_ack_o;
 
@@ -919,8 +1476,8 @@ module i2c_master_top_ref (
     endcase
   end
 
-  always @(posedge wb_clk_i or negedge rst)
-    if (!rst) begin
+  always @(posedge wb_clk_i)
+    if (!rst_i) begin
       prer <= #1 16'hffff;
       ctr  <= #1 8'h0;
       txr  <= #1 8'h0;
@@ -937,8 +1494,8 @@ module i2c_master_top_ref (
         default: #1;
       endcase
 
-  always @(posedge wb_clk_i or negedge rst)
-    if (!rst) cr <= #1 8'h0;
+  always @(posedge wb_clk_i)
+    if (!rst_i) cr <= #1 8'h0;
     else if (wb_rst_i) cr <= #1 8'h0;
     else if (wb_wacc) begin
       if (core_en & (wb_adr_i == 3'b100)) cr <= #1 wb_dat_i;
@@ -959,10 +1516,10 @@ module i2c_master_top_ref (
   assign core_en = ctr[7];
   assign ien = ctr[6];
 
-  i2c_master_byte_ctrl_ref byte_controller_ref (
+  i2c_master_byte_ctrl_ref byte_controller (
       .clk     (wb_clk_i),
       .rst     (wb_rst_i),
-      .nReset  (rst),
+      .nReset  (rst_i),
       .ena     (core_en),
       .clk_cnt (prer),
       .start   (sta),
@@ -984,8 +1541,8 @@ module i2c_master_top_ref (
       .sda_oen (sda_padoen_o)
   );
 
-  always @(posedge wb_clk_i or negedge rst)
-    if (!rst) begin
+  always @(posedge wb_clk_i)
+    if (!rst_i) begin
       al       <= #1 1'b0;
       rxack    <= #1 1'b0;
       tip      <= #1 1'b0;
@@ -1002,8 +1559,8 @@ module i2c_master_top_ref (
       irq_flag <= #1 (done | i2c_al | irq_flag) & ~iack;
     end
 
-  always @(posedge wb_clk_i or negedge rst)
-    if (!rst) wb_inta_o <= #1 1'b0;
+  always @(posedge wb_clk_i)
+    if (!rst_i) wb_inta_o <= #1 1'b0;
     else if (wb_rst_i) wb_inta_o <= #1 1'b0;
     else wb_inta_o <= #1 irq_flag && ien;
 

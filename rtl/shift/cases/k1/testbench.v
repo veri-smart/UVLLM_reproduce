@@ -13,7 +13,7 @@ module testbench;
     integer i;
     integer cycle;
     integer error = 0;
-    integer log_file;
+    integer log_file;`
 
     // Instantiate the module under test
     lshift_reg uut (

@@ -22,7 +22,8 @@ module testbench;
     // 固定输入数据，来自 C++ testbench 的 in_mem 数组
     reg [7:0] in_mem [0:20399];
     initial begin
-        log_file = $fopen("input_RS_blocks", "w");
+        $readmemb("input_RS_blocks", in_mem);
+        log_file = $fopen("test.txt", "w");
     end
 
     // Instantiate DUT
@@ -56,21 +57,11 @@ module testbench;
     // VCD dump
     initial begin
         $dumpfile("test.vcd");
-        $dumpvars(0, uut);
-        $dumpvars(0, ref_model);
+        $dumpvars(0, testbench);
     end
 
-    // Initialize log file
-    initial begin
-        log_file = $fopen("test.txt", "w");
-    end
 
     // Reference outputs capture
-    always @(posedge clk) begin
-        ref_data  <= Out_byte_ref;
-        ref_ceo   <= CEO_ref;
-        ref_valid <= Valid_out_ref;
-    end
 
     // Test sequence (移植 C++ tb 驱动逻辑)
     initial begin
@@ -111,21 +102,18 @@ module testbench;
     // Result checking
     task check_results;
         begin
-            if (Valid_out_dut && ref_valid) begin
-                if ((Out_byte_dut !== ref_data) || (CEO_dut !== ref_ceo)) begin
-                    error = error + 1;
-                    $fwrite(log_file, "Error Time: %g ns\n", $time);
-                    $fwrite(log_file, "DUT Input: input_byte = 8'h%0h\n", input_byte);
-                    $fwrite(log_file, "DUT Output: Out_byte = 8'h%0h, CEO = %b, Valid_out = %b\n",
-                        Out_byte_dut, CEO_dut, Valid_out_dut);
-                    $fwrite(log_file, "Reference Output: Out_byte = 8'h%0h, CEO = %b, Valid_out = %b\n",
-                        ref_data, ref_ceo, ref_valid);
-                    $fwrite(log_file, "-----------------------------\n");
-                end
+            if ((Out_byte_dut !== Out_byte_ref) || (CEO_dut !== CEO_ref) || (Valid_out_dut != Valid_out_ref)) begin
+                error = error + 1;
+                $fwrite(log_file, "Error Time: %g ns\n", $time);
+                $fwrite(log_file, "DUT Input: input_byte = 8'h%0h\n", input_byte);
+                $fwrite(log_file, "DUT Output: Out_byte = 8'h%0h, CEO = %b, Valid_out = %b\n",
+                    Out_byte_dut, CEO_dut, Valid_out_dut);
+                $fwrite(log_file, "Reference Output: Out_byte = 8'h%0h, CEO = %b, Valid_out = %b\n",
+                    Out_byte_ref, CEO_ref, Valid_out_ref);
+                $fwrite(log_file, "-----------------------------\n");
             end
         end
     endtask
-
 endmodule
 
 

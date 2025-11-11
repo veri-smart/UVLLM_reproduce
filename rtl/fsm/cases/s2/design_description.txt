@@ -3,46 +3,16 @@ Please act as an expert in Verilog debugging and code modification.
 Module name:
     fsm_full
 Input ports:
-    clock: 1-bit input, clock signal (triggered on positive edge).
-    reset: 1-bit input, active-high reset signal (reset=1 triggers reset, reset=0 is normal operation).
-    req_0: 1-bit input, active-high request signal from agent 0 (req_0=1 indicates a request).
-    req_1: 1-bit input, active-high request signal from agent 1 (req_1=1 indicates a request).
-    req_2: 1-bit input, active-high request signal from agent 2 (req_2=1 indicates a request).
-    req_3: 1-bit input, active-high request signal from agent 3 (req_3=1 indicates a request).
+    clock: 1-bit input, clock signal
+    reset: 1-bit input, active-high reset signal
+    req_0: 1-bit input, active-high request signal from agent 0
+    req_1: 1-bit input, active-high request signal from agent 1
+    req_2: 1-bit input, active-high request signal from agent 2
+    req_3: 1-bit input, active-high request signal from agent 3
 Output ports:
-    gnt_0: 1-bit output (registered output), active-high grant signal to agent 0 (gnt_0=1 indicates grant).
-    gnt_1: 1-bit output (registered output), active-high grant signal to agent 1 (gnt_1=1 indicates grant).
-    gnt_2: 1-bit output (registered output), active-high grant signal to agent 2 (gnt_2=1 indicates grant).
-    gnt_3: 1-bit output (registered output), active-high grant signal to agent 3 (gnt_3=1 indicates grant).
-Implementation:
-    This module functions as a finite state machine (FSM) for request-grant management of 4 agents, controlling grant signals based on request signals with a priority order (req_0 > req_1 > req_2 > req_3). It operates synchronously with the positive edge of the clock signal.
-
-    Internal states include:
-
-    IDLE (3'b000): Initial state and state when no valid requests exist.
-    GNT0 (3'b001): State where agent 0 is granted.
-    GNT1 (3'b010): State where agent 1 is granted.
-    GNT2 (3'b011): State where agent 2 is granted.
-    GNT3 (3'b100): State where agent 3 is granted.
-
-    State transition logic:
-
-    In IDLE state: Check requests in priority order (req_0 first, then req_1, req_2, req_3). If req_x (x=0~3) is 1, transition to GNTx state; if no requests are valid, remain in IDLE.
-    In GNT0 state: If req_0 is 1, remain in GNT0; if req_0 is 0, transition to IDLE.
-    In GNT1 state: If req_1 is 1, remain in GNT1; if req_1 is 0, transition to IDLE.
-    In GNT2 state: If req_2 is 1, remain in GNT2; if req_2 is 0, transition to IDLE.
-    In GNT3 state: If req_3 is 1, remain in GNT3; if req_3 is 0, transition to IDLE.
-    Default state: Transition to IDLE.
-
-    Output control logic:
-
-    When reset is 1 (reset state): All grant signals (gnt_0 to gnt_3) are set to 0, and the state is set to IDLE (synchronously on positive clock edge).
-    When reset is 0 (normal operation):
-    In IDLE state: All grant signals (gnt_0 to gnt_3) are set to 0.
-    In GNT0 state: gnt_0 is set to 1 (other grant signals remain 0 as they are cleared in IDLE).
-    In GNT1 state: gnt_1 is set to 1 (other grant signals remain 0).
-    In GNT2 state: gnt_2 is set to 1 (other grant signals remain 0).
-    In GNT3 state: gnt_3 is set to 1 (other grant signals remain 0).
-    State and grant signals are updated synchronously on the positive edge of the clock.
+    gnt_0: 1-bit output, active-high grant signal to agent 0
+    gnt_1: 1-bit output, active-high grant signal to agent 1
+    gnt_2: 1-bit output, active-high grant signal to agent 2
+    gnt_3: 1-bit output, active-high grant signal to agent 3
 
 Modify the error design code below.

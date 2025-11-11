@@ -182,7 +182,6 @@ module i2c_master_bit_ctrl (
       sda_oen <= #1 1'b1;
       sda_chk <= #1 1'b0;
     end else begin
-      cmd_ack <= #1 1'b0;
 
       if (clk_en)
         case (c_state)

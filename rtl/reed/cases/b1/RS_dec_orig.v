@@ -362,7 +362,6 @@ module BM_lamda (
   end
 
 endmodule
-
 module DP_RAM (
     clk,
     we,

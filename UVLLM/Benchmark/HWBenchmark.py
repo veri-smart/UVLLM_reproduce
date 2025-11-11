@@ -17,7 +17,6 @@ class HWBenchmark(Benchmark.Benchmark):
             tbFile = self.bugInfoDict["test_bench"]
         # simCommand = "timeout {} vcs +vcs+loopdetect -sverilog +vc -Mupdate -line -full64 {} {} -o simv -R -LDFLAGS -Wl,--no-as-needed".format(self.bugInfoDict["timeout"], tbFile, " ".join(srcFiles))
         simCommand = "iverilog -g2012 -o wave {} {}; timeout {} vvp -n wave; rm wave;".format(tbFile, oriFile, Config.TIMEOUT)
-        print("simCommand: ", simCommand)
         result = CmdUtils.runCmd(simCommand, cwd=self.bugInfoDict["proj_dir"])
         file_path = self.bugInfoDict["sim_vcd"]
         directory, filename = os.path.split(file_path)

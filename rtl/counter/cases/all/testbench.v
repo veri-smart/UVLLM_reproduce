@@ -34,7 +34,7 @@ module testbench();
     // Dump VCD
     initial begin
         $dumpfile("test.vcd");
-        $dumpvars(0, uut);
+        $dumpvars(0, testbench);
     end
 
     // Initialize log file
@@ -46,21 +46,16 @@ module testbench();
     task ref_model;
         input reset_i;
         input enable_i;
+        if(reset_i==1'b1) begin
+            ref_counter = 4'b0000;
+            ref_overflow = 1'b0;
+        end
+        else if(enable_i == 1'b1) begin
+            ref_counter = ref_counter + 1;
+        end
+        if(ref_counter == 4'b1111)
         begin
-            if (reset_i) begin
-                ref_counter = 0;
-                ref_overflow = 0;
-            end else if (enable_i) begin
-                if (ref_counter == 4'b1111) begin
-                    ref_counter = 0;
-                    ref_overflow = 1;
-                end else begin
-                    ref_counter = ref_counter + 1;
-                    ref_overflow = (ref_counter == 4'b1110);
-                end
-            end else begin
-                ref_overflow = (ref_counter == 4'b1111);
-            end
+            ref_overflow = 1'b1;
         end
     endtask
 

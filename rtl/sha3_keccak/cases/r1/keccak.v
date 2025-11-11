@@ -39,15 +39,7 @@ module keccak(clk, reset, in, in_ready, is_last, byte_num, buffer_full, out, out
         state <= 1;
 
      
-    generate
-      for(w=0; w<8; w=w+1)
-        begin : L0
-          for(b=0; b<8; b=b+1)
-            begin : L1
-              assign out[`high_pos(w,b):`low_pos(w,b)] = out1[`high_pos2(w,b):`low_pos2(w,b)];
-            end
-        end
-    endgenerate
+    assign out = f_out[1599:1088];
 
      
     generate
